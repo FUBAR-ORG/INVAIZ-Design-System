@@ -1,12 +1,16 @@
-const path = require("path");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+import * as webpack from 'webpack';
+import webpackDevServer from 'webpack-dev-server';
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const mode = process.env.NODE_ENV || "development"
+interface WebpackConfig extends webpack.Configuration {
+  devServer: webpackDevServer.Configuration;
+}
 
-module.exports = {
-  mode,
+const config: WebpackConfig = {
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   entry: { main: path.resolve('src', 'index.tsx') },
   output: {
     path: path.resolve('./dist'),
@@ -52,3 +56,5 @@ module.exports = {
     new MiniCssExtractPlugin()
   ],
 };
+
+export default config;
