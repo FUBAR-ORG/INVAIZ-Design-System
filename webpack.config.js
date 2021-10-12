@@ -18,7 +18,7 @@ module.exports = {
     port: 8080,
     open: true,
     client: {
-      overlay: true
+      overlay: true,
     },
   },
   module: {
@@ -30,13 +30,7 @@ module.exports = {
       {
         test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-react', '@babel/preset-env'],
-            plugins: ['@babel/plugin-transform-runtime'],
-          },
-        },
+        loader: 'babel-loader',
       },
     ],
   },
