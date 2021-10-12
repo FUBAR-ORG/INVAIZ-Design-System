@@ -1,5 +1,11 @@
+import { useEffect } from 'react';
+import { Test } from './test';
+
 function App() {
-  return <h2>Hello World2</h2>;
+  useEffect(() =>{
+    Test();
+  },[])
+  return <h2>Hello World</h2>;
 }
 
 export default App;
