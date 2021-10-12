@@ -7,16 +7,16 @@ const mode = process.env.NODE_ENV || "development"
 
 module.exports = {
   mode,
-  entry: {
-    app: './src'
-  },
+  entry: { main: path.resolve('src', 'index.tsx') },
   output: {
     path: path.resolve('./dist'),
     filename: '[name].js'
   },
+  stats: 'errors-only',
   devServer: {
     port: 8080,
     open: true,
+    hot: true,
     client: {
       overlay: true,
     },
@@ -24,15 +24,18 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(ts|tsx)?$/,
+        exclude: /node_modules/,
+        use: ['ts-loader'],
+      },
+      {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"]
       },
-      {
-        test: /\.(js|jsx)?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-      },
     ],
+  },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
   plugins: [
     new HtmlWebpackPlugin({
