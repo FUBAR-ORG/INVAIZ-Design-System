@@ -6,7 +6,7 @@ export default {
   component: Component,
 };
 
-const Template:Story<ComponentProps> = (args) => <Component {...args} />;
+const Template: Story<ComponentProps> = (args) => <Component {...args} />;
 
 export const Example = Template.bind({});
 Example.args = {

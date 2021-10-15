@@ -7,6 +7,7 @@ module.exports = {
         "airbnb",
         "airbnb/hooks",
         "plugin:@typescript-eslint/recommended",
+        "eslint-config-prettier"
     ],
     parser: "@typescript-eslint/parser",
     parserOptions: {
@@ -18,17 +19,19 @@ module.exports = {
     },
     plugins: [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "prettier"
     ],
     rules: {
-        "react/react-in-jsx-scope": 0,
-        "no-use-before-define": 0,
-        "react/jsx-props-no-spreading": 0,
-        "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
-        "react/prop-types": 0,
-        "react-hooks/exhaustive-deps": 0,
-        'import/extensions': 0,
-        "import/no-unresolved": 0
+        "react/react-in-jsx-scope": "off",
+        "no-use-before-define": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+        "react/prop-types": "off",
+        "react-hooks/exhaustive-deps": "off",
+        'import/extensions': "off",
+        "import/no-unresolved": "off",
+        "prettier/prettier": "error",
     },
     ignorePatterns: ["node_modules"]
 };
