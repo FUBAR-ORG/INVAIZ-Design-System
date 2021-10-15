@@ -14,7 +14,7 @@ const config: WebpackConfig = {
   entry: { main: path.resolve('src', 'index.tsx') },
   output: {
     path: path.resolve('./dist'),
-    filename: '[name].js'
+    filename: '[name].js',
   },
   stats: 'errors-only',
   devServer: {
@@ -34,26 +34,29 @@ const config: WebpackConfig = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"]
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
     ],
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
       templateParameters: {
-        env: process.env.NODE_ENV === 'development' ? '(개발용)' : ''
+        env: process.env.NODE_ENV === 'development' ? '(개발용)' : '',
       },
-      minify: process.env.NODE_ENV === 'production' ? {
-        collapseWhitespace: true,
-        removeComments: true
-      } : false,
+      minify:
+        process.env.NODE_ENV === 'production'
+          ? {
+              collapseWhitespace: true,
+              removeComments: true,
+            }
+          : false,
     }),
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
   ],
 };
 

@@ -22,13 +22,14 @@
     "react/react-in-jsx-scope": "off",
     "no-use-before-define": "off",
     "react/jsx-props-no-spreading": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    "react/jsx-filename-extension": ["error", { "extensions": [".ts", ".tsx"] }],
     "react/prop-types": "off",
     "react-hooks/exhaustive-deps": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
     "prettier/prettier": "error",
-    "@typescript-eslint/no-unused-vars": "error"
+    "@typescript-eslint/no-unused-vars": "error",
+    "import/no-extraneous-dependencies": ["warn", {"devDependencies": true}]
   },
   "ignorePatterns": ["node_modules"]
 }
