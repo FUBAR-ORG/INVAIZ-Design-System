@@ -11,6 +11,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@style/*": ["src/style/*"]
+    }
   },
   "include": [ "src/**/*.ts", "src/**/*.tsx" ],
   "exclude": ["node_modules"]
