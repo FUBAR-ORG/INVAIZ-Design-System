@@ -1,5 +1,8 @@
-import { css, Global } from '@emotion/react';
-import React from 'react';
+import { Global, css } from '@emotion/react';
+
+export default function GlobalStyle() {
+  return <Global styles={globalStyle} />;
+}
 
 const globalStyle = css`
   body {
@@ -8,9 +11,3 @@ const globalStyle = css`
     box-sizing: border-box;
   }
 `;
-
-function GlobalStyle() {
-  return <Global styles={globalStyle} />;
-}
-
-export default GlobalStyle;
