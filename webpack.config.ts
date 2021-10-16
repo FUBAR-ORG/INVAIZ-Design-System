@@ -3,7 +3,6 @@ import webpackDevServer from 'webpack-dev-server';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 interface WebpackConfig extends webpack.Configuration {
   devServer: webpackDevServer.Configuration;
@@ -32,10 +31,6 @@ const config: WebpackConfig = {
         exclude: /node_modules/,
         use: ['ts-loader'],
       },
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      },
     ],
   },
   resolve: {
@@ -56,7 +51,6 @@ const config: WebpackConfig = {
           : false,
     }),
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin(),
   ],
 };
 
