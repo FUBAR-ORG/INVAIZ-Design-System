@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Test from '../Test';
 
 export interface ComponentProps {
   text: string;
@@ -8,6 +9,7 @@ export default function Component({ text }: ComponentProps) {
   return (
     <Wrapper>
       <h3>{text}</h3>
+      <Test />
     </Wrapper>
   );
 }

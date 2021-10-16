@@ -1,4 +1,4 @@
-import Component from './stories/Example';
+import Component from './module/stories/Example';
 
 function App() {
   return <Component text='test' />;
