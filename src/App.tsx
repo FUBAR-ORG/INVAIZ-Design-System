@@ -1,7 +1,5 @@
-import Component from './module/stories/Example';
-
 function App() {
-  return <Component text='test' />;
+  return <div>Project init</div>;
 }
 
 export default App;
