@@ -13,7 +13,7 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@styles/*": ["src/styles/*"]
+      "@theme/*": ["src/theme/*"]
     }
   },
   "include": [ "src/**/*.ts", "src/**/*.tsx" ],
