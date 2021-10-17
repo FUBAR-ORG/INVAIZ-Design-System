@@ -12,7 +12,7 @@ const Template: Story<PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>
   ...args
 }) => <Button {...args}>{children}</Button>;
 
-export const Example = Template.bind({});
-Example.args = {
+export const Primary = Template.bind({});
+Primary.args = {
   children: 'button',
 };
