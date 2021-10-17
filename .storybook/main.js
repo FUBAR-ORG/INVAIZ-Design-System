@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   "stories": [
     "../src/**/*.stories.mdx",
@@ -6,5 +8,10 @@ module.exports = {
   "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials"
-  ]
+  ],
+  webpackFinal: async config => {
+    config.resolve.alias["@theme"] = path.resolve(__dirname, "../src/theme");
+    config.resolve.alias["@components"] = path.resolve(__dirname, "../src/components");
+    return config;
+  }
 }

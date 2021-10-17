@@ -24,6 +24,7 @@
     "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": ["error", { "extensions": [".ts", ".tsx"] }],
     "react/prop-types": "off",
+    "react/button-has-type": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
     "prettier/prettier": "error",
