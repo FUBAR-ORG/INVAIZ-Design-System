@@ -14,9 +14,10 @@
     "baseUrl": ".",
     "paths": {
       "@theme/*": ["src/theme/*"],
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/components/*"],
+      "@test/*": ["src/test/*"]
     }
   },
-  "include": [ "src/**/*.ts", "src/**/*.tsx" ],
-  "exclude": [ "node_modules" ]
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules"]
 }
