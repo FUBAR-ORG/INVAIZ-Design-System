@@ -38,7 +38,7 @@ const config: WebpackConfig = {
       '@theme': path.resolve(__dirname, 'src/theme'),
       '@components': path.resolve(__dirname, 'src/components'),
     },
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    extensions: ['.js', '.ts', '.tsx', '.js', '.jsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({

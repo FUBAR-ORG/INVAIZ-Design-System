@@ -3,7 +3,7 @@ const config = {
     '\\.(ts|tsx)$': 'ts-jest',
   },
   testEnvironment: 'jest-environment-jsdom',
-  moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'json'],
+  moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
   testMatch: ['<rootDir>/**/*.test.ts', '<rootDir>/**/*.test.tsx'],
   moduleNameMapper: {},
 };
