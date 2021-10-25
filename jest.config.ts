@@ -1,6 +1,5 @@
 const config = {
   transform: {
-    '\\.(js|jsx)?$': 'babel-jest',
     '\\.(ts|tsx)$': 'ts-jest',
   },
   testEnvironment: 'jest-environment-jsdom',
