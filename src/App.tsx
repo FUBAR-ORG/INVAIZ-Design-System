@@ -1,3 +1,3 @@
 export default function App() {
-  return <div>Project init</div>;
+  return <div data-testid='test-id'>Project init</div>;
 }
