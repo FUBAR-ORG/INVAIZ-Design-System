@@ -5,6 +5,8 @@ export interface TextFieldProps {
   placeholder?: string;
   fontSize?: 'normal' | 'large';
   fullWidth?: boolean;
+  active?: boolean;
+  password?: boolean;
 }
 
 export default function TextField({
@@ -12,8 +14,17 @@ export default function TextField({
   placeholder = '',
   fontSize = 'normal',
   fullWidth = false,
+  active = false,
+  password = false,
 }: TextFieldProps) {
   return (
-    <Input placeholder={placeholder} scale={scale} fontSize={fontSize} fullWidth={fullWidth} />
+    <Input
+      type={password ? 'password' : 'text'}
+      placeholder={placeholder}
+      scale={scale}
+      fontSize={fontSize}
+      fullWidth={fullWidth}
+      active={active}
+    />
   );
 }
