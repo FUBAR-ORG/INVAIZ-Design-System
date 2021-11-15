@@ -13,8 +13,10 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@theme/*": ["src/theme/*"],
-      "@components/*": ["src/components/*"]
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@page/*": ["src/page/*"],
+      "@theme/*": ["src/theme/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
