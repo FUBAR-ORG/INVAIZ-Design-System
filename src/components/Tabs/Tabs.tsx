@@ -1,6 +1,6 @@
 import { HTMLAttributes, PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
-import TabList from '@components/Tabs/TabList/TabList';
+import TabList from '@components/Tabs/TabList';
 
 export interface TabsProps extends PropsWithChildren<HTMLAttributes<HTMLDivElement>> {
   tabsLength: number;

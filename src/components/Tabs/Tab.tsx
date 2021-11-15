@@ -1,10 +1,9 @@
 import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
 
-export default function Tab({
-  children,
-  ...args
-}: PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>) {
+export type ITab = PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>;
+
+export default function Tab({ children, ...args }: ITab) {
   return <TabBox {...args}>{children}</TabBox>;
 }
 
@@ -15,5 +14,7 @@ const TabBox = styled.button`
   text-align: center;
   cursor: pointer;
   transition: color 0.3s ease-in;
-  z-index: 100;
+  outline: 0;
+  background: #fff;
+  border: none;
 `;
