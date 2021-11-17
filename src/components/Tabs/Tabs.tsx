@@ -7,9 +7,9 @@ export interface TabsProps extends PropsWithChildren<HTMLAttributes<HTMLDivEleme
   tabs: ITab[];
 }
 
-export default function Tabs({ tabs, children, ...args }: TabsProps) {
+export default function Tabs({ tabs, children, ...props }: TabsProps) {
   return (
-    <Container tabsLength={tabs.length} {...args}>
+    <Container tabsLength={tabs.length} {...props}>
       <TabList>{children}</TabList>
     </Container>
   );

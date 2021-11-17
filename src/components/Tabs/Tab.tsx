@@ -6,8 +6,8 @@ export interface ITab extends PropsWithChildren<ButtonHTMLAttributes<HTMLButtonE
   value: string | number;
 }
 
-export default function Tab({ children, ...args }: ITab) {
-  return <TabBox {...args}>{children}</TabBox>;
+export default function Tab({ children, ...props }: ITab) {
+  return <TabBox {...props}>{children}</TabBox>;
 }
 
 const TabBox = styled.button`

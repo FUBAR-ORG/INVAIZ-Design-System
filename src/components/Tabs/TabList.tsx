@@ -3,9 +3,9 @@ import styled from '@emotion/styled';
 
 export default function TabList({
   children,
-  ...args
+  ...props
 }: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
-  return <Nav {...args}>{children}</Nav>;
+  return <Nav {...props}>{children}</Nav>;
 }
 
 const Nav = styled.nav`

@@ -5,8 +5,8 @@ export interface TabGliderProps extends PropsWithChildren<HTMLAttributes<HTMLSpa
   currentIndex: number;
 }
 
-export default function TabGlider({ currentIndex, ...args }: TabGliderProps) {
-  return <Glider currentIndex={currentIndex} {...args} />;
+export default function TabGlider({ currentIndex, ...props }: TabGliderProps) {
+  return <Glider currentIndex={currentIndex} {...props} />;
 }
 
 const Glider = styled.span<{ currentIndex: number }>`

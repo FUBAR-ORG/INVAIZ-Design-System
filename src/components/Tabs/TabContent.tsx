@@ -3,9 +3,9 @@ import styled from '@emotion/styled';
 
 export default function TabContent({
   children,
-  ...args
+  ...props
 }: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
-  return <Content {...args}>{children}</Content>;
+  return <Content {...props}>{children}</Content>;
 }
 
 const Content = styled.div`
