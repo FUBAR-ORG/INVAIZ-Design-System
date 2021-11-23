@@ -44,5 +44,5 @@ jobs:
         
     - name: Jest Integration Test
       run: |
-        yarn test
+        yarn test --passWithNoTests
         
