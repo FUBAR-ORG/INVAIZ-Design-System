@@ -1,10 +1,11 @@
-import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import styled from '@emotion/styled';
 
-export default function Button({
-  children,
-  ...props
-}: PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>) {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children?: ReactNode;
+}
+
+export default function Button({ children, ...props }: ButtonProps) {
   return <StyledButton {...props}>{children}</StyledButton>;
 }
 
