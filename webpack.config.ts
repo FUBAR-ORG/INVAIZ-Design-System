@@ -35,8 +35,10 @@ const config: WebpackConfig = {
   },
   resolve: {
     alias: {
-      '@theme': path.resolve(__dirname, 'src/theme'),
       '@components': path.resolve(__dirname, 'src/components'),
+      '@assets': path.resolve(__dirname, 'src/assets'),
+      '@page': path.resolve(__dirname, 'src/page'),
+      '@theme': path.resolve(__dirname, 'src/theme'),
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },

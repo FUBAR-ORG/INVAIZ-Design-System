@@ -8,4 +8,4 @@ const config = {
   moduleNameMapper: {},
 };
 
-module.exports = config;
+export default config;
