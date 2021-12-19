@@ -17,6 +17,7 @@
     "build-storybook": "build-storybook"
   },
   "devDependencies": {
+    "@emotion/babel-plugin": "^11.7.1",
     "@storybook/addon-actions": "^6.3.11",
     "@storybook/addon-essentials": "^6.3.11",
     "@storybook/addon-links": "^6.3.11",

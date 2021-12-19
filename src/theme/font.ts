@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
+import { IFont, IFontSize, IFontWeight, ILineHeight } from '@theme/types/font';
 
-const fontSize = {
+const fontSize: IFontSize = {
   size12: 12,
   size14: 14,
   size16: 16,
@@ -13,7 +14,7 @@ const fontSize = {
   size68: 68,
 };
 
-const lineHeight = {
+const lineHeight: ILineHeight = {
   height20: 20,
   height22: 22,
   height24: 24,
@@ -26,13 +27,13 @@ const lineHeight = {
   height76: 76,
 };
 
-const fontWeight = {
+const fontWeight: IFontWeight = {
   regular: 400,
   medium: 500,
   semiBold: 600,
 };
 
-const font = {
+const font: IFont = {
   size12pt: css`
     font-size: ${fontSize.size12}px;
     line-height: ${lineHeight.height20}px;

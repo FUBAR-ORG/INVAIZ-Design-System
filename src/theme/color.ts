@@ -1,4 +1,6 @@
-const color = {
+import { IColor } from '@theme/types/color';
+
+const color: IColor = {
   red1: '#fff1f0',
   red2: '#ffccc7',
   red3: '#ffa39e',
