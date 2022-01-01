@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react';
-import Button, { ButtonProps } from '@components/Button';
+import Button, { ButtonProps } from '@components/Button/Button';
 
 export default {
   title: 'Components/Button',
