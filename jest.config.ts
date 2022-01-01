@@ -11,6 +11,7 @@ const config = {
     '^@assets/(.*)': '<rootDir>/src/assets/$1',
     '^@components/(.*)': '<rootDir>/src/components/$1',
     '^@theme/(.*)': '<rootDir>/src/theme/$1',
+    '^@test/(.*)': '<rootDir>/src/test/$1',
   },
 };
 

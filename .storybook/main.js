@@ -12,6 +12,7 @@ module.exports = {
   webpackFinal: async config => {
     config.resolve.alias["@theme"] = path.resolve(__dirname, "../src/theme");
     config.resolve.alias["@components"] = path.resolve(__dirname, "../src/components");
+    config.resolve.alias["@test"] = path.resolve(__dirname, "../src/test");
     config.resolve.alias['@emotion/core'] = path.join(process.cwd(), 'node_modules/@emotion/react')
     return config;
   }

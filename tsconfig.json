@@ -15,8 +15,8 @@
     "paths": {
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
-      "@page/*": ["src/page/*"],
-      "@theme/*": ["src/theme/*"]
+      "@theme/*": ["src/theme/*"],
+      "@test/*": ["src/test/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
