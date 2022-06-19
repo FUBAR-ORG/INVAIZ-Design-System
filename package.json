@@ -5,6 +5,8 @@
   "repository": "https://github.com/HelloMandu/GitLog",
   "license": "MIT",
   "scripts": {
+    "start:vite": "vite",
+    "build:vite": "vite build",
     "start": "webpack-dev-server --progress",
     "build": "NODE_ENV=production webpack --progress",
     "test": "jest",
@@ -15,6 +17,13 @@
     "prettier:fix": "prettier --write 'src/**/*.{ts,tsx}'",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.3.11",
@@ -29,6 +38,7 @@
     "@types/webpack-dev-server": "^4.3.1",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
+    "@vitejs/plugin-react": "^1.3.2",
     "clean-webpack-plugin": "^4.0.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "18.2.1",
@@ -46,15 +56,9 @@
     "ts-loader": "^9.2.6",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.3",
+    "vite": "^2.9.10",
     "webpack": "^5.58.1",
     "webpack-cli": "^4.9.0",
     "webpack-dev-server": "^4.3.1"
-  },
-  "dependencies": {
-    "@ant-design/icons": "^4.7.0",
-    "@emotion/react": "^11.4.1",
-    "@emotion/styled": "^11.3.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
   }
 }
