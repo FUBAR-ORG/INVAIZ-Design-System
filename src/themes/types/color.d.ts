@@ -121,7 +121,7 @@ export interface IColorScheme {
    * * light: #F5F5F5
    * * dark: #1E212E
    */
-  backgroud: string;
+  background: string;
   /**
    * 메인 색상
    * * 공통: #0066FF

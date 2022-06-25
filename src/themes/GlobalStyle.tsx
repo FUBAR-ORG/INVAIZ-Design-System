@@ -1,15 +1,15 @@
 import { Global, css } from '@emotion/react';
 
-import _INVAIZ_FONT from '@theme/fonts/INVAIZ.ttf';
-import _KOPUBWORLD_LIGHT_FONT from '@theme/fonts/KoPubWorldLight.ttf';
-import _KOPUBWORLD_MEDIUM_FONT from '@theme/fonts/KoPubWorldMedium.ttf';
-import _KOPUBWORLD_BOLD_FONT from '@theme/fonts/KoPubWorldBold.ttf';
+// import _INVAIZ_FONT from '@assets/fonts/INVAIZ.ttf';
+// import _KOPUBWORLD_LIGHT_FONT from '@assets/fonts/KoPubWorldLight.ttf';
+// import _KOPUBWORLD_MEDIUM_FONT from '@assets/fonts/KoPubWorldMedium.ttf';
+// import _KOPUBWORLD_BOLD_FONT from '@assets/fonts/KoPubWorldBold.ttf';
 
 export default function GlobalStyle() {
   return <Global styles={globalStyle} />;
 }
 
-const globalStyle = css`
+/*
   @font-face {
     font-family: 'INVAIZ';
     font-style: normal;
@@ -47,7 +47,8 @@ const globalStyle = css`
     font-weight: bold;
     src: url(${_KOPUBWORLD_BOLD_FONT}) format('truetype');
   }
-
+  */
+const globalStyle = css`
   body {
     margin: 0;
     padding: 0;

@@ -41,7 +41,7 @@ export interface IStyle {
   /** 테두리에 사용되는 CSS */
   border: IStyleBorder;
   /** 그림자에 사용되는 CSS */
-  boxShadow: IStyleBorder;
+  boxShadow: IStyleBoxShadow;
   /** 폰트 타입 정의에 사용되는 CSS */
   fontFace: IStyleFontFace;
 }

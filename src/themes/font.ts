@@ -1,4 +1,4 @@
-import type { IFont, IFontSize, IFontWeight, ILineHeight } from '@theme/types/font';
+import type { IFont, IFontSize, IFontWeight, ILineHeight } from '@themes/types/font';
 
 import { css } from '@emotion/react';
 
@@ -6,6 +6,7 @@ const fontSize: IFontSize = {
   size12: 12,
   size14: 14,
   size16: 16,
+  size18: 18,
   size20: 20,
   size24: 24,
   size30: 30,

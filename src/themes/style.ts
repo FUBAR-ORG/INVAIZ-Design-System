@@ -1,11 +1,11 @@
-import type { IStyle } from '@theme/types/style';
+import type { IStyle } from '@themes/types/style';
 
 import { css } from '@emotion/react';
 
-import { mainColor } from '@theme/color';
+import { mainColor } from '@themes/color';
 
 const style: IStyle = {
-  bolder: {
+  border: {
     selected: css`
       border: solid 2px ${mainColor};
     `,

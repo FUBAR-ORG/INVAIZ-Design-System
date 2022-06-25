@@ -1,6 +1,7 @@
+import path from 'path';
+
 import * as webpack from 'webpack';
 import webpackDevServer from 'webpack-dev-server';
-import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
@@ -36,8 +37,9 @@ const config: WebpackConfig = {
   resolve: {
     alias: {
       '@components': path.resolve(__dirname, 'src/components'),
-      '@theme': path.resolve(__dirname, 'src/theme'),
-      '@test': path.resolve(__dirname, 'src/test'),
+      '@themes': path.resolve(__dirname, 'src/themes'),
+      '@assets': path.resolve(__dirname, 'src/assets'),
+      '@tests': path.resolve(__dirname, 'src/tests'),
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },

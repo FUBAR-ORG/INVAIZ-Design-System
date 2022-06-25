@@ -1,6 +1,6 @@
-import type { IColor } from '@theme/types/color';
-import type { IFont, IFontSize, IFontWeight, ILineHeight } from '@theme/types/font';
-import type { IStyle } from '@theme/types/style';
+import type { IColor } from '@themes/types/color';
+import type { IFont, IFontSize, IFontWeight, ILineHeight } from '@themes/types/font';
+import type { IStyle } from '@themes/types/style';
 
 declare module '@emotion/react' {
   export interface Theme {

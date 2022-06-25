@@ -2,10 +2,10 @@ import type { PropsWithChildren } from 'react';
 
 import { Theme, ThemeProvider } from '@emotion/react';
 
-import color from '@theme/color';
-import font, { fontSize, fontWeight, lineHeight } from '@theme/font';
-import style from '@theme/style';
-import GlobalStyle from '@theme/GlobalStyle';
+import color from '@themes/color';
+import font, { fontSize, fontWeight, lineHeight } from '@themes/font';
+import style from '@themes/style';
+import GlobalStyle from '@themes/GlobalStyle';
 
 export default function GlobalThemeProvider({ children }: PropsWithChildren<unknown>) {
   return (

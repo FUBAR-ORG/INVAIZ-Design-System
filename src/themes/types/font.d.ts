@@ -4,6 +4,7 @@ export interface IFontSize {
   size12: number;
   size14: number;
   size16: number;
+  size18: number;
   size20: number;
   size24: number;
   size30: number;

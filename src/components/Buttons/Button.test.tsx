@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event';
 
-import Button from '@components/Button/Button';
-import { render } from '@test/test-utils';
+import Button from '@components/Buttons/Button';
+import { render } from '@tests/test-utils';
 
 describe('Button Component', () => {
   it('Basic Button test', () => {

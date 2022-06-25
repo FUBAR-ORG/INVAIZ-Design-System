@@ -1,4 +1,4 @@
-import type { IColor } from '@theme/types/color';
+import type { IColor } from '@themes/types/color';
 
 export const mainColor = '#06F';
 
