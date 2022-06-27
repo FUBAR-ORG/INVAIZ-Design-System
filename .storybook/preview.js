@@ -1,6 +1,6 @@
-import GlobalThemeProvider from '../src/theme/GlobalThemeProvider';
+import GlobalThemeProvider from '../src/themes/GlobalThemeProvider';
 
-export const decorators  = [
+export const decorators = [
   (Story) => (
     <GlobalThemeProvider>
       <Story />
@@ -9,11 +9,11 @@ export const decorators  = [
 ];
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/,
     },
   },
-}
+};
