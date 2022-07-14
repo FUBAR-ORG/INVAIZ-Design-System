@@ -19,6 +19,6 @@ const StyledButton = styled.button`
   &:hover {
     background-color: rgba(0, 0, 0, 0.04);
   }
-  color: ${({ theme }) => theme.color.light.box.basic};
+  color: ${({ theme }) => theme.color.light.basic};
   font-size: ${({ theme }) => theme.fontSize.size14}px;
 `;
