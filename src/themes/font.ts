@@ -44,166 +44,170 @@ const fontWeight: IFontWeight = {
 };
 
 const font: IFont = {
-  invaizTitle1: setFontUnit(fontSize.size64),
-  invaizTitle2: setFontUnit(fontSize.size40),
-  invaizTitle3: setFontUnit(fontSize.size32),
-  invaizTitle4: setFontUnit(fontSize.size24),
-  invaizTitle5: setFontUnit(fontSize.size20),
-
-  kopubTitle1: css`
-    ${setFontUnit(fontSize.size48)}
-    font-weight: ${fontWeight.bold};
-    ${mediaQuery.tablet} {
+  invaiz: {
+    title1: setFontUnit(fontSize.size64),
+    title2: setFontUnit(fontSize.size40),
+    title3: setFontUnit(fontSize.size32),
+    title4: setFontUnit(fontSize.size24),
+    title5: setFontUnit(fontSize.size20),
+  },
+  kopub: {
+    title1: css`
+      ${setFontUnit(fontSize.size48)}
+      font-weight: ${fontWeight.bold};
+      ${mediaQuery.tablet} {
+        ${setFontUnit(fontSize.size32)}
+      }
+      ${mediaQuery.mobile} {
+        ${setFontUnit(fontSize.size24)}
+      }
+    `,
+    title2: css`
+      ${setFontUnit(fontSize.size40)}
+      font-weight: ${fontWeight.bold};
+      ${mediaQuery.tablet} {
+        ${setFontUnit(fontSize.size20)}
+      }
+    `,
+    title3: css`
       ${setFontUnit(fontSize.size32)}
-    }
-    ${mediaQuery.mobile} {
+      font-weight: ${fontWeight.bold};
+      ${mediaQuery.tablet} {
+        ${setFontUnit(fontSize.size18)}
+        font-weight: ${fontWeight.medium};
+      }
+    `,
+    subT1: css`
       ${setFontUnit(fontSize.size24)}
-    }
-  `,
-  kopubTitle2: css`
-    ${setFontUnit(fontSize.size40)}
-    font-weight: ${fontWeight.bold};
-    ${mediaQuery.tablet} {
-      ${setFontUnit(fontSize.size20)}
-    }
-  `,
-  kopubTitle3: css`
-    ${setFontUnit(fontSize.size32)}
-    font-weight: ${fontWeight.bold};
-    ${mediaQuery.tablet} {
-      ${setFontUnit(fontSize.size18)}
+      font-weight: ${fontWeight.bold};
+      ${mediaQuery.tablet} {
+        ${setFontUnit(fontSize.size16)}
+      }
+      ${mediaQuery.mobile} {
+        ${setFontUnit(fontSize.size20)}
+      }
+    `,
+    subT2: css`
+      ${setFontUnit(fontSize.size24)}
       font-weight: ${fontWeight.medium};
-    }
-  `,
-  kopubSubT1: css`
-    ${setFontUnit(fontSize.size24)}
-    font-weight: ${fontWeight.bold};
-    ${mediaQuery.tablet} {
-      ${setFontUnit(fontSize.size16)}
-    }
-    ${mediaQuery.mobile} {
+      ${mediaQuery.tablet} {
+        ${setFontUnit(fontSize.size14)}
+        font-weight: ${fontWeight.bold};
+      }
+      ${mediaQuery.mobile} {
+        ${setFontUnit(fontSize.size20)}
+      }
+    `,
+    subT3: css`
       ${setFontUnit(fontSize.size20)}
-    }
-  `,
-  kopubSubT2: css`
-    ${setFontUnit(fontSize.size24)}
-    font-weight: ${fontWeight.medium};
-    ${mediaQuery.tablet} {
-      ${setFontUnit(fontSize.size14)}
       font-weight: ${fontWeight.bold};
-    }
-    ${mediaQuery.mobile} {
-      ${setFontUnit(fontSize.size20)}
-    }
-  `,
-  kopubSubT3: css`
-    ${setFontUnit(fontSize.size20)}
-    font-weight: ${fontWeight.bold};
-    ${mediaQuery.tablet} {
-      ${setFontUnit(fontSize.size14)}
+      ${mediaQuery.tablet} {
+        ${setFontUnit(fontSize.size14)}
+        font-weight: ${fontWeight.medium};
+      }
+      ${mediaQuery.mobile} {
+        ${setFontUnit(fontSize.size16)}
+        font-weight: ${fontWeight.bold};
+      }
+    `,
+    contents1: css`
+      ${setFontUnit(fontSize.size24)}
       font-weight: ${fontWeight.medium};
-    }
-    ${mediaQuery.mobile} {
+      ${mediaQuery.tablet} {
+        ${setFontUnit(fontSize.size16)}
+        font-weight: ${fontWeight.bold};
+      }
+    `,
+    contents2: css`
+      ${setFontUnit(fontSize.size20)}
+      font-weight: ${fontWeight.medium};
+      ${mediaQuery.tablet} {
+        ${setFontUnit(fontSize.size16)};
+      }
+    `,
+    contents3: css`
       ${setFontUnit(fontSize.size16)}
       font-weight: ${fontWeight.bold};
-    }
-  `,
-  kopubContents1: css`
-    ${setFontUnit(fontSize.size24)}
-    font-weight: ${fontWeight.medium};
-    ${mediaQuery.tablet} {
+      ${mediaQuery.tablet} {
+        font-weight: ${fontWeight.light};
+      }
+      ${mediaQuery.mobile} {
+        font-weight: ${fontWeight.medium};
+      }
+    `,
+    contents4: css`
       ${setFontUnit(fontSize.size16)}
-      font-weight: ${fontWeight.bold};
-    }
-  `,
-  kopubContents2: css`
-    ${setFontUnit(fontSize.size20)}
-    font-weight: ${fontWeight.medium};
-    ${mediaQuery.tablet} {
-      ${setFontUnit(fontSize.size16)};
-    }
-  `,
-  kopubContents3: css`
-    ${setFontUnit(fontSize.size16)}
-    font-weight: ${fontWeight.bold};
-    ${mediaQuery.tablet} {
+      font-weight: ${fontWeight.medium};
+      ${mediaQuery.tablet} {
+        ${setFontUnit(fontSize.size14)}
+        font-weight: ${fontWeight.bold}
+      }
+    `,
+    contents5: css`
+      ${setFontUnit(fontSize.size16)}
       font-weight: ${fontWeight.light};
-    }
-    ${mediaQuery.mobile} {
+      ${mediaQuery.tablet} {
+        ${setFontUnit(fontSize.size14)}
+        font-weight: ${fontWeight.medium}
+      }
+    `,
+    contents6: css`
+      ${setFontUnit(fontSize.size14)}
+      font-weight: ${fontWeight.bold};
+      ${mediaQuery.tablet} {
+        ${setFontUnit(fontSize.size12)}
+      }
+    `,
+    contents7: css`
+      ${setFontUnit(fontSize.size14)}
       font-weight: ${fontWeight.medium};
-    }
-  `,
-  kopubContents4: css`
-    ${setFontUnit(fontSize.size16)}
-    font-weight: ${fontWeight.medium};
-    ${mediaQuery.tablet} {
-      ${setFontUnit(fontSize.size14)}
-      font-weight: ${fontWeight.bold}
-    }
-  `,
-  kopubContents5: css`
-    ${setFontUnit(fontSize.size16)}
-    font-weight: ${fontWeight.light};
-    ${mediaQuery.tablet} {
-      ${setFontUnit(fontSize.size14)}
-      font-weight: ${fontWeight.medium}
-    }
-  `,
-  kopubContents6: css`
-    ${setFontUnit(fontSize.size14)}
-    font-weight: ${fontWeight.bold};
-    ${mediaQuery.tablet} {
+      ${mediaQuery.tablet} {
+        ${setFontUnit(fontSize.size12)}
+      }
+    `,
+    small: css`
+      ${setFontUnit(fontSize.size10)}
+      font-weight: ${fontWeight.medium};
+    `,
+    micro: css`
+      ${setFontUnit(fontSize.size8)}
+      font-weight: ${fontWeight.medium};
+    `,
+  },
+  notoSans: {
+    title1: css`
+      ${setFontUnit(fontSize.size32)}
+      font-weight: ${fontWeight.semiBold};
+    `,
+    title2: css`
+      ${setFontUnit(fontSize.size28)}
+      font-weight: ${fontWeight.semiBold};
+    `,
+    title3: css`
+      ${setFontUnit(fontSize.size24)}
+      font-weight: ${fontWeight.semiBold};
+    `,
+    title4: css`
+      ${setFontUnit(fontSize.size24)}
+      font-weight: ${fontWeight.regular};
+    `,
+    contents1: css`
       ${setFontUnit(fontSize.size12)}
-    }
-  `,
-  kopubContents7: css`
-    ${setFontUnit(fontSize.size14)}
-    font-weight: ${fontWeight.medium};
-    ${mediaQuery.tablet} {
+      font-weight: ${fontWeight.bold};
+    `,
+    contents2: css`
       ${setFontUnit(fontSize.size12)}
-    }
-  `,
-  kopubSmall: css`
-    ${setFontUnit(fontSize.size10)}
-    font-weight: ${fontWeight.medium};
-  `,
-  kopubMicro: css`
-    ${setFontUnit(fontSize.size8)}
-    font-weight: ${fontWeight.medium};
-  `,
-
-  notoSansTitle1: css`
-    ${setFontUnit(fontSize.size32)}
-    font-weight: ${fontWeight.semiBold};
-  `,
-  notoSansTitle2: css`
-    ${setFontUnit(fontSize.size28)}
-    font-weight: ${fontWeight.semiBold};
-  `,
-  notoSansTitle3: css`
-    ${setFontUnit(fontSize.size24)}
-    font-weight: ${fontWeight.semiBold};
-  `,
-  notoSansTitle4: css`
-    ${setFontUnit(fontSize.size24)}
-    font-weight: ${fontWeight.regular};
-  `,
-  notoSansContents1: css`
-    ${setFontUnit(fontSize.size12)}
-    font-weight: ${fontWeight.bold};
-  `,
-  notoSansContents2: css`
-    ${setFontUnit(fontSize.size12)}
-    font-weight: ${fontWeight.medium};
-  `,
-  notoSansContents3: css`
-    ${setFontUnit(fontSize.size10)}
-    font-weight: ${fontWeight.bold};
-  `,
-  notoSansContents4: css`
-    ${setFontUnit(fontSize.size10)}
-    font-weight: ${fontWeight.medium};
-  `,
+      font-weight: ${fontWeight.medium};
+    `,
+    contents3: css`
+      ${setFontUnit(fontSize.size10)}
+      font-weight: ${fontWeight.bold};
+    `,
+    contents4: css`
+      ${setFontUnit(fontSize.size10)}
+      font-weight: ${fontWeight.medium};
+    `,
+  },
 };
 
 export { fontSize, lineHeight, fontWeight };

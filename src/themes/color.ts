@@ -1,57 +1,48 @@
 import type { IColor } from '@themes/types/color';
 
-export const mainColor = '#06F';
+/**
+ * 인바이즈 메인 컬러
+ */
+export const point1Color = '#06F' as const;
+/**
+ * 인바이즈 서브 컬러
+ */
+export const point2Color = '#FF925D' as const;
+/**
+ * 인바이즈 경고 컬러
+ */
+export const cautionColor = '#F27474' as const;
 
 const color: IColor = {
-  light: {
-    text: {
-      basic: '#000',
-      sub: '#666',
-      assistant: '#00000059',
-    },
-    box: {
-      basic: '',
-      emphasis: '',
-      selected: '',
-      additional: '',
-      disabled: '',
-
-      hover: '',
-    },
-    icon: {
-      basic: '',
-      sub: '',
-      alert: '',
-
-      hover: '',
-    },
-    background: '#F5F5F5',
-    main: mainColor,
-  },
   dark: {
-    text: {
-      basic: '#FFF',
-      sub: '#C0C0C0',
-      assistant: '#FFFFFF80',
-    },
-    box: {
-      basic: '#363F4D',
-      emphasis: mainColor,
-      selected: '#596980',
-      additional: '#73859E',
-      disabled: '#B3B3B3',
-
-      hover: mainColor,
-    },
-    icon: {
-      basic: '#FFF',
-      sub: '#C0C0C0',
-      alert: '#F27474',
-
-      hover: '#596980',
-    },
     background: '#1E212E',
-    main: mainColor,
+
+    basic: '#FFF',
+    point1: point1Color,
+    point2: point2Color,
+    soft: '#C0C0C0',
+    seat: '#363F4D',
+    thin: '#596980',
+    light: '#73859E',
+    far: '#FFFFFF59',
+    off: '#B3B3B3',
+    caution: cautionColor,
+    wall: '#2F3743',
+  },
+  light: {
+    background: '#F5F5F5',
+
+    basic: '#000',
+    point1: point1Color,
+    point2: point2Color,
+    soft: '#3C4B62',
+    seat: '#D5DEED',
+    thin: '#BFC8DF',
+    light: '#ACBAD3',
+    far: '#90919D',
+    off: '#B3B3B3',
+    caution: cautionColor,
+    wall: '#758899',
   },
 };
 

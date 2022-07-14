@@ -2,12 +2,12 @@ import type { IStyle } from '@themes/types/style';
 
 import { css } from '@emotion/react';
 
-import { mainColor } from '@themes/color';
+import { point1Color } from '@themes/color';
 
 const style: IStyle = {
   border: {
     selected: css`
-      border: solid 2px ${mainColor};
+      border: solid 2px ${point1Color};
     `,
   },
   boxShadow: {
@@ -19,11 +19,14 @@ const style: IStyle = {
     `,
   },
   fontFace: {
+    invaiz: css`
+      font-family: 'INVAIZ';
+    `,
     kopub: css`
       font-family: 'KoPubWorld';
     `,
-    invaiz: css`
-      font-family: 'INVAIZ';
+    notoSans: css`
+      font-family: 'Noto Sans', 'Inter';
     `,
   },
 };

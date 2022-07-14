@@ -1,132 +1,102 @@
 /**
  * 테마의 종류
  *
- * light 모드, dark 모드
+ * `Dark` 모드, `Light` 모드
  */
-export type ColorScheme = 'light' | 'dark';
-
-/**
- * Typeface:
- * Text Color
- */
-export interface ITextColorScheme {
-  /**
-   * 텍스트 기본 값
-   * * light: #000000
-   * * dark: #FFFFFF
-   */
-  basic: string;
-  /**
-   * 보조 텍스트
-   * * light: #666666
-   * * dark: #COCOCO
-   */
-  sub: string;
-  /**
-   * 미입력 / 보조 정보
-   * * light: #000000, Opacity: 35%
-   * * dark: #FFFFFF, Opacity: 50%
-   */
-  assistant: string;
-}
-
-/**
- * Color Palette:
- * Box Color
- */
-export interface IBoxColorScheme {
-  /**
-   * 박스 기본값(배경)
-   * * light:
-   * * dark: #363F4D
-   */
-  basic: string;
-  /**
-   * 강조 버튼(배경)
-   * * light:
-   * * dark: #0066FF
-   */
-  emphasis: string;
-  /**
-   * 선태 시 / 입력상자(배경)
-   * * light:
-   * * dark: #596980
-   */
-  selected: string;
-  /**
-   * 추가 버튼(배경)
-   * * light:
-   * * dark: #73859E
-   */
-  additional: string;
-  /**
-   * 비활성화 버튼(배경)
-   * * light:
-   * * dark: #B3B3B3
-   */
-  disabled: string;
-
-  /**
-   * 마우스 오버(배경)
-   * * light:
-   * * dark: #0066FF
-   */
-  hover: string;
-}
-
-/**
- * Color Pallete:
- * Icon Color
- */
-export interface IIconColorScheme {
-  /**
-   * 아이콘 기본값
-   * * light:
-   * * dark: #FFFFFF
-   */
-  basic: string;
-  /**
-   * 보조 아이콘
-   * * light:
-   * * dark: #COCOCO
-   */
-  sub: string;
-  /**
-   * 경고
-   * * light:
-   * * dark: #F27474
-   */
-  alert: string;
-
-  /**
-   * 마우스 오버(배경) / 보조색
-   * * light:
-   * * dark: #596980
-   */
-  hover: string;
-}
+export type ColorScheme = 'dark' | 'light';
 
 /**
  * 한 테마에서 사용하는 Color 모음
+ * <br />
+ * 음영, 색조, 테마 등을 포함하여 사용되는 공식 색상입니다.<br />
+ * 일반적으로 사용되는 색상을 제외하고 `point`, `caution` 같은 특수한 상황에서 사용하는 색상은 드물게 사용합니다.
  */
 export interface IColorScheme {
-  /** 텍스트 Color Theme */
-  text: ITextColorScheme;
-  /** 박스 Color Theme */
-  box: IBoxColorScheme;
-  /** 아이콘 Color Theme */
-  icon: IIconColorScheme;
   /**
    * 배경색
-   * * light: #F5F5F5
-   * * dark: #1E212E
+   *
+   * - Dark: `#1E212E`
+   * - Light: `#F5F5F5`
    */
   background: string;
+
   /**
-   * 메인 색상
-   * * 공통: #0066FF
+   * Basic
+   *
+   * - Dark: `#FFFFFF`
+   * - Light: `#000000`
    */
-  main: string;
+  basic: string;
+  /**
+   * Point 1
+   *
+   * - Dark: `#0066FF`
+   * - Light: `#0066FF`
+   */
+  point1: string;
+  /**
+   * Point 2
+   *
+   * - Dark: `#FF925D`
+   * - Light: `#FF925D`
+   */
+  point2: string;
+  /**
+   * Soft
+   *
+   * - Dark: `#C0C0C0`
+   * - Light: `#3C4B62`
+   */
+  soft: string;
+  /**
+   * Seat
+   *
+   * - Dark: `#363F4D`
+   * - Light: `#D5DEED`
+   */
+  seat: string;
+  /**
+   * Thin
+   *
+   * - Dark: `#596980`
+   * - Light: `#BFC8DF`
+   */
+  thin: string;
+  /**
+   * Light
+   *
+   * - Dark: `#73859E`
+   * - Light: `#ACBAD3`
+   */
+  light: string;
+  /**
+   * Far
+   *
+   * - Dark: `#FFFFFF`, Opacity: 35%
+   * - Light: `#90919D`
+   */
+  far: string;
+  /**
+   * Off
+   *
+   * - Dark: `#B3B3B3`
+   * - Light: `#B3B3B3`
+   */
+  off: string;
+  /**
+   * Caution
+   *
+   * - Dark: `#F27474`
+   * - Light: `#F27474`
+   */
+  caution: string;
+  /**
+   * Wall
+   *
+   * - Dark: `#2F3743`
+   * - Light: `#758899`
+   */
+  wall: string;
 }
 
 /**

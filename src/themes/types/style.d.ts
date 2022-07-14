@@ -26,15 +26,28 @@ interface IStyleBoxShadow {
 
 interface IStyleFontFace {
   /**
-   * KopubWorldDotum
-   * 코펍월드돋움
+   * INVAIZ Inc.<br />
+   * (주)인바이즈<br />
+   * 인바이즈의 시그니처 서체로, 특별한 경우에만 사용합니다.<br />
+   * 인바이즈의 제품 이름이나 일부 제목을 강조할 때 사용합니다.
+   */
+  invaiz: SerializedStyles;
+  /**
+   * `KopubWorldDotum`<br />
+   * 코펍월드돋움<br />
+   * 가장 범용성 있게 사용하는 서체로, 제목, 부제목, 본문 등에 사용에 제한이 없으며,<br />
+   * 특별한 경우가 아니라면 `KopubWorldDotum`를 사용합니다.
+   * <br />
+   * 세 가지 타입 중 `light`는 거의 사용하지 않습니다.
    */
   kopub: SerializedStyles;
   /**
-   * INVAIZ Inc.
-   * (주)인바이즈
+   * `Noto Sans` || `Inter` <br />
+   * PC 플러그인 등 `KopubWorldDotum`이 어울리지 않을 때, 혹은 더욱 두께 차이가 많이 나는 폰트를 필요로 할 때<br />
+   * `Noto Sans`를 통해 작업합니다.<br />
+   * `Noto Sans`는 상황에 따라 `Inter`로 대체될 수 있습니다.
    */
-  invaiz: SerializedStyles;
+  notoSans: SerializedStyles;
 }
 
 export interface IStyle {
