@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 
-import { Theme, ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from '@emotion/react';
 
 import color from '@themes/color';
 import font, { fontSize, fontWeight, lineHeight } from '@themes/font';
@@ -16,4 +16,4 @@ export default function GlobalThemeProvider({ children }: PropsWithChildren<unkn
   );
 }
 
-const theme: Theme = { font, fontSize, lineHeight, fontWeight, color, style };
+const theme = { font, fontSize, lineHeight, fontWeight, color, style } as const;

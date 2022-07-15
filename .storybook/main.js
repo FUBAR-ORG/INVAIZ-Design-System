@@ -8,7 +8,6 @@ module.exports = {
     config.resolve.alias['@themes'] = path.resolve(__dirname, '../src/themes');
     config.resolve.alias['@assets'] = path.resolve(__dirname, '../src/assets');
     config.resolve.alias['@tests'] = path.resolve(__dirname, '../src/tests');
-    config.resolve.alias['@emotion/core'] = path.join(process.cwd(), 'node_modules/@emotion/react');
     return config;
   },
 };

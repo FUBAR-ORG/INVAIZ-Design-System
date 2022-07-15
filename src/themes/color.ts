@@ -1,5 +1,3 @@
-import type { IColor } from '@themes/types/color';
-
 /**
  * 인바이즈 메인 컬러
  */
@@ -13,37 +11,108 @@ export const point2Color = '#FF925D' as const;
  */
 export const cautionColor = '#F27474' as const;
 
-const color: IColor = {
-  dark: {
-    background: '#1E212E',
+export const darkColor = {
+  /**
+   * 배경색
+   *
+   * - Dark: `#1E212E`
+   * - Light: `#F5F5F5`
+   */
+  background: '#1E212E',
 
-    basic: '#FFF',
-    point1: point1Color,
-    point2: point2Color,
-    soft: '#C0C0C0',
-    seat: '#363F4D',
-    thin: '#596980',
-    light: '#73859E',
-    far: '#FFFFFF59',
-    off: '#B3B3B3',
-    caution: cautionColor,
-    wall: '#2F3743',
-  },
-  light: {
-    background: '#F5F5F5',
+  /**
+   * Basic
+   *
+   * - Dark: `#FFFFFF`
+   * - Light: `#000000`
+   */
+  basic: '#FFF',
+  /**
+   * Point 1
+   *
+   * - Dark: `#0066FF`
+   * - Light: `#0066FF`
+   */
+  point1: point1Color,
+  /**
+   * Point 2
+   *
+   * - Dark: `#FF925D`
+   * - Light: `#FF925D`
+   */
+  point2: point2Color,
+  /**
+   * Soft
+   *
+   * - Dark: `#C0C0C0`
+   * - Light: `#3C4B62`
+   */
+  soft: '#C0C0C0',
+  /**
+   * Seat
+   *
+   * - Dark: `#363F4D`
+   * - Light: `#D5DEED`
+   */
+  seat: '#363F4D',
+  /**
+   * Thin
+   *
+   * - Dark: `#596980`
+   * - Light: `#BFC8DF`
+   */
+  thin: '#596980',
+  /**
+   * Light
+   *
+   * - Dark: `#73859E`
+   * - Light: `#ACBAD3`
+   */
+  light: '#73859E',
+  /**
+   * Far
+   *
+   * - Dark: `#FFFFFF`, Opacity: 35%
+   * - Light: `#90919D`
+   */
+  far: '#FFFFFF59',
+  /**
+   * Off
+   *
+   * - Dark: `#B3B3B3`
+   * - Light: `#B3B3B3`
+   */
+  off: '#B3B3B3',
+  /**
+   * Caution
+   *
+   * - Dark: `#F27474`
+   * - Light: `#F27474`
+   */
+  caution: cautionColor,
+  /**
+   * Wall
+   *
+   * - Dark: `#2F3743`
+   * - Light: `#758899`
+   */
+  wall: '#2F3743',
+} as const;
 
-    basic: '#000',
-    point1: point1Color,
-    point2: point2Color,
-    soft: '#3C4B62',
-    seat: '#D5DEED',
-    thin: '#BFC8DF',
-    light: '#ACBAD3',
-    far: '#90919D',
-    off: '#B3B3B3',
-    caution: cautionColor,
-    wall: '#758899',
-  },
-};
+export const lightColor = {
+  background: '#F5F5F5',
 
-export default color;
+  basic: '#000',
+  point1: point1Color,
+  point2: point2Color,
+  soft: '#3C4B62',
+  seat: '#D5DEED',
+  thin: '#BFC8DF',
+  light: '#ACBAD3',
+  far: '#90919D',
+  off: '#B3B3B3',
+  caution: cautionColor,
+  wall: '#758899',
+} as const;
+
+export default false ? darkColor : lightColor; // 추후 테마가 변경되면 적절한 color 값을 내보냄.
