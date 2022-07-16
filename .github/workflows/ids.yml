@@ -1,4 +1,4 @@
-name: gitlog-CI
+name: ids-CI
 
 on:
   push:
