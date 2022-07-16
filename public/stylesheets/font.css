@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'INVAIZ';
+    font-style: normal;
+    font-weight: normal;
+    src: url(../fonts/INVAIZ.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'INVAIZ';
+    font-style: normal;
+    font-weight: 500;
+    src: url(../fonts/INVAIZ.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'INVAIZ';
+    font-style: normal;
+    font-weight: bold;
+    src: url(../fonts/INVAIZ.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'KoPubWorld';
+    font-style: normal;
+    font-weight: normal;
+    src: url(../fonts/KoPubWorldLight.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'KoPubWorld';
+    font-style: normal;
+    font-weight: 500;
+    src: url(../fonts/KoPubWorldMedium.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'KoPubWorld';
+    font-style: normal;
+    font-weight: bold;
+    src: url(../fonts/KoPubWorldBold.ttf) format('truetype');
+}
