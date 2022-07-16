@@ -2,7 +2,7 @@
 name: Feature Request
 about: 기능, UI, 문서 등의 추가/수정 요청을 위한 템플릿입니다.
 title: "[Request] (write here) 요청합니다."
-labels: ''
+labels: request
 assignees: ''
 
 ---
