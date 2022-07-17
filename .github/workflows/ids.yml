@@ -1,4 +1,4 @@
-name: gitlog-CI
+name: ids-CI
 
 on:
   push:
@@ -16,6 +16,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
@@ -45,4 +47,8 @@ jobs:
     - name: Jest Integration Test
       run: |
         yarn test --passWithNoTests
-        
+
+    - name: Publish to Chromatic
+      uses: chromaui/action@v1
+      with:
+        projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
