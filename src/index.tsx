@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import GlobalThemeProvider from '@theme/GlobalThemeProvider';
+import GlobalThemeProvider from '@themes/GlobalThemeProvider';
 import App from './App';
 
 ReactDOM.render(

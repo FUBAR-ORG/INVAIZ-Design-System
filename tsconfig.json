@@ -14,8 +14,9 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],
-      "@theme/*": ["src/theme/*"],
-      "@test/*": ["src/test/*"]
+      "@themes/*": ["src/themes/*"],
+      "@assets/*": ["src/assets/*"],
+      "@tests/*": ["src/tests/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
