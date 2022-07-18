@@ -5,6 +5,7 @@ export default function App() {
 }
 
 const ThemeTest = styled.div`
-  color: ${({ theme }) => theme.color.red10};
-  ${({ theme }) => theme.font.size20pt};
+  color: ${({ theme }) => theme.color.light};
+  ${({ theme }) => theme.font.kopub.title1};
+  ${({ theme }) => theme.style.fontFace.kopub}
 `;

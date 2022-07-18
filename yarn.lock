@@ -2892,6 +2892,19 @@
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
+"@types/eslint@^8.4.2":
+  version "8.4.5"
+  resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-8.4.5.tgz#acdfb7dd36b91cc5d812d7c093811a8f3d9b31e4"
+  integrity sha512-dhsC09y1gpJWnK+Ff4SGvCuSnk9DaU0BJZSzOwa6GVSg65XtTugLBITDAAzRU5duGBoXBHpdR/9jHGxJjNflJQ==
+  dependencies:
+    "@types/estree" "*"
+    "@types/json-schema" "*"
+
+"@types/estree@*":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.0.tgz#5fb2e536c1ae9bf35366eed879e827fa59ca41c2"
+  integrity sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==
+  
 "@types/glob@*", "@types/glob@^7.1.1":
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.2.0.tgz#bc1b5bf3aa92f25bd5dd39f35c57361bdce5b2eb"
@@ -2950,6 +2963,11 @@
   dependencies:
     jest-diff "^27.0.0"
     pretty-format "^27.0.0"
+
+"@types/json-schema@*":
+  version "7.0.11"
+  resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
+  integrity sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==
 
 "@types/json-schema@^7.0.4", "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.8", "@types/json-schema@^7.0.9":
   version "7.0.9"
@@ -10438,6 +10456,13 @@ rollup@^2.59.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
+rollup@^2.70.2:
+  version "2.76.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.76.0.tgz#c69fe03db530ac53fcb9523b3caa0d3c0b9491a1"
+  integrity sha512-9jwRIEY1jOzKLj3nsY/yot41r19ITdQrhs+q3ggNWhr9TQgduHqANvPpS32RNpzGklJu3G1AJfvlZLi/6wFgWA==
+  optionalDependencies:
+    fsevents "~2.3.2"
+
 rsvp@^4.8.4:
   version "4.8.5"
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"
@@ -11848,6 +11873,15 @@ vfile@^4.0.0:
     is-buffer "^2.0.0"
     unist-util-stringify-position "^2.0.0"
     vfile-message "^2.0.0"
+
+vite-plugin-eslint@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/vite-plugin-eslint/-/vite-plugin-eslint-1.6.1.tgz#f5e0b2f5e755f2821560bf24ea636905693ee96d"
+  integrity sha512-wXwGJ222zjlllHmmPXX6oSU8DbmYjnA6HHBYbOLT8WAc73j4/YAtBQHCVSoHOTPiT4TPzsuZSvputWwc86BweQ==
+  dependencies:
+    "@rollup/pluginutils" "^4.2.1"
+    "@types/eslint" "^8.4.2"
+    rollup "^2.70.2"
 
 vite@^2.9.10:
   version "2.9.10"

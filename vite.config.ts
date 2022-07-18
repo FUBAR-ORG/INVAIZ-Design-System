@@ -2,10 +2,11 @@ import path from 'path';
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import eslint from 'vite-plugin-eslint';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), eslint()],
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   root: path.resolve('./'),
   publicDir: path.resolve('./public'),
@@ -25,8 +26,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@components': path.resolve(__dirname, 'src/components'),
-      '@theme': path.resolve(__dirname, 'src/theme'),
-      '@test': path.resolve(__dirname, 'src/test'),
+      '@themes': path.resolve(__dirname, 'src/themes'),
+      '@assets': path.resolve(__dirname, 'src/assets'),
+      '@tests': path.resolve(__dirname, 'src/tests'),
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
