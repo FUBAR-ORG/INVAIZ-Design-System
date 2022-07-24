@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "target": "es5",
     "module": "commonjs",
     "jsx": "react-jsx",
     "rootDir": "./src",
