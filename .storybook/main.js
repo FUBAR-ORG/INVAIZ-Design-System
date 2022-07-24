@@ -1,4 +1,6 @@
 const path = require('path');
+const { mergeConfig } = require('vite');
+const svgr = require('vite-plugin-svgr');
 
 module.exports = {
   "stories": [
@@ -17,12 +19,20 @@ module.exports = {
   "features": {
     "storyStoreV7": true
   },
-  viteFinal(config) {
-    config.resolve.alias['@components'] = path.resolve(__dirname, '../src/components');
-    config.resolve.alias['@themes'] = path.resolve(__dirname, '../src/themes');
-    config.resolve.alias['@assets'] = path.resolve(__dirname, '../src/assets');
-    config.resolve.alias['@tests'] = path.resolve(__dirname, '../src/tests');
-    config.resolve.alias['@emotion/core'] = path.join(process.cwd(), 'node_modules/@emotion/react');
-    return config;
+  async viteFinal(config) {
+    return mergeConfig(config, {
+      plugins: [svgr()],
+      resolve:{
+        ...config.resolve,
+        alias: {
+          ...config.resolve.alias,
+          '@components': path.resolve(__dirname, '../src/components'),
+          '@themes': path.resolve(__dirname, '../src/themes'),
+          '@assets': path.resolve(__dirname, '../src/assets'),
+          '@tests': path.resolve(__dirname, '../src/tests'),
+          '@emotion/core': path.join(process.cwd(), 'node_modules/@emotion/react')
+        }
+      }
+    });
   }
 }
