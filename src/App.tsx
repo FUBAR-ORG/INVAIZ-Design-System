@@ -1,7 +1,7 @@
-import { ReactComponent as Add } from '@assets/svg/Add.svg';
+import SvgIcon from '@components/SvgIcon/SvgIcon';
 
 export default function App() {
-  return <Add />;
+  return <SvgIcon icon='AddK' size={24} />;
 }
 
 // const ThemeTest = styled.div`
