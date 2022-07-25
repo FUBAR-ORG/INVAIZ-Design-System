@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react';
-import SvgIcon, { SvgIconProps } from '@components/SvgIcon/SvgIcon';
+import SvgIcon, { SvgIconProps } from '@components/SvgIcons/SvgIcon';
 
 export default {
   title: 'Components/SvgIcon',
