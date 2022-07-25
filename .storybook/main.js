@@ -30,7 +30,6 @@ module.exports = {
           '@themes': path.resolve(__dirname, '../src/themes'),
           '@assets': path.resolve(__dirname, '../src/assets'),
           '@tests': path.resolve(__dirname, '../src/tests'),
-          '@emotion/core': path.join(process.cwd(), 'node_modules/@emotion/react')
         }
       }
     });
