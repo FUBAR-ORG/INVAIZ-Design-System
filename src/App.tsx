@@ -1,4 +1,4 @@
-import SvgIcon from '@components/SvgIcon/SvgIcon';
+import SvgIcon from '@components/SvgIcons/SvgIcon';
 
 export default function App() {
   return <SvgIcon icon='AddK' size={24} />;
