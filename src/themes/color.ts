@@ -115,4 +115,4 @@ export const lightColor = {
   wall: '#758899',
 } as const;
 
-export default false ? darkColor : lightColor; // 추후 테마가 변경되면 적절한 color 값을 내보냄.
+export type Color = typeof darkColor | typeof lightColor;

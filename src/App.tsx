@@ -1,11 +1,11 @@
-import styled from '@emotion/styled';
+import SvgIcon from '@components/SvgIcons/SvgIcon';
 
 export default function App() {
-  return <ThemeTest>Project Init</ThemeTest>;
+  return <SvgIcon icon='AddK' size={24} />;
 }
 
-const ThemeTest = styled.div`
-  color: ${({ theme }) => theme.color.light};
-  ${({ theme }) => theme.font.kopub.title1};
-  ${({ theme }) => theme.style.fontFace.kopub}
-`;
+// const ThemeTest = styled.div`
+//   color: ${({ theme }) => theme.color.light};
+//   ${({ theme }) => theme.font.kopub.title1};
+//   ${({ theme }) => theme.style.fontFace.kopub}
+// `;
