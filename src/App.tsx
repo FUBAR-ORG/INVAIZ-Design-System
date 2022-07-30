@@ -1,11 +1,5 @@
-import SvgIcon from '@components/SvgIcons/SvgIcon';
+import Checkbox from '@components/Checkboxs/Checkbox';
 
 export default function App() {
-  return <SvgIcon icon='AddK' size={24} />;
+  return <Checkbox />;
 }
-
-// const ThemeTest = styled.div`
-//   color: ${({ theme }) => theme.color.light};
-//   ${({ theme }) => theme.font.kopub.title1};
-//   ${({ theme }) => theme.style.fontFace.kopub}
-// `;
