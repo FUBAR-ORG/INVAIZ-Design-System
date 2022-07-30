@@ -42,7 +42,7 @@ const Span = styled.span`
   bottom: 0;
   background: ${({ theme }) => theme.color.light};
   border-radius: 12px;
-  transition: all 0.15s;
+  transition: background 0.15s;
   &:before {
     position: absolute;
     content: '';
@@ -52,7 +52,7 @@ const Span = styled.span`
     left: 2px;
     background: ${({ theme }) => theme.darkColor.basic};
     border-radius: 100%;
-    transition: all 0.15s;
+    transition: transform 0.15s;
   }
 `;
 
