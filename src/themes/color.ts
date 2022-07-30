@@ -116,3 +116,12 @@ export const lightColor = {
 } as const;
 
 export type Color = typeof darkColor | typeof lightColor;
+
+export type ColorTheme = 'dark' | 'light';
+
+const color: Record<ColorTheme, Color> = {
+  dark: darkColor,
+  light: lightColor,
+};
+
+export default color;

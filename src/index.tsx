@@ -5,7 +5,7 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalThemeProvider>
+    <GlobalThemeProvider colorTheme='dark'>
       <App />
     </GlobalThemeProvider>
   </React.StrictMode>,
