@@ -8,13 +8,13 @@ describe('Toggle', () => {
   });
 
   it('토글의 상태를 제어할 수 있다.', () => {
-    const toggles = render(
+    const { getAllByRole } = render(
       <>
         <Toggle checked={false} />
         <Toggle checked />
       </>
     );
-    const [first, second] = toggles.getAllByRole('checkbox');
+    const [first, second] = getAllByRole('checkbox');
     expect(first).not.toBeChecked();
     expect(second).toBeChecked();
   });
