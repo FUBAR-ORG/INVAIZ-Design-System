@@ -36,7 +36,7 @@ const Label = styled.label`
     left: 0;
     right: 0;
     bottom: 0;
-    background: ${({ theme }) => theme.color.light};
+    background: ${({ theme }) => theme.darkColor.light};
     border-radius: 12px;
     transition: all 0.15s;
     &:before {
@@ -46,7 +46,7 @@ const Label = styled.label`
       height: 20px;
       top: 2px;
       left: 2px;
-      background: #fff;
+      background: ${({ theme }) => theme.darkColor.basic};
       border-radius: 50%;
       transition: all 0.15s;
     }
