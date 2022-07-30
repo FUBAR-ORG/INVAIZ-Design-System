@@ -7,13 +7,8 @@ export interface ToggleProps {
 
 function Toggle({ checked, onChange }: ToggleProps) {
   return (
-    <Label htmlFor='toggle'>
-      <input
-        id='toggle'
-        type='checkbox'
-        checked={checked}
-        onChange={(e) => onChange?.(e.target.checked)}
-      />
+    <Label>
+      <input type='checkbox' checked={checked} onChange={(e) => onChange?.(e.target.checked)} />
       <span />
     </Label>
   );
@@ -25,9 +20,7 @@ const Label = styled.label`
   width: 48px;
   height: 24px;
   input {
-    width: 0;
-    height: 0;
-    visibility: hidden;
+    display: none;
   }
   span {
     position: absolute;
@@ -47,7 +40,7 @@ const Label = styled.label`
       top: 2px;
       left: 2px;
       background: ${({ theme }) => theme.darkColor.basic};
-      border-radius: 50%;
+      border-radius: 100%;
       transition: all 0.15s;
     }
   }
