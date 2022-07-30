@@ -20,7 +20,9 @@ const Label = styled.label`
   width: 48px;
   height: 24px;
   input {
-    display: none;
+    width: 0;
+    height: 0;
+    opacity: 0;
   }
   span {
     position: absolute;
