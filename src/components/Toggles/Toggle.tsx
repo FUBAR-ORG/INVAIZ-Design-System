@@ -38,6 +38,7 @@ const Label = styled.label`
     bottom: 0;
     background: ${({ theme }) => theme.color.light};
     border-radius: 12px;
+    transition: all 0.15s;
     &:before {
       position: absolute;
       content: '';
