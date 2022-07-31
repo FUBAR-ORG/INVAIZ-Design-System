@@ -1,4 +1,4 @@
-import type { Color } from '@themes/color';
+import type { Color, darkColor, lightColor } from '@themes/color';
 import type font, { fontWeight, fontSize, lineHeight } from '@themes/font';
 import type style from '@themes/style';
 
@@ -6,6 +6,8 @@ declare module '@emotion/react' {
   export interface Theme {
     /** 모든 테마의 Color */
     color: Color;
+    lightColor: typeof lightColor;
+    darkColor: typeof darkColor;
     /** font size, weight 등의 정보 접근자 */
     font: typeof font;
     fontSize: typeof fontSize;

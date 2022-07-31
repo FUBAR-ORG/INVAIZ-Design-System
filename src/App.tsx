@@ -1,11 +1,5 @@
-import SvgIcon from '@components/SvgIcons/SvgIcon';
+import Toggle from '@components/Toggles/Toggle';
 
 export default function App() {
-  return <SvgIcon icon='AddK' size={24} />;
+  return <Toggle />;
 }
-
-// const ThemeTest = styled.div`
-//   color: ${({ theme }) => theme.color.light};
-//   ${({ theme }) => theme.font.kopub.title1};
-//   ${({ theme }) => theme.style.fontFace.kopub}
-// `;
