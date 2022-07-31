@@ -1,7 +1,7 @@
 import type { HTMLProps } from 'react';
 import type { Color, ColorTheme } from '@themes/color';
 
-import color from '@themes/color';
+import { colorMap } from '@themes/color';
 
 export interface ColorComponentProps extends HTMLProps<HTMLDivElement> {
   colorKey: keyof Color;
@@ -9,7 +9,7 @@ export interface ColorComponentProps extends HTMLProps<HTMLDivElement> {
 }
 
 const ColorComponent = ({ colorKey, theme, ...props }: ColorComponentProps) => {
-  const getColor = color[theme];
+  const getColor = colorMap[theme];
   return (
     <div
       style={{

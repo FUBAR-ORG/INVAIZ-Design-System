@@ -1,5 +1,5 @@
-import Toggle from '@components/Toggles/Toggle';
+import ColorComponent from './stories/ColorComponent';
 
 export default function App() {
-  return <Toggle />;
+  return <ColorComponent colorKey='basic' theme='light' />;
 }
