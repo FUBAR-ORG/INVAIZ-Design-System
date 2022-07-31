@@ -1,21 +1,23 @@
 import type { PropsWithChildren } from 'react';
+import type { ColorTheme } from '@themes/color';
 
 import { ThemeProvider } from '@emotion/react';
 
-import { lightColor, darkColor } from '@themes/color';
+import color from '@themes/color';
 import font, { fontSize, fontWeight, lineHeight } from '@themes/font';
 import style from '@themes/style';
 import GlobalStyle from '@themes/GlobalStyle';
 
-export default function GlobalThemeProvider({ children }: PropsWithChildren<unknown>) {
+export default function GlobalThemeProvider({
+  children,
+  colorTheme,
+}: PropsWithChildren<{ colorTheme: ColorTheme }>) {
   const theme = {
     font,
     fontSize,
     lineHeight,
     fontWeight,
-    color: lightColor,
-    lightColor,
-    darkColor,
+    color: color[colorTheme],
     style,
   } as const;
   return (
