@@ -59,9 +59,9 @@ export const StyleCheckboxInput = styled.input`
   opacity: 0;
 
   &:checked {
-    & + ${StyleCheckboxView} > ${StyleCheckbox} {
+    & + div > div {
       border-color: ${({ theme }) => theme.color.basic};
-      & > ${StyleCheckIcon} {
+      & > svg {
         visibility: visible;
       }
     }
