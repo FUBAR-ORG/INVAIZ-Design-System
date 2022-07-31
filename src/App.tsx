@@ -1,5 +1,5 @@
-import ColorComponent from './stories/ColorComponent';
+import ColorComponent from '@themes/ColorComponent';
 
 export default function App() {
-  return <ColorComponent colorKey='basic' theme='light' />;
+  return <ColorComponent colorKey='background' theme='light' />;
 }
