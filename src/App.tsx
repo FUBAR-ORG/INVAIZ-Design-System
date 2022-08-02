@@ -1,5 +1,5 @@
-import Toggle from '@components/Toggles/Toggle';
+import ColorComponent from '@themes/ColorComponent';
 
 export default function App() {
-  return <Toggle />;
+  return <ColorComponent colorKey='background' theme='light' />;
 }
