@@ -116,3 +116,10 @@ export const lightColor = {
 } as const;
 
 export type Color = typeof darkColor | typeof lightColor;
+
+export type ColorTheme = 'dark' | 'light';
+
+export const colorMap: Record<ColorTheme, Color> = {
+  dark: darkColor,
+  light: lightColor,
+};
