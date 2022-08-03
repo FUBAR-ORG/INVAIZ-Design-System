@@ -20,7 +20,7 @@ const Label = styled.label`
   width: 48px;
   height: 24px;
   input:checked + span {
-    background: ${({ theme }) => theme.color.primary['500']};
+    background: ${({ theme }) => theme.color.primary.blue500};
   }
   input:checked + span:before {
     transform: translateX(24px);
@@ -40,7 +40,7 @@ const Span = styled.span`
   left: 0;
   right: 0;
   bottom: 0;
-  background: ${({ theme }) => theme.normal.grayScale.coolGray['200']};
+  background: ${({ theme }) => theme.normal.grayScale.coolGray200};
   border-radius: 12px;
   transition: background 0.15s;
   &:before {
@@ -50,7 +50,7 @@ const Span = styled.span`
     height: 20px;
     top: 2px;
     left: 2px;
-    background: ${({ theme }) => theme.normal.grayScale.BW.white};
+    background: ${({ theme }) => theme.normal.grayScale.basic.white};
     border-radius: 100%;
     transition: transform 0.15s;
   }

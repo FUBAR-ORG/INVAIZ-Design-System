@@ -10,7 +10,7 @@ const border = {
    * border: solid 2px #0066FF
    */
   selected: css`
-    border: solid 2px ${normal.primary['500']};
+    border: solid 2px ${normal.primary.blue500};
   `,
 } as const;
 
