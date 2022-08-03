@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
-
 import mediaQuery from '@themes/media';
+import { normal } from './colors/color';
 
 const fontSize = {
   size64: 64,
@@ -34,6 +34,16 @@ const fontWeight = {
   medium: 500,
   semiBold: 700,
   bold: 900,
+} as const;
+
+const fontColor = {
+  primary: normal.grayScale.basic.white,
+  secondary: normal.grayScale.gray300,
+} as const;
+
+const textAlign = {
+  left: 'left',
+  center: 'center',
 } as const;
 
 const font = {
@@ -396,8 +406,41 @@ const font = {
       font-weight: ${fontWeight.medium};
     `,
   },
+  /**
+   * Emphasis Text
+   *
+   * 텍스트 강조
+   */
+  emphasisText: {
+    point1: css`
+      color: ${normal.primary.blue400};
+      font-weight: ${fontWeight.bold};
+    `,
+    point2: css`
+      color: ${normal.secondary.orange500};
+      font-weight: ${fontWeight.bold};
+    `,
+  },
+  /**
+   * No Input Text
+   *
+   * 텍스트를 약하게 처리할 때
+   */
+  noInputText: css`
+    color: ${normal.grayScale.gray500};
+  `,
+  /**
+   * Link Text
+   *
+   * 링크가 적용된 텍스트
+   */
+  linkText: css`
+    color: ${normal.primary.blue400};
+    cursor: pointer;
+    text-decoration: underline;
+  `,
 } as const;
 
-export { fontSize, lineHeight, fontWeight };
+export { fontSize, lineHeight, fontWeight, fontColor, textAlign };
 
 export default font;
