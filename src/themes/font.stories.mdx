@@ -1,0 +1,228 @@
+import { Meta, Story, Canvas, ColorPalette, ColorItem } from '@storybook/addon-docs';
+import font, { fontSize, fontWeight } from './font';
+import { normal } from './colors/color';
+import styled from '@emotion/styled';
+
+<Meta
+  title='Themes/Text'
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# INVAIZ
+
+인바이즈의 시그니처 서체로, 특별한 경우에만 사용합니다. 인바이즈의 제품 이름이나 일부 제목을 강조할 때 사용됩니다.
+
+export const TypefaceInvaiz = styled.p`
+  ${({ theme }) => theme.style.fontFace.invaiz};
+  ${({ theme, textStyle }) => theme.font.invaiz[textStyle]};
+`;
+
+export function InvaizTextStyles() {
+  return (
+    <>
+      {Object.keys(font.invaiz).map((textStyle) => (
+        <TypefaceInvaiz textStyle={textStyle} key={textStyle}>
+          {textStyle}
+        </TypefaceInvaiz>
+      ))}
+    </>
+  );
+}
+
+<Canvas>
+  <Story name='INVAIZ'>
+    <InvaizTextStyles />
+  </Story>
+</Canvas>
+
+## Text Styles
+
+| Text style | font-weight | font-size |
+| ---------- | ----------- | --------: |
+| `Title 1`  | regular     |      64px |
+| `Title 2`  | regular     |      40px |
+| `Title 3`  | regular     |      32px |
+| `Title 4`  | regular     |      24px |
+| `Title 5`  | regular     |      20px |
+
+<br />
+
+---
+
+# KopubWorld Dotum
+
+가장 범용성 있게 사용되는 서체. 제목, 부제목, 본문 등 사용에 제한이 없으며, 특별한 경우가 아니라면 KopubWorldDotum을 사용하십시오. 세 가지
+타입 중 Light는 거의 사용하지 않습니다.
+
+export const TypefaceKopub = styled.p`
+  ${({ theme }) => theme.style.fontFace.kopub};
+  ${({ theme, textStyle }) => theme.font.kopub[textStyle]};
+`;
+
+export function KopubTextStyles() {
+  return (
+    <>
+      {Object.keys(font.kopub).map((textStyle) => (
+        <TypefaceKopub textStyle={textStyle} key={textStyle}>
+          {textStyle}
+        </TypefaceKopub>
+      ))}
+    </>
+  );
+}
+
+<Canvas>
+  <Story name='KopubWorld Dotum'>
+    <KopubTextStyles />
+  </Story>
+</Canvas>
+
+## Text Styles
+
+| Text style   | font-weight | font-size / desktop | tablet | mobile |
+| ------------ | ----------- | ------------------: | -----: | -----: |
+| `Title 1`    | bold        |                48px |   32px |   32px |
+| `Title 2`    | bold        |                40px |   20px |   24px |
+| `Title 3`    | bold        |                32px |   18px |   16px |
+| `SubT 1`     | bold        |                24px |   16px |   20px |
+| `SubT 2`     | medium      |                24px |   14px |   20px |
+| `SubT 3`     | bold        |                20px |   14px |   18px |
+| `Contents 1` | medium      |                24px |   16px |   16px |
+| `Contents 2` | medium      |                20px |   16px |   16px |
+| `Contents 3` | bold        |                16px |   16px |   16px |
+| `Contents 4` | medium      |                16px |   14px |   14px |
+| `Contents 5` | light       |                16px |   14px |   14px |
+| `Contents 6` | bold        |                14px |   12px |   12px |
+| `Contents 7` | medium      |                14px |   12px |   12px |
+| `Small`      | medium      |                10px |   10px |   10px |
+| `Micro`      | medium      |                 8px |    8px |    8px |
+
+<br />
+
+---
+
+# Noto Sans
+
+PC 플러그인 등 KopubWorldDotum이 어울리지 않을 때, 혹은 더욱 두께 차이가 많이 나는 폰트를 필요로 할 때 Noto Sans를 통해 작업합니다. Noto Sans는 상황에 따라 Inter로 대체될 수 있습니다.
+
+export const TypefaceNotoSans = styled.p`
+  ${({ theme }) => theme.style.fontFace.notoSans};
+  ${({ theme, textStyle }) => theme.font.notoSans[textStyle]};
+`;
+
+export function NotoSansTextStyles() {
+  return (
+    <>
+      {Object.keys(font.notoSans).map((textStyle) => (
+        <TypefaceNotoSans textStyle={textStyle} key={textStyle}>
+          {textStyle}
+        </TypefaceNotoSans>
+      ))}
+    </>
+  );
+}
+
+<Canvas>
+  <Story name='Noto Sans'>
+    <NotoSansTextStyles />
+  </Story>
+</Canvas>
+
+## Text Styles
+
+| Text style   | font-weight | font-size |
+| ------------ | ----------- | --------: |
+| `Title 1`    | semoBold    |      32px |
+| `Title 2`    | semoBold    |      28px |
+| `Title 3`    | semoBold    |      24px |
+| `Title 4`    | regular     |      24px |
+| `Contents 1` | bold        |      12px |
+| `Contents 2` | medium      |      12px |
+| `Contents 3` | bold        |      10px |
+| `Contents 4` | medium      |      10px |
+
+<br />
+
+---
+
+# Rules
+
+## Font Color
+
+글씨에는 제한된 색상만을 사용합니다. 아래와 같은 색상 규칙을 따라 본문 및 제목을 작성해 주세요.
+제목에 디자인이 필요한 경우에는 제약에 따르지 않아도 괜찮지만, 본문은 반드시 아래의 규칙을 따라야 합니다.
+
+### Basic Text
+
+<Canvas>
+  <Story name='Font Color'>
+    <ColorPalette>
+      <ColorItem
+        title='Basic Text'
+        colors={{ Primary: normal.grayScale.basic.white, Secondary: normal.grayScale.gray300 }}
+      />
+    </ColorPalette>
+  </Story>
+</Canvas>
+
+## Emphasis Text
+
+제목 또는 본문에 강조할 부분이 생겼을 경우, 색상 또는 두께를 다르게 적용하는 등 변화를 줄 수 있습니다.
+이 경우에도 일정한 규칙에 따라 변화를 적용시켜야 합니다.
+
+export const Point1 = styled.span`
+  ${({ theme }) => theme.font.emphasisText.point1}
+`;
+
+export const Point2 = styled.span`
+  ${({ theme }) => theme.font.emphasisText.point2}
+`;
+
+<Canvas>
+  <Story name='Emphasis Text'>
+    <p>
+      오늘 반찬은 <Point1>제육볶음</Point1>입니다.
+    </p>
+    <p>
+      오늘 반찬은 <Point2>제육볶음</Point2>입니다.
+    </p>
+  </Story>
+</Canvas>
+
+## No Input Text
+
+중요도가 낮은 부가 정보를 기입하거나, 입력해야 하는 텍스트란이 공백일 때 텍스트를 약하게 처리합니다.
+텍스트를 약하게 처리할 때는 다음과 같은 규칙을 따릅니다.
+
+export const NoInputText = styled.p`
+  ${({ theme }) => theme.font.noInputText};
+`;
+
+<Canvas>
+  <Story name='No Input Text'>
+    <NoInputText>Windows 2.2.1 2022.05.31</NoInputText>
+  </Story>
+</Canvas>
+
+## Text Link
+
+밑줄은 본문 중 링크가 적용된 텍스트에만 사용합니다. 강조 등과 같은 다른 상황에서는 사용할 수 없습니다. 또한 컬러는 Point 1 컬러만 사용합니다.
+
+export const TextLink = styled.span`
+  ${({ theme }) => theme.font.linkText}
+`;
+
+<Canvas>
+  <Story name='Text Link'>
+    <p>
+      제육 볶음의 자세한 정보를 확인하려면 <TextLink>여기</TextLink>를 클릭하세요.
+    </p>
+    <br />
+    <TextLink>자세한 정보 ></TextLink>
+  </Story>
+</Canvas>
