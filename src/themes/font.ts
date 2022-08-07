@@ -18,15 +18,7 @@ const fontSize = {
   size8: 8,
 } as const;
 
-const lineHeight = {
-  height40: 40,
-  height32: 32,
-  height26: 26,
-  height22: 22,
-  height18: 18,
-  height14: 14,
-  height11: 11,
-} as const;
+const lineHeight = 1.6 as const;
 
 const fontWeight = {
   light: 100,
