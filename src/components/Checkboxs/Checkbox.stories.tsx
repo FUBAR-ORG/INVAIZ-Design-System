@@ -2,7 +2,7 @@ import { Story } from '@storybook/react';
 import Checkbox, { CheckboxProps } from '@components/Checkboxs/Checkbox';
 
 export default {
-  title: 'Components/Checkbox',
+  title: 'Components/Checkbox/Checkbox',
   component: Checkbox,
 };
 

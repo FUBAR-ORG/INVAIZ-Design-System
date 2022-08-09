@@ -4,7 +4,7 @@ import type { ColorTheme } from '@themes/colors/color';
 // types
 
 import { ThemeProvider } from '@emotion/react';
-// React.js module
+// React modules
 
 import font, { fontSize, fontWeight, lineHeight, textAlign, fontColor } from '@themes/font';
 import { colorMap, normal, light } from '@themes/colors/color';

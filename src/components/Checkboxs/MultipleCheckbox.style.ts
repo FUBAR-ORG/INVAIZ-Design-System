@@ -1,20 +1,23 @@
 import styled from '@emotion/styled';
-// React.js module
+// React modules
 
 import SvgIcon from '@components/SvgIcons/SvgIcon';
 // components
 
-export const StyleMultipleLockIcon = styled(SvgIcon)``;
+export const StyleMultipleLockIcon = styled(SvgIcon)`
+  stroke: ${({ theme }) => theme.color.grayScale.basic.white};
+  fill: ${({ theme }) => theme.color.grayScale.basic.white};
+`;
 
 export const StyleMultipleCheckIcon = styled(SvgIcon)`
-  opacity: 0.2;
+  stroke: ${({ theme }) => theme.normal.grayScale.basic.white};
 `;
 
 export const StyleMultipleCheckbox = styled.div`
   width: 20px;
   height: 20px;
 
-  background: ${({ theme }) => theme.color.light};
+  background: ${({ theme }) => theme.color.grayScale.coolGray500};
   border-radius: 5px;
 `;
 
@@ -28,10 +31,7 @@ export const StyleMultipleCheckboxInput = styled.input`
 
   &:checked {
     & + div > div {
-      background: ${({ theme }) => theme.color.point1};
-      & > svg {
-        opacity: 1;
-      }
+      background: ${({ theme }) => theme.color.primary.blue500};
     }
   }
 `;

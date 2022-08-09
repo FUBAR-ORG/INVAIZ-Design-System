@@ -5,7 +5,7 @@ export default function App() {
   return (
     <>
       <Checkbox text='Please enter you text here.' />
-      <MultipleCheckbox locked />
+      <MultipleCheckbox />
     </>
   );
 }

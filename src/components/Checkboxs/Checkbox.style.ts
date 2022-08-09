@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-// React.js module
+// React modules
 
 import SvgIcon from '@components/SvgIcons/SvgIcon';
 // components
@@ -9,6 +9,9 @@ export const StyleCheckboxWrapper = styled.label`
 `;
 
 export const StyleCheckIcon = styled(SvgIcon)`
+  width: 100%;
+  height: 100%;
+  stroke: ${({ theme }) => theme.color.grayScale.coolGray900};
   visibility: hidden;
 `;
 
@@ -31,7 +34,7 @@ export const StyleCheckbox = styled.div`
   width: 20px;
   height: 20px;
 
-  border: solid 1px ${({ theme }) => theme.color.far};
+  border: solid 1px ${({ theme }) => theme.color.grayScale.basic.black};
   border-radius: 5px;
 `;
 
@@ -40,7 +43,7 @@ export const StyleCheckboxText = styled.p`
   width: 180px;
   height: 20px;
 
-  color: ${({ theme }) => theme.color.basic};
+  color: ${({ theme }) => theme.color.grayScale.basic.black};
   ${({ theme }) => theme.font.kopub.contents7};
 
   margin: 0;
@@ -60,7 +63,7 @@ export const StyleCheckboxInput = styled.input`
 
   &:checked {
     & + div > div {
-      border-color: ${({ theme }) => theme.color.basic};
+      border-color: ${({ theme }) => theme.color.grayScale.basic.black};
       & > svg {
         visibility: visible;
       }

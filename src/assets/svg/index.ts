@@ -6,8 +6,6 @@ import { ReactComponent as Cancel } from '@assets/svg/Cancel.svg';
 import { ReactComponent as Caution } from '@assets/svg/Caution.svg';
 import { ReactComponent as Change } from '@assets/svg/Change.svg';
 import { ReactComponent as Check } from '@assets/svg/Check.svg';
-import { ReactComponent as CheckBox } from '@assets/svg/CheckBox.svg';
-import { ReactComponent as CheckPoint } from '@assets/svg/CheckPoint.svg';
 import { ReactComponent as Close } from '@assets/svg/Close.svg';
 import { ReactComponent as Connect } from '@assets/svg/Connect.svg';
 import { ReactComponent as Delete } from '@assets/svg/Delete.svg';
@@ -57,8 +55,6 @@ const SVG_ICONS = {
   Caution,
   Change,
   Check,
-  CheckBox,
-  CheckPoint,
   Close,
   Connect,
   Delete,
