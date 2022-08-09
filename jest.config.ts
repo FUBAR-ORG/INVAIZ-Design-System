@@ -6,7 +6,12 @@ const config = {
   },
   testEnvironment: 'jest-environment-jsdom',
   moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
-  testMatch: ['<rootDir>/**/*.test.ts', '<rootDir>/**/*.test.tsx'],
+  testMatch: [
+    '<rootDir>/**/*.test.ts',
+    '<rootDir>/**/*.test.tsx',
+    '<rootDir>/**/*.spec.ts',
+    '<rootDir>/**/*.spec.tsx',
+  ],
   roots: ['<rootDir>/src'],
   setupFilesAfterEnv: ['@testing-library/jest-dom'],
   moduleNameMapper: {
