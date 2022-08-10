@@ -1,13 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import GlobalThemeProvider from '@themes/GlobalThemeProvider';
 import App from './App';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <GlobalThemeProvider>
-      <App />
-    </GlobalThemeProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+const container = document.getElementById('root');
+if (!container) {
+  throw new Error('Root element not found');
+}
+const root = createRoot(container);
+root.render(
+  <GlobalThemeProvider>
+    <App />
+  </GlobalThemeProvider>
 );
