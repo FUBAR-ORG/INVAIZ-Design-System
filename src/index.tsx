@@ -9,7 +9,9 @@ if (!container) {
 }
 const root = createRoot(container);
 root.render(
-  <GlobalThemeProvider>
-    <App />
-  </GlobalThemeProvider>
+  <React.StrictMode>
+    <GlobalThemeProvider>
+      <App />
+    </GlobalThemeProvider>
+  </React.StrictMode>
 );
