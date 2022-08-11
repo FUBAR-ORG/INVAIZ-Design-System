@@ -1,5 +1,5 @@
-import Checkbox from '@components/Checkboxs/Checkbox';
-import MultipleCheckbox from '@components/Checkboxs/MultipleCheckbox';
+import Checkbox from '@components/Checkboxes/Checkbox';
+import MultipleCheckbox from '@components/Checkboxes/MultipleCheckbox';
 
 export default function App() {
   return (

@@ -1,13 +1,16 @@
 import type { InputHTMLAttributes } from 'react';
 // types
 
-import { StyleCheckboxWrapper, StyleCheckboxView } from '@components/Checkboxs/Checkbox.style';
+import {
+  StyleCheckboxWrapper,
+  StyleCheckboxView,
+} from '@components/Checkboxes/styles/Checkbox.style';
 import {
   StyleMultipleLockIcon,
   StyleMultipleCheckIcon,
   StyleMultipleCheckbox,
   StyleMultipleCheckboxInput,
-} from '@components/Checkboxs/MultipleCheckbox.style';
+} from '@components/Checkboxes/styles/MultipleCheckbox.style';
 // styles
 
 export interface MultipleCheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -21,16 +24,11 @@ export interface MultipleCheckboxProps extends InputHTMLAttributes<HTMLInputElem
 /**
  * 다중 선택 체크박스
  */
-const MultipleCheckbox = ({ locked, onChange, disabled, ...props }: MultipleCheckboxProps) => {
+const MultipleCheckbox = ({ locked, disabled, ...props }: MultipleCheckboxProps) => {
   const isDisabled = locked || disabled;
   return (
     <StyleCheckboxWrapper>
-      <StyleMultipleCheckboxInput
-        type='checkbox'
-        onChange={(e) => onChange?.(e)}
-        disabled={isDisabled}
-        {...props}
-      />
+      <StyleMultipleCheckboxInput type='checkbox' disabled={isDisabled} {...props} />
       <StyleCheckboxView>
         {locked ? (
           <StyleMultipleLockIcon size={20} icon='Lock' />

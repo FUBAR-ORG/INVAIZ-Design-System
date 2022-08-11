@@ -1,4 +1,4 @@
-import Checkbox from '@components/Checkboxs/Checkbox';
+import Checkbox from '@components/Checkboxes/Checkbox';
 import { render } from '@tests/test-utils';
 
 describe('Checkbox', () => {

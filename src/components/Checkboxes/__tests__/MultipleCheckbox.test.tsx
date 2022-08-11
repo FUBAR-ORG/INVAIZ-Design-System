@@ -1,4 +1,4 @@
-import MultipleCheckbox from '@components/Checkboxs/MultipleCheckbox';
+import MultipleCheckbox from '@components/Checkboxes/MultipleCheckbox';
 import { render } from '@tests/test-utils';
 
 describe('MultipleCheckbox', () => {

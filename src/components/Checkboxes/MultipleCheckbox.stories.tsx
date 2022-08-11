@@ -1,8 +1,8 @@
 import { Story } from '@storybook/react';
-import MultipleCheckbox, { MultipleCheckboxProps } from '@components/Checkboxs/MultipleCheckbox';
+import MultipleCheckbox, { MultipleCheckboxProps } from '@components/Checkboxes/MultipleCheckbox';
 
 export default {
-  title: 'Components/Checkbox/MultipleCheckbox',
+  title: 'Components/Checkboxes/MultipleCheckbox',
   component: MultipleCheckbox,
 };
 

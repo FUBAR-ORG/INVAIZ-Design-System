@@ -8,7 +8,7 @@ import {
   StyleCheckbox,
   StyleCheckboxText,
   StyleCheckboxInput,
-} from '@components/Checkboxs/Checkbox.style';
+} from '@components/Checkboxes/styles/Checkbox.style';
 // styles
 
 export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -21,9 +21,9 @@ export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
 /**
  * 단독 선택 체크박스
  */
-const Checkbox = ({ text, onChange, ...props }: CheckboxProps) => (
+const Checkbox = ({ text, ...props }: CheckboxProps) => (
   <StyleCheckboxWrapper>
-    <StyleCheckboxInput type='checkbox' onChange={(e) => onChange?.(e)} {...props} />
+    <StyleCheckboxInput type='checkbox' {...props} />
     <StyleCheckboxView>
       <StyleCheckbox>
         <StyleCheckIcon size={20} icon='Check' />
