@@ -1,23 +1,22 @@
-import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
+import { ButtonHTMLAttributes, forwardRef, PropsWithChildren } from 'react';
 
-export interface ITab extends PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>> {
-  title: string;
-  value: string | number;
-}
+type Props = PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>;
 
-export default function Tab({ children, ...props }: ITab) {
-  return <TabBox {...props}>{children}</TabBox>;
-}
+const Tab = forwardRef<HTMLButtonElement, Props>(({ children, ...props }, ref) => (
+  <Wrapper type='button' ref={ref} {...props}>
+    {children}
+  </Wrapper>
+));
 
-const TabBox = styled.button`
-  min-width: calc(var(--tab-width) * 1px);
-  height: 60px;
-  line-height: 60px;
-  text-align: center;
-  cursor: pointer;
-  transition: color 0.3s ease-in;
-  outline: 0;
-  background: #fff;
+export default Tab;
+
+const Wrapper = styled.button`
+  ${({ theme }) => theme.style.fontFace.kopub};
+  color: ${({ theme }) => theme.color.grayScale.basic.black};
+  font-size: ${({ theme }) => theme.fontSize.size12}px;
+  background: transparent;
   border: none;
+  padding: 2px 8px;
+  cursor: pointer;
 `;

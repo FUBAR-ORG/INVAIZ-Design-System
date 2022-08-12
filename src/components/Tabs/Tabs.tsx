@@ -1,24 +1,56 @@
-import { HTMLAttributes, PropsWithChildren } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import TabList from '@components/Tabs/TabList';
-import { ITab } from '@components/Tabs/Tab';
+import Tab from './Tab';
+import Underline from './Underline';
 
-export interface TabsProps extends PropsWithChildren<HTMLAttributes<HTMLDivElement>> {
-  tabs: ITab[];
+export interface Props {
+  tabs: string[];
 }
 
-export default function Tabs({ tabs, children, ...props }: TabsProps) {
+/**
+ 사용자가 커스텀 할 수 없는 제작자가 제공하는 콘텐츠일 경우 사용하는 탭 메뉴 입니다.
+ 하단바의 막대가 좌우로 움직이며 인터랙션합니다.
+ */
+export default function Tabs({ tabs }: Props) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [underlinePos, setUnderlinePos] = useState(0);
+  const [underlineWidth, setUnderlineWidth] = useState(0);
+
+  const tabsRef = useRef<HTMLButtonElement[] | null[]>([]);
+
+  useEffect(() => {
+    const setTabUnderline = () => {
+      const currentTab = tabsRef.current[activeIndex];
+      setUnderlinePos(currentTab?.offsetLeft ?? 0);
+      setUnderlineWidth(currentTab?.clientWidth ?? 0);
+    };
+
+    setTabUnderline();
+
+    window.addEventListener('resize', setTabUnderline);
+
+    return () => window.removeEventListener('resize', setTabUnderline);
+  }, [activeIndex]);
+
   return (
-    <Container tabsLength={tabs.length} {...props}>
-      <TabList>{children}</TabList>
-    </Container>
+    <Wrapper>
+      {tabs.map((tab, i) => (
+        <Tab
+          type='button'
+          key={tab}
+          ref={(el: HTMLButtonElement | null) => {
+            tabsRef.current[i] = el;
+          }}
+          onClick={() => setActiveIndex(i)}
+        >
+          {tab}
+        </Tab>
+      ))}
+      <Underline underlinePos={underlinePos} underlineWidth={underlineWidth} />
+    </Wrapper>
   );
 }
 
-const Container = styled.div<{ tabsLength: number }>`
-  --tab-width: 120;
-  width: calc(var(---tab-width) * ${({ tabsLength }) => tabsLength} * 1px);
-  margin: 20px;
-  border-radius: 5px;
-  overflow: hidden;
+const Wrapper = styled.div`
+  position: relative;
 `;
