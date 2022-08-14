@@ -23,23 +23,11 @@ describe('MultipleCheckbox', () => {
     expect(onChange).not.toHaveBeenCalled();
 
     checkbox.click();
-    expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({
-        target: expect.objectContaining({
-          checked: true,
-        }),
-      })
-    );
+    expect(onChange).toHaveBeenCalledWith(true);
     expect(checkbox).toBeChecked();
 
     checkbox.click();
-    expect(onChange).toHaveBeenCalledWith(
-      expect.objectContaining({
-        target: expect.objectContaining({
-          checked: false,
-        }),
-      })
-    );
+    expect(onChange).toHaveBeenCalledWith(false);
     expect(checkbox).not.toBeChecked();
 
     expect(onChange).toHaveBeenCalled();

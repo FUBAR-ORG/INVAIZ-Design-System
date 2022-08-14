@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes } from 'react';
+import type { CheckboxDefaultProps } from '@components/Checkboxes/Checkbox';
 // types
 
 import {
@@ -13,7 +13,7 @@ import {
 } from '@components/Checkboxes/styles/MultipleCheckbox.style';
 // styles
 
-export interface MultipleCheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface MultipleCheckboxProps extends CheckboxDefaultProps {
   /**
    * 다중 선택 체크박스의 잠금 상태를 설정합니다.
    * `true`를 전달할 시 잠금 아이콘으로 변경되고, `input`의 상태가 `disabled`와 같아집니다.
@@ -24,11 +24,16 @@ export interface MultipleCheckboxProps extends InputHTMLAttributes<HTMLInputElem
 /**
  * 다중 선택 체크박스
  */
-const MultipleCheckbox = ({ locked, disabled, ...props }: MultipleCheckboxProps) => {
+const MultipleCheckbox = ({ locked, disabled, onChange, ...props }: MultipleCheckboxProps) => {
   const isDisabled = locked || disabled;
   return (
     <StyleCheckboxWrapper>
-      <StyleMultipleCheckboxInput type='checkbox' disabled={isDisabled} {...props} />
+      <StyleMultipleCheckboxInput
+        type='checkbox'
+        onChange={(e) => onChange?.(e.target.checked)}
+        disabled={isDisabled}
+        {...props}
+      />
       <StyleCheckboxView>
         {locked ? (
           <StyleMultipleLockIcon size={20} icon='Lock' />

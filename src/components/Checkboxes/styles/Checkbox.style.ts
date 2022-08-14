@@ -41,7 +41,6 @@ export const StyleCheckbox = styled.div`
 export const StyleCheckboxText = styled.p`
   display: inline-block;
   width: 180px;
-  height: 20px;
 
   color: ${({ theme }) => theme.color.grayScale.basic.black};
   ${({ theme }) => theme.font.kopub.contents7};
