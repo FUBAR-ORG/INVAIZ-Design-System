@@ -1,10 +1,7 @@
 import type { CheckboxDefaultProps } from '@components/Checkboxes/Checkbox';
 // types
 
-import {
-  StyleCheckboxWrapper,
-  StyleCheckboxView,
-} from '@components/Checkboxes/styles/Checkbox.style';
+import { StyleCheckboxView } from '@components/Checkboxes/styles/CommonCheckbox.style';
 import {
   StyleMultipleLockIcon,
   StyleMultipleCheckIcon,
@@ -27,23 +24,21 @@ export interface MultipleCheckboxProps extends CheckboxDefaultProps {
 const MultipleCheckbox = ({ locked, disabled, onChange, ...props }: MultipleCheckboxProps) => {
   const isDisabled = locked || disabled;
   return (
-    <StyleCheckboxWrapper>
+    <StyleCheckboxView>
       <StyleMultipleCheckboxInput
         type='checkbox'
         onChange={(e) => onChange?.(e.target.checked)}
         disabled={isDisabled}
         {...props}
       />
-      <StyleCheckboxView>
-        {locked ? (
-          <StyleMultipleLockIcon size={20} icon='Lock' />
-        ) : (
-          <StyleMultipleCheckbox>
-            <StyleMultipleCheckIcon size={20} icon='Check' />
-          </StyleMultipleCheckbox>
-        )}
-      </StyleCheckboxView>
-    </StyleCheckboxWrapper>
+      {locked ? (
+        <StyleMultipleLockIcon size={20} icon='Lock' />
+      ) : (
+        <StyleMultipleCheckbox>
+          <StyleMultipleCheckIcon size={20} icon='Check' />
+        </StyleMultipleCheckbox>
+      )}
+    </StyleCheckboxView>
   );
 };
 

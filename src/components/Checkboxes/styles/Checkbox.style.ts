@@ -4,9 +4,11 @@ import styled from '@emotion/styled';
 import SvgIcon from '@components/SvgIcons/SvgIcon';
 // components
 
-export const StyleCheckboxWrapper = styled.label`
-  display: inline-block;
-`;
+import {
+  StyleCommonCheckbox,
+  StyleCommonCheckboxInput,
+} from '@components/Checkboxes/styles/CommonCheckbox.style';
+// styles
 
 export const StyleCheckIcon = styled(SvgIcon)`
   width: 100%;
@@ -15,32 +17,24 @@ export const StyleCheckIcon = styled(SvgIcon)`
   visibility: hidden;
 `;
 
-export const StyleCheckboxView = styled.div`
-  position: relative;
-
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-
-  cursor: pointer;
-  padding: 10px;
-
-  box-sizing: border-box;
-
-  vertical-align: middle;
+export const StyleCheckbox = styled(StyleCommonCheckbox)`
+  border: solid 1px ${({ theme }) => theme.color.grayScale.basic.black};
 `;
 
-export const StyleCheckbox = styled.div`
-  width: 20px;
-  height: 20px;
-
-  border: solid 1px ${({ theme }) => theme.color.grayScale.basic.black};
-  border-radius: 5px;
+export const StyleCheckboxInput = styled(StyleCommonCheckboxInput)`
+  &:checked {
+    & + div {
+      border-color: ${({ theme }) => theme.color.grayScale.basic.black};
+      & > svg {
+        visibility: visible;
+      }
+    }
+  }
 `;
 
 export const StyleCheckboxText = styled.p`
   display: inline-block;
-  width: 180px;
+  max-width: 180px;
 
   color: ${({ theme }) => theme.color.grayScale.basic.black};
   ${({ theme }) => theme.font.kopub.contents7};
@@ -52,20 +46,6 @@ export const StyleCheckboxText = styled.p`
   cursor: pointer;
 `;
 
-export const StyleCheckboxInput = styled.input`
-  position: absolute;
-  width: 0;
-  height: 0;
-  margin: 0;
-
-  opacity: 0;
-
-  &:checked {
-    & + div > div {
-      border-color: ${({ theme }) => theme.color.grayScale.basic.black};
-      & > svg {
-        visibility: visible;
-      }
-    }
-  }
+export const StyleCheckboxTextWrapper = styled.label`
+  display: inline-block;
 `;
