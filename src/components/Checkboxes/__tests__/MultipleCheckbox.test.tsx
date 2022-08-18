@@ -33,15 +33,6 @@ describe('MultipleCheckbox', () => {
     expect(onChange).toHaveBeenCalled();
   });
 
-  it('체크 박스는 `locked`일 때, 상태 변경이 불가능하다.', () => {
-    const { getByRole } = render(<MultipleCheckbox locked />);
-
-    const checkbox = getByRole('checkbox');
-
-    checkbox.click();
-    expect(checkbox).not.toBeChecked();
-  });
-
   it('체크 박스는 `disabled`일 때, 상태 변경이 불가능하다.', () => {
     const { getByRole } = render(<MultipleCheckbox disabled />);
     const checkbox = getByRole('checkbox');

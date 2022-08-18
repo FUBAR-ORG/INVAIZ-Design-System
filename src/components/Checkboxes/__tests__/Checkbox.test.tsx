@@ -5,8 +5,8 @@ describe('Checkbox', () => {
   it('체크박스의 기본값은 `false`이며, 변경이 가능하다.', () => {
     const { getAllByRole } = render(
       <>
-        <Checkbox />
-        <Checkbox checked />
+        <Checkbox text='TEXT' />
+        <Checkbox text='TEXT' checked />
       </>
     );
     const [isNotChanged, isChanged] = getAllByRole('checkbox');
@@ -17,7 +17,7 @@ describe('Checkbox', () => {
 
   it('체크 박스는 클릭할 수 있으며, 클릭 시 `checked` 상태 변경이 가능하다.', () => {
     const onChange = jest.fn();
-    const { getByRole } = render(<Checkbox onChange={onChange} />);
+    const { getByRole } = render(<Checkbox text='TEXT' onChange={onChange} />);
     const checkbox = getByRole('checkbox');
 
     expect(onChange).not.toHaveBeenCalled();
@@ -45,7 +45,7 @@ describe('Checkbox', () => {
   });
 
   it('체크 박스는 `disabled`일 때, 상태 변경이 불가능하다.', () => {
-    const { getByRole } = render(<Checkbox disabled />);
+    const { getByRole } = render(<Checkbox text='TEXT' disabled />);
     const checkbox = getByRole('checkbox');
 
     checkbox.click();

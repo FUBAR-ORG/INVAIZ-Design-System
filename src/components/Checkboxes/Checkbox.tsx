@@ -1,13 +1,10 @@
-import type { PropsWithChildren } from 'react';
-// types
-
 import { StyleCheckboxView } from '@components/Checkboxes/styles/CommonCheckbox.style';
 import {
+  StyleLabel,
   StyleCheckIcon,
   StyleCheckbox,
   StyleCheckboxInput,
   StyleCheckboxText,
-  StyleCheckboxTextWrapper,
 } from '@components/Checkboxes/styles/Checkbox.style';
 // styles
 
@@ -27,32 +24,19 @@ export interface CheckboxDefaultProps {
    */
   disabled?: boolean;
 }
-export interface TextWrapperProps {
+
+export interface CheckboxProps extends CheckboxDefaultProps {
   /**
    * 체크 박스 우측에 표시될 텍스트입니다.
    */
-  text?: string;
+  text: string;
 }
-
-const TextWrapper = ({ text, children }: PropsWithChildren<TextWrapperProps>) => {
-  if (!text) {
-    return <>{children}</>;
-  }
-  return (
-    <StyleCheckboxTextWrapper>
-      {children}
-      <StyleCheckboxText>{text}</StyleCheckboxText>
-    </StyleCheckboxTextWrapper>
-  );
-};
-
-export interface CheckboxProps extends CheckboxDefaultProps, TextWrapperProps {}
 
 /**
  * 단독 선택 체크박스
  */
 const Checkbox = ({ text, onChange, ...props }: CheckboxProps) => (
-  <TextWrapper text={text}>
+  <StyleLabel>
     <StyleCheckboxView>
       <StyleCheckboxInput
         type='checkbox'
@@ -63,7 +47,8 @@ const Checkbox = ({ text, onChange, ...props }: CheckboxProps) => (
         <StyleCheckIcon size={20} icon='Check' />
       </StyleCheckbox>
     </StyleCheckboxView>
-  </TextWrapper>
+    <StyleCheckboxText>{text}</StyleCheckboxText>
+  </StyleLabel>
 );
 
 export default Checkbox;

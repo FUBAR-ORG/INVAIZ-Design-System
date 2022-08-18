@@ -1,14 +1,16 @@
+import type { CheckboxDefaultProps } from '@components/Checkboxes/Checkbox';
+// types
+
 import { Story } from '@storybook/react';
-import MultipleCheckbox, { MultipleCheckboxProps } from '@components/Checkboxes/MultipleCheckbox';
+import MultipleCheckbox from '@components/Checkboxes/MultipleCheckbox';
 
 export default {
   title: 'Components/Checkboxes/MultipleCheckbox',
   component: MultipleCheckbox,
 };
 
-const Template: Story<MultipleCheckboxProps> = (props) => <MultipleCheckbox {...props} />;
+const Template: Story<CheckboxDefaultProps> = (props) => <MultipleCheckbox {...props} />;
 
 export const Primary = Template.bind({});
-Primary.args = {
-  locked: false,
-};
+
+Primary.args = {};

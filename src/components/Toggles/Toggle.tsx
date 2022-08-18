@@ -1,11 +1,10 @@
+import type { CheckboxDefaultProps } from '@components/Checkboxes/Checkbox';
+// types
+
 import styled from '@emotion/styled';
+// React modules
 
-export interface ToggleProps {
-  checked?: boolean;
-  onChange?: (checked: boolean) => void;
-}
-
-function Toggle({ checked, onChange }: ToggleProps) {
+function Toggle({ checked, onChange }: CheckboxDefaultProps) {
   return (
     <Label>
       <Input type='checkbox' checked={checked} onChange={(e) => onChange?.(e.target.checked)} />

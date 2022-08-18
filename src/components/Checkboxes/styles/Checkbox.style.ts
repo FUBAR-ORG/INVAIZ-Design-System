@@ -10,6 +10,8 @@ import {
 } from '@components/Checkboxes/styles/CommonCheckbox.style';
 // styles
 
+export const StyleLabel = styled.label``;
+
 export const StyleCheckIcon = styled(SvgIcon)`
   width: 100%;
   height: 100%;
@@ -44,8 +46,4 @@ export const StyleCheckboxText = styled.p`
   vertical-align: middle;
 
   cursor: pointer;
-`;
-
-export const StyleCheckboxTextWrapper = styled.label`
-  display: inline-block;
 `;
