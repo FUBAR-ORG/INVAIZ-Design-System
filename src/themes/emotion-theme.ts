@@ -1,5 +1,6 @@
 import type { Color, darkColor, lightColor } from '@themes/color';
 import font, { fontWeight, fontSize, lineHeight } from '@themes/font';
+import whiteSpace from '@themes/whiteSpace';
 import type style from '@themes/style';
 
 export interface EmotionTheme {
@@ -14,4 +15,6 @@ export interface EmotionTheme {
   fontWeight: typeof fontWeight;
   /** 모든 테마에서 사용 가능한 CSS */
   style: typeof style;
+  /** 여백 */
+  whiteSpace: typeof whiteSpace;
 }
