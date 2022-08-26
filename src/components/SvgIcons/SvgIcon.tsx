@@ -1,5 +1,4 @@
 import { SVGProps } from 'react';
-import styled from '@emotion/styled';
 import SVG_ICONS from '@assets/svg';
 
 export interface SvgIconProps extends SVGProps<SVGSVGElement> {
@@ -11,13 +10,7 @@ export interface SvgIconProps extends SVGProps<SVGSVGElement> {
   color?: string;
 }
 
-const NoneStyleSvgIcon = ({ icon, size = 24, color, ...props }: SvgIconProps) => {
+export default function SvgIcon({ icon, size = 24, color, ...props }: SvgIconProps) {
   const Icon = SVG_ICONS[icon];
-  return <Icon width={size} height={size} style={{ fill: color }} {...props} />;
-};
-
-const SvgIcon = styled(NoneStyleSvgIcon)`
-  fill: ${({ theme }) => theme.color.grayScale.basic.black};
-`;
-
-export default SvgIcon;
+  return <Icon width={size} height={size} fill={color} {...props} />;
+}
