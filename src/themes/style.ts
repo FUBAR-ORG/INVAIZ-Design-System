@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-import { point1Color } from '@themes/color';
+import { normal } from '@themes/colors/color';
 
 /** 테두리에 사용되는 CSS */
 const border = {
@@ -10,7 +10,7 @@ const border = {
    * border: solid 2px #0066FF
    */
   selected: css`
-    border: solid 2px ${point1Color};
+    border: solid 2px ${normal.primary.blue500};
   `,
 } as const;
 

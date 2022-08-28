@@ -1,0 +1,83 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
+
+import { normal } from "./color";
+
+<Meta title="Themes/Colors/Normal" />
+
+<ColorPalette>
+  <ColorItem
+    title="회색 기본"
+    subtitle="theme.light.grayScale.basic"
+    colors={normal.grayScale.basic}
+  />
+  <ColorItem
+    title="회색 웜톤"
+    subtitle="theme.light.grayScale.gray"
+    colors={{
+      100: normal.grayScale.gray100,
+      200: normal.grayScale.gray200,
+      300: normal.grayScale.gray300,
+      400: normal.grayScale.gray400,
+      500: normal.grayScale.gray500,
+      600: normal.grayScale.gray600,
+      700: normal.grayScale.gray700,
+      800: normal.grayScale.gray800,
+      900: normal.grayScale.gray900,
+    }}
+  />
+  <ColorItem
+    title="회색 쿨톤"
+    subtitle="theme.light.grayScale.coolGray"
+    colors={{
+      100: normal.grayScale.coolGray100,
+      200: normal.grayScale.coolGray200,
+      300: normal.grayScale.coolGray300,
+      400: normal.grayScale.coolGray400,
+      500: normal.grayScale.coolGray500,
+      600: normal.grayScale.coolGray600,
+      700: normal.grayScale.coolGray700,
+      800: normal.grayScale.coolGray800,
+      900: normal.grayScale.coolGray900,
+    }}
+  />
+  <ColorItem
+    title="포인트 컬러"
+    subtitle="theme.light.primary"
+    colors={normal.primary}
+  />
+  <ColorItem
+    title="보조 컬러"
+    subtitle="theme.light.secondary"
+    colors={normal.secondary}
+  />
+  <ColorItem
+    title="시스템 컬러 - off"
+    subtitle="theme.light.system.off"
+    colors={{
+      1: normal.system.off1,
+      2: normal.system.off2,
+      3: normal.system.off3,
+      4: normal.system.off4,
+    }}
+  />
+  <ColorItem
+    title="시스템 컬러 - caution"
+    subtitle="theme.light.system.caution"
+    colors={{
+      1: normal.system.caution1,
+      2: normal.system.caution2,
+      3: normal.system.caution3,
+      4: normal.system.caution4,
+    }}
+  />
+  <ColorItem
+    title="시스템 컬러 - check"
+    subtitle="theme.light.system.check"
+    colors={{
+      1: normal.system.check1,
+      2: normal.system.check2,
+      3: normal.system.check3,
+      4: normal.system.check4,
+    }}
+  />
+</ColorPalette>
