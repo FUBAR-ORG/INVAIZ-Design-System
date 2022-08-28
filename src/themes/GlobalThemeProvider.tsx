@@ -31,10 +31,10 @@ export default function GlobalThemeProvider({
     lineHeight,
     fontWeight,
     fontColor,
-    
+
     whiteSpace,
     textAlign,
-    
+
     style,
   };
   return (

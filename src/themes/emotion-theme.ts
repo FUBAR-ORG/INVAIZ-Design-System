@@ -1,4 +1,3 @@
-
 import type { Color, ColorMap } from '@themes/colors/color';
 import font, { fontWeight, fontSize, lineHeight, fontColor, textAlign } from '@themes/font';
 import whiteSpace from '@themes/whiteSpace';
