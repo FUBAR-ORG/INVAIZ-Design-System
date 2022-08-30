@@ -44,6 +44,7 @@ import { ReactComponent as HMenu } from '@assets/svg/HMenu.svg';
 import { ReactComponent as Home } from '@assets/svg/Home.svg';
 import { ReactComponent as Hour } from '@assets/svg/Hour.svg';
 import { ReactComponent as Hue } from '@assets/svg/Hue.svg';
+import { ReactComponent as Info } from '@assets/svg/Info.svg';
 import { ReactComponent as Key } from '@assets/svg/Key.svg';
 import { ReactComponent as Keyboard } from '@assets/svg/Keyboard.svg';
 import { ReactComponent as Keyframe } from '@assets/svg/Keyframe.svg';
@@ -144,6 +145,7 @@ const SVG_ICONS = {
   Home,
   Hour,
   Hue,
+  Info,
   Key,
   Keyboard,
   Keyframe,
