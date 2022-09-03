@@ -5,23 +5,23 @@ import styled from '@emotion/styled';
  * HTML input tag props
  * @param boxWidth type="image"의 width와 구분을 위한 box 자체의 width
  */
-export interface InputBasicProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputBoxProps extends InputHTMLAttributes<HTMLInputElement> {
   boxWidth?: number;
 }
 
 /**
- * INVAIZ input basic
+ * INVAIZ input box
  * @param InputHTMLAttributes
  * @param boxWidth type="image"의 width와 구분을 위한 box 자체의 width
  * @returns HTML input tag
  */
-const InputBasic = ({ ...props }: InputBasicProps) => <StyledInputBasic {...props} />;
+const InputBox = ({ ...props }: InputBoxProps) => <StyledInputBox {...props} />;
 
-interface StyledInputBasicProps {
+interface StyledInputBoxProps {
   boxWidth?: number;
 }
 
-const StyledInputBasic = styled.input<StyledInputBasicProps>`
+const StyledInputBox = styled.input<StyledInputBoxProps>`
   box-sizing: border-box;
   width: ${({ boxWidth }) => (boxWidth ? `${boxWidth}px` : '100%')};
   height: 32px;
@@ -39,4 +39,4 @@ const StyledInputBasic = styled.input<StyledInputBasicProps>`
   }
 `;
 
-export default InputBasic;
+export default InputBox;

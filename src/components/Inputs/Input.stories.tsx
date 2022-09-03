@@ -2,22 +2,22 @@ import type { ChangeEventHandler } from 'react';
 import { useState } from 'react';
 import { Story } from '@storybook/react';
 
-import InputBasic, { InputBasicProps } from '@components/Inputs/InputBasic';
+import InputBox, { InputBoxProps } from '@components/Inputs/InputBox';
 
 export default {
   title: 'Components/Input',
-  component: InputBasic,
+  component: InputBox,
 };
 
-const Template: Story<InputBasicProps> = ({ ...args }) => {
+const Template: Story<InputBoxProps> = ({ ...args }) => {
   const [input, setInput] = useState('');
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setInput(e.target.value);
   };
 
-  return <InputBasic value={input} onChange={onChange} {...args} />;
+  return <InputBox value={input} onChange={onChange} {...args} />;
 };
 
-export const Box = Template.bind({});
-Box.args = { boxWidth: 240, placeholder: 'input' };
+export const Basic = Template.bind({});
+Basic.args = { boxWidth: 240, placeholder: 'placeholder' };
