@@ -1,19 +1,22 @@
 import styled from '@emotion/styled';
-import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
+import { ButtonHTMLAttributes, PropsWithChildren, useContext } from 'react';
+import { CustomTabsContext } from './CustomTabs';
 
 interface Props extends PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>> {
-  active: boolean;
+  index: number;
 }
 
-export default function CustomTab({ active, children, ...props }: Props) {
+export default function CustomTab({ children, index, ...props }: Props) {
+  const value = useContext(CustomTabsContext);
+
   return (
-    <Wrapper type='button' active={active} {...props}>
+    <Wrapper type='button' active={index === Number(value)} data-index={index} {...props}>
       {children}
     </Wrapper>
   );
 }
 
-const Wrapper = styled.button<{ active: boolean }>`
+const Wrapper = styled.button<{ active?: boolean }>`
   ${({ theme }) => theme.style.fontFace.kopub};
   color: ${({ theme }) => theme.color.grayScale.coolGray700};
   font-size: ${({ theme }) => theme.fontSize.size12}px;
