@@ -1,5 +1,5 @@
 import type { Color, ColorMap } from '@themes/colors/color';
-import font, { fontWeight, fontSize, lineHeight } from '@themes/font';
+import font, { fontWeight, fontSize, lineHeight, fontColor, textAlign } from '@themes/font';
 import type style from '@themes/style';
 
 export interface EmotionTheme extends ColorMap {
@@ -10,6 +10,8 @@ export interface EmotionTheme extends ColorMap {
   fontSize: typeof fontSize;
   lineHeight: typeof lineHeight;
   fontWeight: typeof fontWeight;
+  fontColor: typeof fontColor;
+  textAlign: typeof textAlign;
   /** 모든 테마에서 사용 가능한 CSS */
   style: typeof style;
 }

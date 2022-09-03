@@ -6,7 +6,7 @@ import type { ColorTheme } from '@themes/colors/color';
 import { ThemeProvider } from '@emotion/react';
 // React.js module
 
-import font, { fontSize, fontWeight, lineHeight } from '@themes/font';
+import font, { fontSize, fontWeight, lineHeight, textAlign, fontColor } from '@themes/font';
 import { colorMap, normal, light } from '@themes/colors/color';
 import style from '@themes/style';
 import GlobalStyle from '@themes/GlobalStyle';
@@ -29,6 +29,8 @@ export default function GlobalThemeProvider({
     fontSize,
     lineHeight,
     fontWeight,
+    textAlign,
+    fontColor,
 
     style,
   };
