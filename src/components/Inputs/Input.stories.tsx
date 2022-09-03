@@ -16,7 +16,11 @@ const Template: Story<InputBoxProps> = ({ ...args }) => {
     setInput(e.target.value);
   };
 
-  return <InputBox value={input} onChange={onChange} {...args} />;
+  const clear = () => {
+    setInput('');
+  };
+
+  return <InputBox value={input} onChange={onChange} clear={clear} {...args} />;
 };
 
 export const Basic = Template.bind({});
@@ -24,3 +28,6 @@ Basic.args = { boxWidth: 240, placeholder: 'placeholder' };
 
 export const Disabled = Template.bind({});
 Disabled.args = { boxWidth: 240, placeholder: 'placeholder', disabled: true };
+
+export const Clearable = Template.bind({});
+Clearable.args = { boxWidth: 240, placeholder: 'placeholder', clearable: true };
