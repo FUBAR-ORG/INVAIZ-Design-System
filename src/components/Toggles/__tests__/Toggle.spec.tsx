@@ -44,7 +44,7 @@ test('Toggle Snapshot', () => {
   ).toJSON();
   expect(checked).toMatchSnapshot();
 
-  const unChcecked = create(
+  const unChecked = create(
     <GlobalThemeProvider>
       <Toggle />
     </GlobalThemeProvider>
