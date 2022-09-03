@@ -27,8 +27,10 @@ const StyledInputBox = styled.input<StyledInputBoxProps>`
   height: 32px;
   padding: 0 10px;
   font-size: ${({ theme }) => theme.fontSize.size14}px;
-  color: ${({ theme }) => theme.color.grayScale.basic.white};
-  background-color: ${({ theme }) => theme.color.grayScale.coolGray400};
+  color: ${({ theme, disabled }) =>
+    disabled ? theme.color.system.off1 : theme.color.grayScale.basic.white};
+  background-color: ${({ theme, disabled }) =>
+    disabled ? theme.color.grayScale.gray800 : theme.color.grayScale.coolGray400};
   border: none;
   border-radius: 5px;
   outline: none;

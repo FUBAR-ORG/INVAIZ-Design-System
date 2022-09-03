@@ -21,3 +21,6 @@ const Template: Story<InputBoxProps> = ({ ...args }) => {
 
 export const Basic = Template.bind({});
 Basic.args = { boxWidth: 240, placeholder: 'placeholder' };
+
+export const Disabled = Template.bind({});
+Disabled.args = { boxWidth: 240, placeholder: 'placeholder', disabled: true };
