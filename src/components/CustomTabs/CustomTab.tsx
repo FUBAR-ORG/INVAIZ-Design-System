@@ -10,7 +10,7 @@ export default function CustomTab({ children, index, ...props }: Props) {
   const value = useContext(CustomTabsContext);
 
   return (
-    <Wrapper type='button' active={index === Number(value)} data-index={index} {...props}>
+    <Wrapper type='button' active={index === value} data-index={index} {...props}>
       {children}
     </Wrapper>
   );
