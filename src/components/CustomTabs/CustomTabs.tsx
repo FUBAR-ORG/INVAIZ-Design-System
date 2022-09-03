@@ -29,7 +29,7 @@ function CustomTabs({ children, value, onChange }: Props) {
 
   return (
     <CustomTabsContext.Provider value={value}>
-      <Wrapper onClick={onTabClick}>{children}</Wrapper>;
+      <Wrapper onClick={onTabClick}>{children}</Wrapper>
     </CustomTabsContext.Provider>
   );
 }
