@@ -1,5 +1,7 @@
 import Toggle from '@components/Toggles/Toggle';
 import { render } from '@tests/test-utils';
+import { create } from 'react-test-renderer';
+import GlobalThemeProvider from '@themes/GlobalThemeProvider';
 
 describe('Toggle', () => {
   it('토글의 초기값은 false로 설정된다.', () => {
@@ -32,4 +34,20 @@ describe('Toggle', () => {
     expect(onChange).toHaveBeenCalledWith(false);
     expect(checkbox).not.toBeChecked();
   });
+});
+
+test('Toggle Snapshot', () => {
+  const checked = create(
+    <GlobalThemeProvider>
+      <Toggle checked />
+    </GlobalThemeProvider>
+  ).toJSON();
+  expect(checked).toMatchSnapshot();
+
+  const unChecked = create(
+    <GlobalThemeProvider>
+      <Toggle />
+    </GlobalThemeProvider>
+  ).toJSON();
+  expect(unChcecked).toMatchSnapshot();
 });
