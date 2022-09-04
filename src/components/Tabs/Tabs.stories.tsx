@@ -22,21 +22,14 @@ const Template: Story<ITemplate> = ({ tabsLength, ...args }) => {
   }));
 
   return (
-    <>
-      <Tabs tabs={tabsForStory} {...args}>
-        {tabsForStory.map((tab, i) => (
-          <Tab
-            key={tab.title}
-            onClick={() => setCurrentIndex(i)}
-            title={tab.title}
-            value={tab.value}
-          >
-            {tab.title}
-          </Tab>
-        ))}
-        <TabGlider currentIndex={currentIndex} />
-      </Tabs>
-    </>
+    <Tabs tabs={tabsForStory} {...args}>
+      {tabsForStory.map((tab, i) => (
+        <Tab key={tab.title} onClick={() => setCurrentIndex(i)} title={tab.title} value={tab.value}>
+          {tab.title}
+        </Tab>
+      ))}
+      <TabGlider currentIndex={currentIndex} />
+    </Tabs>
   );
 };
 

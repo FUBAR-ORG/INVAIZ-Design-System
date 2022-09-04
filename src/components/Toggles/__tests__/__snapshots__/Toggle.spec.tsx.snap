@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toggle Snapshot 1`] = `
+<label
+  className="css-i1ha2l"
+>
+  <input
+    checked={true}
+    className="css-1lckzqk"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <span
+    className="css-cexpd9"
+  />
+</label>
+`;
+
+exports[`Toggle Snapshot 2`] = `
+<label
+  className="css-i1ha2l"
+>
+  <input
+    className="css-1lckzqk"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <span
+    className="css-cexpd9"
+  />
+</label>
+`;

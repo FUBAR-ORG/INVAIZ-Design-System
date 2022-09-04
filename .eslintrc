@@ -25,6 +25,7 @@
     "no-use-before-define": "off",
     "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": ["error", { "extensions": [".ts", ".tsx"] }],
+    "react/function-component-definition": ["off"],
     "react/prop-types": "off",
     "react/require-default-props": "off",
     "import/extensions": "off",
