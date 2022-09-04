@@ -49,5 +49,5 @@ test('Toggle Snapshot', () => {
       <Toggle />
     </GlobalThemeProvider>
   ).toJSON();
-  expect(unChcecked).toMatchSnapshot();
+  expect(unChecked).toMatchSnapshot();
 });
