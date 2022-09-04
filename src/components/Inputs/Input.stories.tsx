@@ -16,11 +16,7 @@ const Template: Story<InputBoxProps> = ({ ...args }) => {
     setInput(e.target.value);
   };
 
-  const clear = () => {
-    setInput('');
-  };
-
-  return <InputBox value={input} onChange={onChange} clear={clear} {...args} />;
+  return <InputBox value={input} onChange={onChange} {...args} />;
 };
 
 export const Basic = Template.bind({});

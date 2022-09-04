@@ -1,5 +1,6 @@
 import type { InputHTMLAttributes } from 'react';
 
+import { useRef } from 'react';
 import styled from '@emotion/styled';
 
 import SvgIcon from '@components/SvgIcons/SvgIcon';
@@ -8,12 +9,10 @@ import SvgIcon from '@components/SvgIcons/SvgIcon';
  * HTML input tag props
  * @param boxWidth type="image"의 width와 구분을 위한 box 자체의 width
  * @param clearable clear 버튼 표시 여부
- * @param clear clear 함수
  */
 export interface InputBoxProps extends InputHTMLAttributes<HTMLInputElement> {
   boxWidth?: number;
   clearable?: boolean;
-  clear?: () => void;
 }
 
 /**
@@ -21,15 +20,24 @@ export interface InputBoxProps extends InputHTMLAttributes<HTMLInputElement> {
  * @param InputHTMLAttributes
  * @param boxWidth type="image"의 width와 구분을 위한 box 자체의 width
  * @param clearable clear 버튼 표시 여부
- * @param clear clear 함수
  * @returns HTML div > input
  */
-const InputBox = ({ boxWidth, clearable = false, clear, ...props }: InputBoxProps) => (
-  <Wrapper boxWidth={boxWidth}>
-    <Input clearable={clearable} {...props} />
-    {clearable && <SvgIcon icon='Cancel' size={16} onClick={clear} />}
-  </Wrapper>
-);
+const InputBox = ({ boxWidth, clearable = false, ...props }: InputBoxProps) => {
+  const ref = useRef<HTMLInputElement | null>(null);
+
+  const clear = () => {
+    if (ref.current) {
+      ref.current.value = '';
+    }
+  };
+
+  return (
+    <Wrapper boxWidth={boxWidth}>
+      <Input clearable={clearable} {...props} ref={ref} />
+      {clearable && <SvgIcon icon='Cancel' size={16} onClick={clear} />}
+    </Wrapper>
+  );
+};
 
 //------------------------------------------------------------------------------------------
 
