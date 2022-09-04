@@ -6,7 +6,7 @@
 
 - [Branch Naming Conventions](#1-branch-naming-conventions)
 - [Commit Conventions](#2-commit-conventions)
-- [Pull Request Conveitions](#3-pull-request-conventions)
+- [Pull Request Conventions](#3-pull-request-conventions)
 
 ## 1. Branch Naming Conventions
 
@@ -31,7 +31,7 @@
 | :---------------------------------------------------------------------------------------------------------------: |
 |                                                    페이지 이름                                                    |
 
-### Exmaple
+### Example
 
 - 아이콘의 사이즈를 작업하는 경우.
   > `$git branch icon/size`
@@ -51,7 +51,7 @@
   - refactor: 코드 리팩토링 시
   - config: 설정 값 추가 및 변경 시
 
-### Exameple
+### Example
 
 - 버튼 사이즈에 대한 작업이 완료되었을 시
   > `# feat: 버튼 사이즈 작업 완료`

@@ -8,6 +8,7 @@ import { ThemeProvider } from '@emotion/react';
 
 import font, { fontSize, fontWeight, lineHeight, textAlign, fontColor } from '@themes/font';
 import { colorMap, normal, light } from '@themes/colors/color';
+import whiteSpace from '@themes/whiteSpace';
 import style from '@themes/style';
 import GlobalStyle from '@themes/GlobalStyle';
 
@@ -29,8 +30,10 @@ export default function GlobalThemeProvider({
     fontSize,
     lineHeight,
     fontWeight,
-    textAlign,
     fontColor,
+
+    whiteSpace,
+    textAlign,
 
     style,
   };

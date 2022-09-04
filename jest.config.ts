@@ -4,7 +4,7 @@ const config = {
     '\\.(ts|tsx)$': 'ts-jest',
     '\\.svg$': 'svg-jest',
   },
-  testEnvironment: 'jest-environment-jsdom',
+  testEnvironment: 'jsdom',
   moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
   testMatch: [
     '<rootDir>/**/*.test.ts',
