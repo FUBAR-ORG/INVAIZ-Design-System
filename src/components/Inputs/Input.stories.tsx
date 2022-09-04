@@ -5,7 +5,7 @@ import { Story } from '@storybook/react';
 import InputBox, { InputBoxProps } from '@components/Inputs/InputBox';
 
 export default {
-  title: 'Components/Input',
+  title: 'Components/Input/Box',
   component: InputBox,
 };
 
@@ -27,3 +27,6 @@ Disabled.args = { boxWidth: 240, placeholder: 'placeholder', disabled: true };
 
 export const Clearable = Template.bind({});
 Clearable.args = { boxWidth: 240, placeholder: 'placeholder', clearable: true };
+
+export const Required = Template.bind({});
+Required.args = { boxWidth: 240, placeholder: 'placeholder', required: true };

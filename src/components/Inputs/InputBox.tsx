@@ -24,22 +24,22 @@ export interface InputBoxProps extends InputHTMLAttributes<HTMLInputElement> {
  */
 const InputBox = ({ boxWidth, clearable = false, ...props }: InputBoxProps) => {
   const ref = useRef<HTMLInputElement | null>(null);
+  const { current } = ref;
 
   const clear = () => {
-    if (ref.current) {
-      ref.current.value = '';
-    }
+    if (current) current.value = '';
   };
 
   return (
     <Wrapper boxWidth={boxWidth}>
       <Input clearable={clearable} {...props} ref={ref} />
       {clearable && <SvgIcon icon='Cancel' size={16} onClick={clear} />}
+      {props.required && <SvgIcon icon='Caution' size={16} />}
     </Wrapper>
   );
 };
 
-//------------------------------------------------------------------------------------------
+// style ------------------------------------------------------------------------------------------
 
 interface WrapperProps {
   boxWidth?: number;
@@ -67,7 +67,7 @@ const Input = styled.input<InputProps>`
   width: 100%;
   height: 32px;
   padding-left: 16px;
-  padding-right: ${({ clearable }) => (clearable ? 34 : 16)}px;
+  padding-right: ${({ clearable, required }) => (clearable || required ? 34 : 16)}px;
 
   font-size: ${({ theme }) => theme.fontSize.size14}px;
 
@@ -75,7 +75,7 @@ const Input = styled.input<InputProps>`
     disabled ? theme.color.system.off1 : theme.color.grayScale.basic.white};
 
   background-color: ${({ theme, disabled }) =>
-    disabled ? theme.color.grayScale.gray800 : theme.color.grayScale.coolGray400};
+    disabled ? theme.color.grayScale.gray200 : theme.color.grayScale.coolGray400};
 
   border: none;
   border-radius: 5px;
@@ -84,7 +84,7 @@ const Input = styled.input<InputProps>`
   &:focus {
     ${({ theme }) => theme.style.border.selected}
     padding-left: 14px;
-    padding-right: ${({ clearable }) => (clearable ? 32 : 14)}px;
+    padding-right: ${({ clearable, required }) => (clearable || required ? 32 : 14)}px;
   }
 `;
 
