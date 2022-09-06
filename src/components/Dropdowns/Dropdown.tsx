@@ -2,30 +2,34 @@ import styled from '@emotion/styled';
 import { ReactNode, useId, useState } from 'react';
 import useExternalClick from '@components/Dropdowns/hooks/use-external-click';
 
-type DropdownOption<T> = {
+type DropdownOption<T, K> = {
   key?: string | number;
   value: T;
-  label: ReactNode;
+  label: K;
 };
 
-interface Props<T> {
-  value: T;
-  onChange: (value: T) => void;
-  options: DropdownOption<T>[];
+interface Props<T, K> {
+  selected: T;
+  onChange: (option: DropdownOption<T, K>) => void;
+  options: DropdownOption<T, K>[];
 }
 
-export default function Dropdown<T>({ value, onChange, options }: Props<T>) {
+export default function Dropdown<T, K extends ReactNode>({
+  selected,
+  onChange,
+  options,
+}: Props<T, K>) {
   const [open, setOpen] = useState(false);
   const dropdownId = useId();
 
-  const handleClick = (selected: T) => () => onChange(selected);
+  const handleClick = (value: DropdownOption<T, K>) => () => onChange(value);
 
   useExternalClick({
     selector: `[data-dropdownId='${dropdownId}']`,
     effect: () => setOpen(false),
   });
 
-  const selectedLabel = options.find((option) => option.value === value)?.label;
+  const selectedLabel = options.find((option) => option.value === selected)?.label;
 
   return (
     <Relative data-dropdownId={dropdownId}>
@@ -36,8 +40,8 @@ export default function Dropdown<T>({ value, onChange, options }: Props<T>) {
             <Li key={option.key ?? index}>
               <Button
                 type='button'
-                selected={option.value === value}
-                onClick={handleClick(option.value)}
+                selected={option.value === selected}
+                onClick={handleClick(option)}
               >
                 {option.label}
               </Button>
