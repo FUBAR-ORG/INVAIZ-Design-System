@@ -1,67 +1,78 @@
+import {
+  ComponentProps,
+  DetailedHTMLProps,
+  HTMLAttributes,
+  PropsWithChildren,
+  ReactNode,
+  useId,
+  useState,
+} from 'react';
 import styled from '@emotion/styled';
-import { ReactNode, useId, useState } from 'react';
 import useExternalClick from '@components/Dropdowns/hooks/use-external-click';
+import SvgIcon from '@components/SvgIcons/SvgIcon';
 
-type DropdownOption<T, K> = {
-  key?: string | number;
-  value: T;
-  label: K;
-};
-
-interface Props<T, K> {
-  selected: T;
-  onChange: (option: DropdownOption<T, K>) => void;
-  options: DropdownOption<T, K>[];
+interface Props extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  selected: ReactNode;
+  icon?: Partial<ComponentProps<typeof SvgIcon>>;
 }
 
-export default function Dropdown<T, K extends ReactNode>({
-  selected,
-  onChange,
-  options,
-}: Props<T, K>) {
-  const [open, setOpen] = useState(false);
+export default function Dropdown({ selected, icon, children, ...props }: PropsWithChildren<Props>) {
   const dropdownId = useId();
-
-  const handleClick = (value: DropdownOption<T, K>) => () => onChange(value);
+  const [open, setOpen] = useState(false);
+  const handleToggleOpen = () => setOpen((prev) => !prev);
 
   useExternalClick({
-    selector: `[data-dropdownId='${dropdownId}']`,
+    selector: `[data-dropdown-id='${dropdownId}']`,
     effect: () => setOpen(false),
   });
 
-  const selectedLabel = options.find((option) => option.value === selected)?.label;
-
   return (
-    <Relative data-dropdownId={dropdownId}>
-      <Trigger onClick={() => setOpen(true)}>{selectedLabel}</Trigger>
-      {open && (
-        <MenuAbsolute>
-          {options.map((option, index) => (
-            <Li key={option.key ?? index}>
-              <Button
-                type='button'
-                selected={option.value === selected}
-                onClick={handleClick(option)}
-              >
-                {option.label}
-              </Button>
-            </Li>
-          ))}
-        </MenuAbsolute>
-      )}
+    <Relative data-dropdown-id={dropdownId} {...props}>
+      <Trigger onClick={handleToggleOpen}>
+        <span>{selected}</span>
+        <SvgIcon
+          icon='Trigger'
+          size={20}
+          style={{ transform: `rotate(${open ? 180 : 0}deg)` }}
+          {...icon}
+        />
+      </Trigger>
+      {open && <UlAbsolute onClick={handleToggleOpen}>{children}</UlAbsolute>}
     </Relative>
   );
 }
 
+function Item(props: ComponentProps<typeof Button>) {
+  return (
+    <Li>
+      <Button type='button' {...props} />
+    </Li>
+  );
+}
+
+Dropdown.Item = Item;
+
 const Relative = styled.div`
   position: relative;
+  display: inline-block;
+  width: 240px;
+  height: 48px;
 `;
 
 const Trigger = styled.button`
-  background: ${({ theme }) => theme.color.grayScale.gray100};
+  width: 100%;
+  height: 100%;
+  background: ${({ theme }) => theme.color.grayScale.coolGray100};
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
 `;
 
-const MenuAbsolute = styled.ul`
+const UlAbsolute = styled.ul`
   position: absolute;
 `;
 
