@@ -7,18 +7,18 @@ type Option = {
 };
 
 export default function App() {
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState({ value: 0, label: 'test' });
   const options: Option[] = [
     { value: 0, label: 'test' },
     { value: 1, label: 'test2' },
   ];
   return (
-    <Dropdown selected={selected}>
+    <Dropdown selected={selected.label}>
       {options.map((option) => (
         <Dropdown.Item
           key={option.value}
-          selected={selected === option.value}
-          onClick={() => setSelected(option.value)}
+          selected={selected.value === option.value}
+          onClick={() => setSelected(option)}
         >
           {option.label}
         </Dropdown.Item>
