@@ -13,10 +13,15 @@ import SvgIcon from '@components/SvgIcons/SvgIcon';
 
 interface Props extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   selected: ReactNode;
-  icon?: Partial<ComponentProps<typeof SvgIcon>>;
+  iconProps?: Partial<ComponentProps<typeof SvgIcon>>;
 }
 
-export default function Dropdown({ selected, icon, children, ...props }: PropsWithChildren<Props>) {
+export default function Dropdown({
+  selected,
+  iconProps,
+  children,
+  ...props
+}: PropsWithChildren<Props>) {
   const dropdownId = useId();
   const [open, setOpen] = useState(false);
   const handleToggleOpen = () => setOpen((prev) => !prev);
@@ -34,7 +39,7 @@ export default function Dropdown({ selected, icon, children, ...props }: PropsWi
           icon='Trigger'
           size={20}
           style={{ transform: `rotate(${open ? 180 : 0}deg)` }}
-          {...icon}
+          {...iconProps}
         />
       </Trigger>
       {open && <UlAbsolute onClick={handleToggleOpen}>{children}</UlAbsolute>}
