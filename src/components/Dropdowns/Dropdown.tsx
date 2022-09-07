@@ -32,8 +32,8 @@ export default function Dropdown({
   });
 
   return (
-    <Relative data-dropdown-id={dropdownId} {...props}>
-      <Trigger onClick={handleToggleOpen}>
+    <Relative data-dropdown-id={dropdownId} onClick={handleToggleOpen} {...props}>
+      <Trigger>
         <span>{selected}</span>
         <SvgIcon
           icon='Trigger'
@@ -42,7 +42,7 @@ export default function Dropdown({
           {...iconProps}
         />
       </Trigger>
-      {open && <UlAbsolute onClick={handleToggleOpen}>{children}</UlAbsolute>}
+      {open && <Menu>{children}</Menu>}
     </Relative>
   );
 }
@@ -77,7 +77,7 @@ const Trigger = styled.button`
   border-radius: 5px;
 `;
 
-const UlAbsolute = styled.ul`
+const Menu = styled.ul`
   position: absolute;
 `;
 
