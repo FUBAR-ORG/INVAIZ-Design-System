@@ -1,18 +1,21 @@
 import { useEffect } from 'react';
 
-const useExternalClick = (args: { selector: string; effect: () => void }) =>
+type UseExternalClick = (args: { selector: string; effect: () => void }) => void;
+
+const useExternalClick: UseExternalClick = ({ selector, effect }) =>
   useEffect(() => {
     const handleClick = ({ target }: MouseEvent) => {
       if (!(target instanceof HTMLElement)) {
         return;
       }
-      const searchedElements = document.querySelectorAll(args.selector);
+      const searchedElements = document.querySelectorAll(selector);
       const isInside = Array.from(searchedElements).some((el) => el.contains(target));
-      if (!isInside) {
-        args.effect();
+      if (isInside) {
+        return;
       }
+      effect();
     };
-    const handleKeydown = (e: KeyboardEvent) => e.key === 'Escape' && args.effect();
+    const handleKeydown = (e: KeyboardEvent) => e.key === 'Escape' && effect();
 
     document.addEventListener('click', handleClick);
     document.addEventListener('keydown', handleKeydown);
@@ -20,6 +23,6 @@ const useExternalClick = (args: { selector: string; effect: () => void }) =>
       document.removeEventListener('click', handleClick);
       document.removeEventListener('keydown', handleKeydown);
     };
-  }, [args]);
+  }, [selector, effect]);
 
 export default useExternalClick;
