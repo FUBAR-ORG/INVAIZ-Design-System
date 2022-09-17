@@ -14,7 +14,7 @@ export default function App() {
     { value: 2, label: 'test3' },
   ];
   return (
-    <div style={{ padding: '10px' }}>
+    <div style={{ padding: '20px' }}>
       <Dropdown selected={selected.label}>
         {options.map((option) => (
           <Dropdown.Item

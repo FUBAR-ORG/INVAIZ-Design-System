@@ -9,12 +9,14 @@ interface Props {
   selected: ReactNode;
   iconProps?: Partial<ComponentProps<typeof SvgIcon>>;
   disabled?: boolean;
+  error?: string;
 }
 
 export default function Dropdown({
   selected,
   iconProps,
   disabled,
+  error,
   children,
 }: PropsWithChildren<Props>) {
   const dropdownId = useId();
@@ -26,15 +28,25 @@ export default function Dropdown({
     effect: () => setOpen(false),
   });
 
+  const iconColor = (() => {
+    if (error) {
+      return normalColor.system.caution1;
+    }
+    if (disabled) {
+      return normalColor.grayScale.gray400;
+    }
+    return normalColor.grayScale.basic.black;
+  })();
+
   return (
     <Relative data-dropdown-id={dropdownId} onClick={handleToggleOpen}>
-      <Trigger open={open} disabled={disabled}>
+      <Trigger open={open} disabled={disabled} error={error}>
         <span>{selected}</span>
         <SvgIcon
-          icon='Trigger'
+          icon={error ? 'Caution' : 'Trigger'}
           size={20}
-          style={{ transform: `rotate(${open ? 180 : 0}deg)` }}
-          color={disabled ? normalColor.grayScale.gray400 : undefined}
+          style={{ transform: `rotate(${!error && open ? 180 : 0}deg)` }}
+          color={iconColor}
           {...iconProps}
         />
       </Trigger>
@@ -60,7 +72,7 @@ const Relative = styled.div`
   height: 48px;
 `;
 
-const Trigger = styled.button<{ open: boolean }>`
+const Trigger = styled.button<{ open: boolean; error?: string }>`
   width: 100%;
   height: 100%;
   background: ${({ theme }) => theme.color.grayScale.coolGray100};
@@ -82,6 +94,19 @@ const Trigger = styled.button<{ open: boolean }>`
     background: ${({ theme }) => theme.color.grayScale.gray200};
     color: ${({ theme }) => theme.color.grayScale.gray400};
   }
+  ${({ error, theme }) =>
+    !!error &&
+    css`
+      &:before {
+        position: absolute;
+        content: '${error}';
+        font-size: ${theme.fontSize.size10};
+        color: ${theme.color.system.caution1};
+        top: -15px;
+        left: 0;
+      }
+      outline: 2px solid ${theme.color.system.caution1};
+    `}
 `;
 
 const Menu = styled.ul`
@@ -110,6 +135,7 @@ const Button = styled.button<{ selected: boolean }>`
   width: 100%;
   height: 100%;
   color: ${({ theme }) => theme.color.grayScale.basic.black};
+  text-align: left;
   &:hover {
     background: ${({ theme }) => theme.color.grayScale.coolGray100};
   }
