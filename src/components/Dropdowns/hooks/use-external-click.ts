@@ -9,11 +9,10 @@ const useExternalClick: UseExternalClick = ({ selector, effect }) =>
         return;
       }
       const searchedElements = document.querySelectorAll(selector);
-      const isInside = Array.from(searchedElements).some((el) => el.contains(target));
-      if (isInside) {
-        return;
+      const isExternal = Array.from(searchedElements).every((el) => !el.contains(target));
+      if (isExternal) {
+        effect();
       }
-      effect();
     };
     document.addEventListener('click', handleClick);
     return () => document.removeEventListener('click', handleClick);
