@@ -11,18 +11,21 @@ export default function App() {
   const options: Option[] = [
     { value: 0, label: 'test' },
     { value: 1, label: 'test2' },
+    { value: 2, label: 'test3' },
   ];
   return (
-    <Dropdown selected={selected.label}>
-      {options.map((option) => (
-        <Dropdown.Item
-          key={option.value}
-          selected={selected.value === option.value}
-          onClick={() => setSelected(option)}
-        >
-          {option.label}
-        </Dropdown.Item>
-      ))}
-    </Dropdown>
+    <div style={{ padding: '10px' }}>
+      <Dropdown selected={selected.label}>
+        {options.map((option) => (
+          <Dropdown.Item
+            key={option.value}
+            selected={selected.value === option.value}
+            onClick={() => setSelected(option)}
+          >
+            {option.label}
+          </Dropdown.Item>
+        ))}
+      </Dropdown>
+    </div>
   );
 }
