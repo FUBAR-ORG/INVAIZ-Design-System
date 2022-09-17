@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 
 const useExternalClick = (args: { selector: string; effect: () => void }) =>
   useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      const { target } = e;
+    const handleClick = ({ target }: MouseEvent) => {
       if (!(target instanceof HTMLElement)) {
         return;
       }
