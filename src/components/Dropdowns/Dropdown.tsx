@@ -21,7 +21,7 @@ export default function Dropdown({
 }: PropsWithChildren<Props>) {
   const dropdownId = useId();
   const [open, setOpen] = useState(false);
-  const handleToggleOpen = () => setOpen((prev) => !prev);
+  const handleOpen = () => !disabled && setOpen((prev) => !prev);
 
   useExternalClick({
     selector: `[data-dropdown-id='${dropdownId}']`,
@@ -39,7 +39,7 @@ export default function Dropdown({
   })();
 
   return (
-    <Relative data-dropdown-id={dropdownId} onClick={handleToggleOpen}>
+    <Relative data-dropdown-id={dropdownId} onClick={handleOpen}>
       <Trigger open={open} disabled={disabled} error={error}>
         <span>{selected}</span>
         <SvgIcon
