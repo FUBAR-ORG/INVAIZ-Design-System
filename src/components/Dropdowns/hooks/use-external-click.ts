@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
-type UseExternalClick = (args: { selector: string; effect: () => void }) => void;
+type UseExternalClick = (args: { selector: string; listener: () => void }) => void;
 
-const useExternalClick: UseExternalClick = ({ selector, effect }) =>
+const useExternalClick: UseExternalClick = ({ selector, listener }) =>
   useEffect(() => {
     const handleClick = ({ target }: MouseEvent) => {
       if (!(target instanceof HTMLElement)) {
@@ -11,11 +11,11 @@ const useExternalClick: UseExternalClick = ({ selector, effect }) =>
       const searchedElements = document.querySelectorAll(selector);
       const isExternal = Array.from(searchedElements).every((el) => !el.contains(target));
       if (isExternal) {
-        effect();
+        listener();
       }
     };
     document.addEventListener('click', handleClick);
     return () => document.removeEventListener('click', handleClick);
-  }, [selector, effect]);
+  }, [selector, listener]);
 
 export default useExternalClick;

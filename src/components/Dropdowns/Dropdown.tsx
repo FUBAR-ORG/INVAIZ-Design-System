@@ -4,7 +4,7 @@ import useExternalClick from '@components/Dropdowns/hooks/use-external-click';
 import SvgIcon from '@components/SvgIcons/SvgIcon';
 import { css } from '@emotion/react';
 import normalColor from '@themes/colors/normal-color';
-import useKeyboardListener from '@components/Dropdowns/hooks/use-keyboard-listener';
+import useEventListener from '@components/Dropdowns/hooks/use-event-listener';
 
 interface Props {
   selected: ReactNode;
@@ -26,12 +26,13 @@ export default function Dropdown({
 
   useExternalClick({
     selector: `[data-dropdown-id='${dropdownId}']`,
-    effect: () => setOpen(false),
+    listener: () => setOpen(false),
   });
 
-  useKeyboardListener({
-    key: 'Escape',
-    effect: () => setOpen(false),
+  useEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      setOpen(false);
+    }
   });
 
   const iconColor = (() => {
