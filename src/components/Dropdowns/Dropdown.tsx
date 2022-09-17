@@ -4,6 +4,7 @@ import useExternalClick from '@components/Dropdowns/hooks/use-external-click';
 import SvgIcon from '@components/SvgIcons/SvgIcon';
 import { css } from '@emotion/react';
 import normalColor from '@themes/colors/normal-color';
+import useEscapeListener from '@components/Dropdowns/hooks/use-keyboard-listener';
 
 interface Props {
   selected: ReactNode;
@@ -25,6 +26,11 @@ export default function Dropdown({
 
   useExternalClick({
     selector: `[data-dropdown-id='${dropdownId}']`,
+    effect: () => setOpen(false),
+  });
+
+  useEscapeListener({
+    key: 'Escape',
     effect: () => setOpen(false),
   });
 

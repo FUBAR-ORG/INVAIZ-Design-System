@@ -15,14 +15,8 @@ const useExternalClick: UseExternalClick = ({ selector, effect }) =>
       }
       effect();
     };
-    const handleKeydown = (e: KeyboardEvent) => e.key === 'Escape' && effect();
-
     document.addEventListener('click', handleClick);
-    document.addEventListener('keydown', handleKeydown);
-    return () => {
-      document.removeEventListener('click', handleClick);
-      document.removeEventListener('keydown', handleKeydown);
-    };
+    return () => document.removeEventListener('click', handleClick);
   }, [selector, effect]);
 
 export default useExternalClick;
