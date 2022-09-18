@@ -3,8 +3,8 @@ import {
   KeyboardEvent,
   PropsWithChildren,
   ReactNode,
+  useEffect,
   useId,
-  useRef,
   useState,
 } from 'react';
 import styled from '@emotion/styled';
@@ -13,6 +13,9 @@ import SvgIcon from '@components/SvgIcons/SvgIcon';
 import useEventListener from '@components/Dropdowns/hooks/use-event-listener';
 import normalColor from '@themes/colors/normal-color';
 import useExternalClick from '@components/Dropdowns/hooks/use-external-click';
+
+export const FOCUSED = 'focused' as const;
+export const DROPDOWN_ITEM = 'dropdown-item' as const;
 
 type DropdownType = 'default' | 'outline-fill' | 'outline';
 
@@ -35,8 +38,8 @@ export default function Dropdown({
   children,
 }: PropsWithChildren<Props>) {
   const dropdownId = useId();
-  const ref = useRef<HTMLDivElement>(null);
-  const [focused, setFocused] = useState<number>(0);
+  const [ref, setRef] = useState<HTMLUListElement | null>(null);
+  const [focused, setFocused] = useState<number>(-1);
   const [open, setOpen] = useState(false);
   const handleOpen = () => !disabled && setOpen((prev) => !prev);
 
@@ -46,28 +49,27 @@ export default function Dropdown({
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (!ref.current) {
+    if (!ref) {
       return;
     }
-    const dropdownList = Array.from(ref.current.querySelectorAll<HTMLElement>('.dropdown-item'));
-    dropdownList.forEach((item) => item.classList.remove('focused'));
+    const dropdownList = Array.from(ref.querySelectorAll<HTMLElement>(`.${DROPDOWN_ITEM}`));
+    dropdownList.forEach((item) => item.classList.remove(FOCUSED));
     const focusedItem = dropdownList.at(focused);
     switch (e.key) {
       case 'Enter':
         focusedItem?.click();
-        setFocused(-1);
         break;
       case 'ArrowDown':
         setFocused((prev) => {
           const next = (prev + 1) % dropdownList.length;
-          dropdownList.at(next)?.classList.add('focused');
+          dropdownList.at(next)?.classList.add(FOCUSED);
           return next;
         });
         break;
       case 'ArrowUp':
         setFocused((prev) => {
           const next = (prev + dropdownList.length - 1) % dropdownList.length;
-          dropdownList.at(next)?.classList.add('focused');
+          dropdownList.at(next)?.classList.add(FOCUSED);
           return next;
         });
         break;
@@ -75,6 +77,15 @@ export default function Dropdown({
         break;
     }
   };
+
+  useEffect(() => {
+    if (!ref || focused === -1) {
+      return;
+    }
+    Array.from(ref.querySelectorAll<HTMLElement>(`.${DROPDOWN_ITEM}`))
+      .at(focused)
+      ?.scrollIntoView({ block: 'nearest' });
+  }, [ref, focused]);
 
   useExternalClick({
     selector: `[data-dropdown-id='${dropdownId}']`,
@@ -118,18 +129,19 @@ export default function Dropdown({
   );
 
   return (
-    <Relative ref={ref} data-dropdown-id={dropdownId} onKeyDown={handleKeyDown}>
+    <Relative onKeyDown={handleKeyDown}>
       <Trigger
-        onClick={handleOpen}
+        data-dropdown-id={dropdownId}
         open={open}
         dropdownType={type}
         disabled={disabled}
         error={error}
+        onClick={handleOpen}
       >
         {content}
         {arrowIcon}
       </Trigger>
-      {open && <Menu>{children}</Menu>}
+      {open && <Menu ref={setRef}>{children}</Menu>}
     </Relative>
   );
 }
@@ -218,7 +230,7 @@ const Menu = styled.ul`
   border-radius: 5px;
   padding-left: 0;
   margin: 0;
-  overflow: hidden;
   max-height: 144px;
+  overflow: auto;
   ${({ theme }) => theme.style.boxShadow.dropdownEmphasis};
 `;

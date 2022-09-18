@@ -10,9 +10,13 @@ type Option = {
 export default function App() {
   const [{ value, label }, setSelected] = useState({ value: 0, label: 'test' });
   const options: Option[] = [
-    { value: 0, label: 'test' },
-    { value: 1, label: 'test2' },
-    { value: 2, label: 'test3' },
+    { value: 0, label: 'test0' },
+    { value: 1, label: 'test1' },
+    { value: 2, label: 'test2' },
+    { value: 3, label: 'test3' },
+    { value: 4, label: 'test4' },
+    { value: 5, label: 'test5' },
+    { value: 6, label: 'test6' },
   ];
   return (
     <div style={{ padding: '20px' }}>

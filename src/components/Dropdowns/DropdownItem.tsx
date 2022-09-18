@@ -1,11 +1,12 @@
 import { ComponentProps, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import { DROPDOWN_ITEM, FOCUSED } from '@components/Dropdowns/Dropdown';
 
 function Default({ children, ...props }: ComponentProps<typeof Button>) {
   return (
     <Li>
-      <Button className='dropdown-item' type='button' {...props}>
+      <Button className={DROPDOWN_ITEM} type='button' {...props}>
         <Span>{children}</Span>
       </Button>
     </Li>
@@ -19,7 +20,7 @@ function IconMenus({
 }: ComponentProps<typeof Button> & { icon: ReactNode }) {
   return (
     <Li>
-      <Button className='dropdown-item' type='button' {...props}>
+      <Button className={DROPDOWN_ITEM} type='button' {...props}>
         <WithIcon>
           <Span>{children}</Span>
           <Icon>{icon}</Icon>
@@ -32,7 +33,7 @@ function IconMenus({
 function OnlyIcon({ icon, ...props }: ComponentProps<typeof Button> & { icon: ReactNode }) {
   return (
     <Li>
-      <Button className='dropdown-item' type='button' {...props}>
+      <Button className={DROPDOWN_ITEM} type='button' {...props}>
         <IconCenter>{icon}</IconCenter>
       </Button>
     </Li>
@@ -62,7 +63,7 @@ const Button = styled.button<{ selected: boolean }>`
   text-align: left;
   &:hover,
   &:focus,
-  &.focused {
+  &.${FOCUSED} {
     background: ${({ theme }) => theme.color.grayScale.coolGray100};
   }
   &:active {
