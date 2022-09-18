@@ -12,7 +12,7 @@ export default defineConfig({
   root: path.resolve('./'),
   publicDir: path.resolve('./public'),
   server: {
-    port: 8000,
+    port: 8080,
     open: true,
     hmr: {
       overlay: true,
