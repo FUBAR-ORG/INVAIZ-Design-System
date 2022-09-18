@@ -123,6 +123,9 @@ const Trigger = styled.button<{ open: boolean; dropdownType: DropdownType; error
   border-radius: 5px;
   color: ${({ theme }) => theme.color.grayScale.basic.black};
   font-size: ${({ theme }) => theme.fontSize.size14}px;
+  &:focus {
+    outline: ${({ theme }) => `2px solid ${theme.color.primary.blue500}`};
+  }
   outline: ${({ error, dropdownType, theme }) => {
     if (error) {
       return `2px solid ${theme.color.system.caution1}`;
