@@ -1,7 +1,9 @@
+import type { ReactNode } from 'react';
 import type { CheckboxDefaultProps } from '@components/Checkboxes/interfaces/Checkbox.interface';
 // types
 
 import {
+  CLASSNAME_OUTLINE_CHECK_ICON,
   StyleLabel,
   StyleOutlineCheckIcon,
   StyleOutlineCheckbox,
@@ -11,7 +13,35 @@ import {
 } from '@components/Checkboxes/styles/OutlineCheckbox.style';
 // styles
 
-export interface CheckboxProps extends CheckboxDefaultProps {
+interface OutlineCheckboxBaseProps extends OutlineCheckboxProps {
+  /**
+   * 내부에 렌더링할 아이콘 컴포넌트
+   */
+  iconComponent: ReactNode;
+}
+
+const OutlineCheckboxBase = ({
+  iconComponent,
+  text,
+  onChange,
+  disabled,
+  ...props
+}: OutlineCheckboxBaseProps) => (
+  <StyleLabel>
+    <StyleOutlineCheckboxHover disabled={disabled}>
+      <StyleOutlineCheckboxInput
+        type='checkbox'
+        onChange={(e) => onChange?.(e.target.checked)}
+        disabled={disabled}
+        {...props}
+      />
+      <StyleOutlineCheckbox>{iconComponent}</StyleOutlineCheckbox>
+    </StyleOutlineCheckboxHover>
+    <StyleCheckboxText disabled={disabled}>{text}</StyleCheckboxText>
+  </StyleLabel>
+);
+
+export interface OutlineCheckboxProps extends CheckboxDefaultProps {
   /**
    * 체크 박스 우측에 표시될 텍스트입니다.
    */
@@ -21,21 +51,31 @@ export interface CheckboxProps extends CheckboxDefaultProps {
 /**
  * 단독 선택 체크박스
  */
-const OutlineCheckbox = ({ text, onChange, disabled, ...props }: CheckboxProps) => (
-  <StyleLabel>
-    <StyleOutlineCheckboxHover disabled={disabled}>
-      <StyleOutlineCheckboxInput
-        type='checkbox'
-        onChange={(e) => onChange?.(e.target.checked)}
-        disabled={disabled}
-        {...props}
-      />
-      <StyleOutlineCheckbox>
+const OutlineCheckbox = ({ ...props }: OutlineCheckboxProps) => (
+  <OutlineCheckboxBase
+    iconComponent={<StyleOutlineCheckIcon size={20} icon='Check' />}
+    {...props}
+  />
+);
+
+export interface ParentCheckboxProps extends OutlineCheckboxProps {
+  /**
+   * 불확실한 상태 유무입니다.
+   */
+  isIndeterminate?: boolean;
+}
+
+export const ParentCheckbox = ({ isIndeterminate, ...props }: ParentCheckboxProps) => (
+  <OutlineCheckboxBase
+    iconComponent={
+      isIndeterminate ? (
+        <StyleOutlineCheckIcon size={20} icon='Subtract' className={CLASSNAME_OUTLINE_CHECK_ICON} />
+      ) : (
         <StyleOutlineCheckIcon size={20} icon='Check' />
-      </StyleOutlineCheckbox>
-    </StyleOutlineCheckboxHover>
-    <StyleCheckboxText disabled={disabled}>{text}</StyleCheckboxText>
-  </StyleLabel>
+      )
+    }
+    {...props}
+  />
 );
 
 export default OutlineCheckbox;

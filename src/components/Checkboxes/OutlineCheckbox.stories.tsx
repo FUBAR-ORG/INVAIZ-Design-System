@@ -1,12 +1,12 @@
 import { Story } from '@storybook/react';
-import OutlineCheckbox, { CheckboxProps } from '@components/Checkboxes/OutlineCheckbox';
+import OutlineCheckbox, { OutlineCheckboxProps } from '@components/Checkboxes/OutlineCheckbox';
 
 export default {
   title: 'Components/Checkboxes/OutlineCheckbox',
   component: OutlineCheckbox,
 };
 
-const Template: Story<CheckboxProps> = (props) => <OutlineCheckbox {...props} />;
+const Template: Story<OutlineCheckboxProps> = (props) => <OutlineCheckbox {...props} />;
 
 export const Primary = Template.bind({});
 

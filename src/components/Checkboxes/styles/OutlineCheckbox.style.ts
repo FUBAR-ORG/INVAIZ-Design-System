@@ -12,6 +12,8 @@ import {
 } from '@components/Checkboxes/styles/CommonCheckbox.style';
 // styles
 
+export const CLASSNAME_OUTLINE_CHECK_ICON = 'visible' as const;
+
 export const StyleLabel = styled.label``;
 
 export const StyleOutlineCheckIcon = styled(SvgIcon)`
@@ -19,6 +21,9 @@ export const StyleOutlineCheckIcon = styled(SvgIcon)`
   height: 100%;
   fill: ${({ theme }) => theme.color.grayScale.coolGray900};
   visibility: hidden;
+  &.${CLASSNAME_OUTLINE_CHECK_ICON} {
+    visibility: visible;
+  }
 `;
 
 export const StyleOutlineCheckbox = styled(StyleCommonCheckbox)`
