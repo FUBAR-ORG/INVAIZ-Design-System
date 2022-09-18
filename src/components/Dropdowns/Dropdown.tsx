@@ -6,15 +6,19 @@ import { css } from '@emotion/react';
 import normalColor from '@themes/colors/normal-color';
 import useEventListener from '@components/Dropdowns/hooks/use-event-listener';
 
+type DropdownType = 'default' | 'outline-fill' | 'outline';
+
 interface Props {
-  selected: ReactNode;
+  text: ReactNode;
+  type?: DropdownType;
   iconProps?: Partial<ComponentProps<typeof SvgIcon>>;
   disabled?: boolean;
   error?: string;
 }
 
 export default function Dropdown({
-  selected,
+  text,
+  type = 'default',
   iconProps,
   disabled,
   error,
@@ -47,8 +51,8 @@ export default function Dropdown({
 
   return (
     <Relative data-dropdown-id={dropdownId} onClick={handleOpen}>
-      <Trigger open={open} disabled={disabled} error={error}>
-        <span>{selected}</span>
+      <Trigger open={open} disabled={disabled} error={error} dropdownType={type}>
+        {text}
         <SvgIcon
           icon={error ? 'Caution' : 'Trigger'}
           size={20}
@@ -79,10 +83,11 @@ const Relative = styled.div`
   height: 48px;
 `;
 
-const Trigger = styled.button<{ open: boolean; error?: string }>`
+const Trigger = styled.button<{ open: boolean; dropdownType: DropdownType; error?: string }>`
   width: 100%;
   height: 100%;
-  background: ${({ theme }) => theme.color.grayScale.coolGray100};
+  background: ${({ theme, dropdownType }) =>
+    dropdownType !== 'outline' ? theme.color.grayScale.coolGray100 : 'none'};
   outline: none;
   border: none;
   cursor: pointer;
@@ -91,6 +96,17 @@ const Trigger = styled.button<{ open: boolean; error?: string }>`
   justify-content: space-between;
   border-radius: 5px;
   color: ${({ theme }) => theme.color.grayScale.basic.black};
+  outline: ${({ dropdownType, theme }) => {
+    switch (dropdownType) {
+      case 'outline-fill':
+        return `2px solid ${theme.color.grayScale.coolGray500}`;
+      case 'outline':
+        return `2px solid ${theme.color.grayScale.coolGray500}`;
+      default:
+        return 'none';
+    }
+  }};
+
   ${({ open, theme }) =>
     open &&
     css`
