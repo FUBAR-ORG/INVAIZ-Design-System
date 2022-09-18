@@ -73,7 +73,7 @@ export default function Dropdown({
 
   return (
     <Relative data-dropdown-id={dropdownId} onClick={handleOpen}>
-      <Trigger open={open} disabled={disabled} error={error} dropdownType={type}>
+      <Trigger open={open} dropdownType={type} disabled={disabled} error={error}>
         {content}
         {arrowIcon}
       </Trigger>
@@ -81,16 +81,6 @@ export default function Dropdown({
     </Relative>
   );
 }
-
-function Item(props: ComponentProps<typeof Button>) {
-  return (
-    <Li>
-      <Button type='button' {...props} />
-    </Li>
-  );
-}
-
-Dropdown.Item = Item;
 
 const Relative = styled.div`
   position: relative;
@@ -106,7 +96,7 @@ const WithIcon = styled.div`
   font-size: ${({ theme }) => theme.fontSize.size14}px;
 `;
 
-const Icon = styled.div`
+const Icon = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,7 +123,10 @@ const Trigger = styled.button<{ open: boolean; dropdownType: DropdownType; error
   border-radius: 5px;
   color: ${({ theme }) => theme.color.grayScale.basic.black};
   font-size: ${({ theme }) => theme.fontSize.size14}px;
-  outline: ${({ dropdownType, theme }) => {
+  outline: ${({ error, dropdownType, theme }) => {
+    if (error) {
+      return `2px solid ${theme.color.system.caution1}`;
+    }
     switch (dropdownType) {
       case 'outline-fill':
         return `2px solid ${theme.color.grayScale.coolGray500}`;
@@ -144,11 +137,6 @@ const Trigger = styled.button<{ open: boolean; dropdownType: DropdownType; error
     }
   }};
 
-  ${({ open, theme }) =>
-    open &&
-    css`
-      outline: 2px solid ${theme.color.primary.blue500};
-    `}
   &:disabled {
     cursor: not-allowed;
     background: ${({ theme }) => theme.color.grayScale.gray200};
@@ -165,7 +153,6 @@ const Trigger = styled.button<{ open: boolean; dropdownType: DropdownType; error
         top: -15px;
         left: 0;
       }
-      outline: 2px solid ${theme.color.system.caution1};
     `}
 `;
 
@@ -176,48 +163,7 @@ const Menu = styled.ul`
   border-radius: 5px;
   padding-left: 0;
   margin: 0;
-  top: calc(100% + 2px);
   overflow: hidden;
   max-height: 144px;
   ${({ theme }) => theme.style.boxShadow.dropdownEmphasis};
-`;
-
-const Li = styled.li`
-  height: 48px;
-`;
-
-const Button = styled.button<{ selected: boolean }>`
-  position: relative;
-  padding: 14px 12px;
-  background: ${({ theme }) => theme.color.grayScale.basic.white};
-  outline: none;
-  cursor: pointer;
-  border: none;
-  width: 100%;
-  height: 100%;
-  color: ${({ theme }) => theme.color.grayScale.basic.black};
-  text-align: left;
-  &:hover {
-    background: ${({ theme }) => theme.color.grayScale.coolGray100};
-  }
-  &:active {
-    background: ${({ theme }) => theme.color.grayScale.coolGray200};
-  }
-  &:disabled {
-    color: ${({ theme }) => theme.color.grayScale.gray400};
-    cursor: not-allowed;
-  }
-  &:before {
-    ${({ selected, theme }) =>
-      selected &&
-      css`
-        position: absolute;
-        content: '';
-        width: 4px;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background: ${theme.color.grayScale.basic.black};
-      `}
-  }
 `;
