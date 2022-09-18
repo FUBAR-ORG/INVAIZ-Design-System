@@ -1,4 +1,4 @@
-import type { CheckboxDefaultProps } from '@components/Checkboxes/Checkbox';
+import type { CheckboxDefaultProps } from '@components/Checkboxes/OutlineCheckbox';
 // types
 
 import { Story } from '@storybook/react';

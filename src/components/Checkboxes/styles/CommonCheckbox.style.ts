@@ -1,21 +1,6 @@
 import styled from '@emotion/styled';
 // React modules
 
-export const StyleCheckboxView = styled.div`
-  position: relative;
-
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-
-  cursor: pointer;
-  padding: 10px;
-
-  box-sizing: border-box;
-
-  vertical-align: middle;
-`;
-
 export const StyleCommonCheckbox = styled.div`
   width: 20px;
   height: 20px;
@@ -35,5 +20,7 @@ export const StyleCommonCheckboxInput = styled.input`
 
   opacity: 0;
 
-  cursor: pointer;
+  cursor: inherit;
+
+  z-index: 1;
 `;

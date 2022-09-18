@@ -1,12 +1,12 @@
-import MultipleCheckbox from '@components/Checkboxes/MultipleCheckbox';
+import FillCheckbox from '@components/Checkboxes/FillCheckbox';
 import { render } from '@tests/test-utils';
 
-describe('MultipleCheckbox', () => {
+describe('FillCheckbox', () => {
   it('체크박스의 기본값은 `false`이며, 변경이 가능하다.', () => {
     const { getAllByRole } = render(
       <>
-        <MultipleCheckbox />
-        <MultipleCheckbox checked />
+        <FillCheckbox />
+        <FillCheckbox checked />
       </>
     );
     const [isNotChanged, isChanged] = getAllByRole('checkbox');
@@ -17,7 +17,7 @@ describe('MultipleCheckbox', () => {
 
   it('체크 박스는 클릭할 수 있으며, 클릭 시 `checked` 상태 변경이 가능하다.', () => {
     const onChange = jest.fn();
-    const { getByRole } = render(<MultipleCheckbox onChange={onChange} />);
+    const { getByRole } = render(<FillCheckbox onChange={onChange} />);
     const checkbox = getByRole('checkbox');
 
     expect(onChange).not.toHaveBeenCalled();
@@ -34,7 +34,7 @@ describe('MultipleCheckbox', () => {
   });
 
   it('체크 박스는 `disabled`일 때, 상태 변경이 불가능하다.', () => {
-    const { getByRole } = render(<MultipleCheckbox disabled />);
+    const { getByRole } = render(<FillCheckbox disabled />);
     const checkbox = getByRole('checkbox');
 
     checkbox.click();

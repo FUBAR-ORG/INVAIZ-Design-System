@@ -1,11 +1,14 @@
-import Checkbox from '@components/Checkboxes/Checkbox';
-import MultipleCheckbox from '@components/Checkboxes/MultipleCheckbox';
+import OutlineCheckbox from '@components/Checkboxes/OutlineCheckbox';
+import FillCheckbox from '@components/Checkboxes/FillCheckbox';
+import RadioButton from '@components/Checkboxes/RadioButton';
 
 export default function App() {
   return (
     <>
-      <Checkbox text='Please enter you text here.' />
-      <MultipleCheckbox />
+      <OutlineCheckbox text='Jump out the window. if you are the object of passion. Flee it if you feel it. Passion goes, boredom remains' />
+      <OutlineCheckbox text='Please enter you text here.' />
+      <FillCheckbox />
+      <RadioButton />
     </>
   );
 }
