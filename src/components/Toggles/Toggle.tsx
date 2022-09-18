@@ -1,4 +1,4 @@
-import type { CheckboxDefaultProps } from '@components/Checkboxes/OutlineCheckbox';
+import type { CheckboxDefaultProps } from '@components/Checkboxes/interfaces/Checkbox.interface';
 // types
 
 import styled from '@emotion/styled';

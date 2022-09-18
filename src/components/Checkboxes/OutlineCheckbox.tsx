@@ -31,7 +31,7 @@ const OutlineCheckbox = ({ text, onChange, disabled, ...props }: CheckboxProps) 
         {...props}
       />
       <StyleOutlineCheckbox>
-        <StyleOutlineCheckIcon size={20} icon='Subtract' />
+        <StyleOutlineCheckIcon size={20} icon='Check' />
       </StyleOutlineCheckbox>
     </StyleOutlineCheckboxHover>
     <StyleCheckboxText disabled={disabled}>{text}</StyleCheckboxText>
