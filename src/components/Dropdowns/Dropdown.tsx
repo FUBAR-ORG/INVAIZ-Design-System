@@ -35,7 +35,7 @@ export default function Dropdown({
     listener: () => setOpen(false),
   });
 
-  useEventListener('keydown', (e: KeyboardEvent) => {
+  useEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       setOpen(false);
     }
