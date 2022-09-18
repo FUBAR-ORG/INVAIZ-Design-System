@@ -96,7 +96,7 @@ const WithIcon = styled.div`
   font-size: ${({ theme }) => theme.fontSize.size14}px;
 `;
 
-const Icon = styled.span`
+const Icon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

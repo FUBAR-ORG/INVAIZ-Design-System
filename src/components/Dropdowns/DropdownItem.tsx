@@ -29,18 +29,11 @@ function IconMenus({
   );
 }
 
-function OnlyIcon({
-  children,
-  icon,
-  ...props
-}: ComponentProps<typeof Button> & { icon: ReactNode }) {
+function OnlyIcon({ icon, ...props }: ComponentProps<typeof Button> & { icon: ReactNode }) {
   return (
     <Li>
       <Button type='button' {...props}>
-        <WithIcon>
-          <Span>{children}</Span>
-          <Icon>{icon}</Icon>
-        </WithIcon>
+        <IconCenter>{icon}</IconCenter>
       </Button>
     </Li>
   );
@@ -96,11 +89,19 @@ const Span = styled.span`
   padding-left: 12px;
 `;
 
-const Icon = styled.span`
+const Icon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 48px;
+  height: 100%;
+`;
+
+const IconCenter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   height: 100%;
 `;
 

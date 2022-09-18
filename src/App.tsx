@@ -19,14 +19,12 @@ export default function App() {
     <div style={{ padding: '20px' }}>
       <Dropdown text='Text' type='outline'>
         {options.map((option) => (
-          <DropdownItem.IconMenus
+          <DropdownItem.OnlyIcon
             key={option.value}
             selected={value === option.value}
             onClick={() => setSelected(option)}
             icon={<SvgIcon icon='Cancel' size={16} />}
-          >
-            {option.label}
-          </DropdownItem.IconMenus>
+          />
         ))}
       </Dropdown>
     </div>
