@@ -1,7 +1,6 @@
 import Dropdown from '@components/Dropdowns/Dropdown';
 import DropdownItem from '@components/Dropdowns/DropdownItem';
 import { useState } from 'react';
-import SvgIcon from '@components/SvgIcons/SvgIcon';
 
 type Option = {
   value: number;
@@ -9,7 +8,7 @@ type Option = {
 };
 
 export default function App() {
-  const [{ value }, setSelected] = useState({ value: 0, label: 'test' });
+  const [{ value, label }, setSelected] = useState({ value: 0, label: 'test' });
   const options: Option[] = [
     { value: 0, label: 'test' },
     { value: 1, label: 'test2' },
@@ -17,14 +16,15 @@ export default function App() {
   ];
   return (
     <div style={{ padding: '20px' }}>
-      <Dropdown text='Text' type='outline'>
+      <Dropdown text={label} type='outline'>
         {options.map((option) => (
-          <DropdownItem.OnlyIcon
+          <DropdownItem.Default
             key={option.value}
             selected={value === option.value}
             onClick={() => setSelected(option)}
-            icon={<SvgIcon icon='Cancel' size={16} />}
-          />
+          >
+            {option.label}
+          </DropdownItem.Default>
         ))}
       </Dropdown>
     </div>

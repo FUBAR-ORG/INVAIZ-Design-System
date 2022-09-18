@@ -5,7 +5,7 @@ import { css } from '@emotion/react';
 function Default({ children, ...props }: ComponentProps<typeof Button>) {
   return (
     <Li>
-      <Button type='button' {...props}>
+      <Button className='dropdown-item' type='button' {...props}>
         <Span>{children}</Span>
       </Button>
     </Li>
@@ -19,7 +19,7 @@ function IconMenus({
 }: ComponentProps<typeof Button> & { icon: ReactNode }) {
   return (
     <Li>
-      <Button type='button' {...props}>
+      <Button className='dropdown-item' type='button' {...props}>
         <WithIcon>
           <Span>{children}</Span>
           <Icon>{icon}</Icon>
@@ -32,7 +32,7 @@ function IconMenus({
 function OnlyIcon({ icon, ...props }: ComponentProps<typeof Button> & { icon: ReactNode }) {
   return (
     <Li>
-      <Button type='button' {...props}>
+      <Button className='dropdown-item' type='button' {...props}>
         <IconCenter>{icon}</IconCenter>
       </Button>
     </Li>
@@ -60,7 +60,9 @@ const Button = styled.button<{ selected: boolean }>`
   height: 100%;
   color: ${({ theme }) => theme.color.grayScale.basic.black};
   text-align: left;
-  &:hover {
+  &:hover,
+  &:focus,
+  &.focused {
     background: ${({ theme }) => theme.color.grayScale.coolGray100};
   }
   &:active {

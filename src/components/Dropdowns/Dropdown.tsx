@@ -1,10 +1,18 @@
-import { ComponentProps, PropsWithChildren, ReactNode, useId, useState } from 'react';
+import {
+  ComponentProps,
+  KeyboardEvent,
+  PropsWithChildren,
+  ReactNode,
+  useId,
+  useRef,
+  useState,
+} from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import SvgIcon from '@components/SvgIcons/SvgIcon';
-import useExternalClick from '@components/Dropdowns/hooks/use-external-click';
 import useEventListener from '@components/Dropdowns/hooks/use-event-listener';
 import normalColor from '@themes/colors/normal-color';
+import useExternalClick from '@components/Dropdowns/hooks/use-external-click';
 
 type DropdownType = 'default' | 'outline-fill' | 'outline';
 
@@ -27,17 +35,55 @@ export default function Dropdown({
   children,
 }: PropsWithChildren<Props>) {
   const dropdownId = useId();
+  const ref = useRef<HTMLDivElement>(null);
+  const [focused, setFocused] = useState<number>(0);
   const [open, setOpen] = useState(false);
   const handleOpen = () => !disabled && setOpen((prev) => !prev);
 
+  const resetDropdown = () => {
+    setOpen(false);
+    setFocused(-1);
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (!ref.current) {
+      return;
+    }
+    const dropdownList = Array.from(ref.current.querySelectorAll<HTMLElement>('.dropdown-item'));
+    dropdownList.forEach((item) => item.classList.remove('focused'));
+    const focusedItem = dropdownList.at(focused);
+    switch (e.key) {
+      case 'Enter':
+        focusedItem?.click();
+        setFocused(-1);
+        break;
+      case 'ArrowDown':
+        setFocused((prev) => {
+          const next = (prev + 1) % dropdownList.length;
+          dropdownList.at(next)?.classList.add('focused');
+          return next;
+        });
+        break;
+      case 'ArrowUp':
+        setFocused((prev) => {
+          const next = (prev + dropdownList.length - 1) % dropdownList.length;
+          dropdownList.at(next)?.classList.add('focused');
+          return next;
+        });
+        break;
+      default:
+        break;
+    }
+  };
+
   useExternalClick({
     selector: `[data-dropdown-id='${dropdownId}']`,
-    listener: () => setOpen(false),
+    listener: resetDropdown,
   });
 
   useEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      setOpen(false);
+      resetDropdown();
     }
   });
 
@@ -72,8 +118,14 @@ export default function Dropdown({
   );
 
   return (
-    <Relative data-dropdown-id={dropdownId} onClick={handleOpen}>
-      <Trigger open={open} dropdownType={type} disabled={disabled} error={error}>
+    <Relative ref={ref} data-dropdown-id={dropdownId} onKeyDown={handleKeyDown}>
+      <Trigger
+        onClick={handleOpen}
+        open={open}
+        dropdownType={type}
+        disabled={disabled}
+        error={error}
+      >
         {content}
         {arrowIcon}
       </Trigger>
