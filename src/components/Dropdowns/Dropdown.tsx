@@ -123,6 +123,7 @@ const Menu = styled.ul`
   border-radius: 5px;
   padding-left: 0;
   margin: 0;
+  top: calc(100% + 2px);
   overflow: hidden;
   max-height: 144px;
   ${({ theme }) => theme.style.boxShadow.dropdownEmphasis};
