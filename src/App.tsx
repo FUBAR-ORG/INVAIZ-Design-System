@@ -7,7 +7,7 @@ type Option = {
 };
 
 export default function App() {
-  const [{ value, label }, setSelected] = useState({ value: 0, label: 'test' });
+  const [{ value }, setSelected] = useState({ value: 0, label: 'test' });
   const options: Option[] = [
     { value: 0, label: 'test' },
     { value: 1, label: 'test2' },
@@ -15,7 +15,7 @@ export default function App() {
   ];
   return (
     <div style={{ padding: '20px' }}>
-      <Dropdown text={label} type='outline-fill'>
+      <Dropdown text='Text' type='outline'>
         {options.map((option) => (
           <Dropdown.Item
             key={option.value}

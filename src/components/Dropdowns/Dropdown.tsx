@@ -1,17 +1,18 @@
 import { ComponentProps, PropsWithChildren, ReactNode, useId, useState } from 'react';
 import styled from '@emotion/styled';
-import useExternalClick from '@components/Dropdowns/hooks/use-external-click';
-import SvgIcon from '@components/SvgIcons/SvgIcon';
 import { css } from '@emotion/react';
-import normalColor from '@themes/colors/normal-color';
+import SvgIcon from '@components/SvgIcons/SvgIcon';
+import useExternalClick from '@components/Dropdowns/hooks/use-external-click';
 import useEventListener from '@components/Dropdowns/hooks/use-event-listener';
+import normalColor from '@themes/colors/normal-color';
 
 type DropdownType = 'default' | 'outline-fill' | 'outline';
 
 interface Props {
   text: ReactNode;
   type?: DropdownType;
-  iconProps?: Partial<ComponentProps<typeof SvgIcon>>;
+  icon?: ReactNode;
+  arrowIconProps?: Partial<ComponentProps<typeof SvgIcon>>;
   disabled?: boolean;
   error?: string;
 }
@@ -19,7 +20,8 @@ interface Props {
 export default function Dropdown({
   text,
   type = 'default',
-  iconProps,
+  icon,
+  arrowIconProps,
   disabled,
   error,
   children,
@@ -49,17 +51,31 @@ export default function Dropdown({
     return normalColor.grayScale.basic.black;
   })();
 
+  const content = icon ? (
+    <WithIcon>
+      <Icon>{icon}</Icon> {text}
+    </WithIcon>
+  ) : (
+    <Text>{text}</Text>
+  );
+
+  const arrowIcon = (
+    <Icon>
+      <SvgIcon
+        icon={error ? 'Caution' : 'Trigger'}
+        size={20}
+        style={{ transform: `rotate(${!error && open ? 180 : 0}deg)` }}
+        color={iconColor}
+        {...arrowIconProps}
+      />
+    </Icon>
+  );
+
   return (
     <Relative data-dropdown-id={dropdownId} onClick={handleOpen}>
       <Trigger open={open} disabled={disabled} error={error} dropdownType={type}>
-        {text}
-        <SvgIcon
-          icon={error ? 'Caution' : 'Trigger'}
-          size={20}
-          style={{ transform: `rotate(${!error && open ? 180 : 0}deg)` }}
-          color={iconColor}
-          {...iconProps}
-        />
+        {content}
+        {arrowIcon}
       </Trigger>
       {open && <Menu>{children}</Menu>}
     </Relative>
@@ -83,9 +99,29 @@ const Relative = styled.div`
   height: 48px;
 `;
 
+const WithIcon = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: ${({ theme }) => theme.fontSize.size14}px;
+`;
+
+const Icon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 100%;
+`;
+
+const Text = styled.span`
+  padding-left: 12px;
+`;
+
 const Trigger = styled.button<{ open: boolean; dropdownType: DropdownType; error?: string }>`
   width: 100%;
   height: 100%;
+  padding: 0;
   background: ${({ theme, dropdownType }) =>
     dropdownType !== 'outline' ? theme.color.grayScale.coolGray100 : 'none'};
   outline: none;
@@ -96,6 +132,7 @@ const Trigger = styled.button<{ open: boolean; dropdownType: DropdownType; error
   justify-content: space-between;
   border-radius: 5px;
   color: ${({ theme }) => theme.color.grayScale.basic.black};
+  font-size: ${({ theme }) => theme.fontSize.size14}px;
   outline: ${({ dropdownType, theme }) => {
     switch (dropdownType) {
       case 'outline-fill':
@@ -123,7 +160,7 @@ const Trigger = styled.button<{ open: boolean; dropdownType: DropdownType; error
       &:before {
         position: absolute;
         content: '${error}';
-        font-size: ${theme.fontSize.size10};
+        font-size: ${theme.fontSize.size10}px;
         color: ${theme.color.system.caution1};
         top: -15px;
         left: 0;
