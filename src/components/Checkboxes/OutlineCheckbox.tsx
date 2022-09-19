@@ -41,7 +41,7 @@ const OutlineCheckboxBase = ({
   </StyleLabel>
 );
 
-export interface OutlineCheckboxProps extends CheckboxDefaultProps {
+interface OutlineCheckboxProps extends CheckboxDefaultProps {
   /**
    * 체크 박스 우측에 표시될 텍스트입니다.
    */
@@ -58,7 +58,7 @@ const OutlineCheckbox = ({ ...props }: OutlineCheckboxProps) => (
   />
 );
 
-export interface ParentCheckboxProps extends OutlineCheckboxProps {
+interface ParentCheckboxProps extends OutlineCheckboxProps {
   /**
    * 불확실한 상태 유무입니다.
    */

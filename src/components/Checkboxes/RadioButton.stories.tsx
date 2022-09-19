@@ -1,7 +1,9 @@
-import type { CheckboxDefaultProps } from '@components/Checkboxes/OutlineCheckbox';
+import type { ComponentProps } from 'react';
 // types
 
 import { Story } from '@storybook/react';
+// storybook modules
+
 import RadioButton from '@components/Checkboxes/RadioButton';
 // components
 
@@ -10,7 +12,7 @@ export default {
   component: RadioButton,
 };
 
-const Template: Story<CheckboxDefaultProps> = (props) => <RadioButton {...props} />;
+const Template: Story<ComponentProps<typeof RadioButton>> = (props) => <RadioButton {...props} />;
 
 export const Primary = Template.bind({});
 

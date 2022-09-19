@@ -1,12 +1,12 @@
-import FillCheckbox from '@components/Checkboxes/FillCheckbox';
+import RadioButton from '@components/Checkboxes/RadioButton';
 import { render } from '@tests/test-utils';
 
-describe('FillCheckbox', () => {
-  it('체크 박스의 기본값은 `false`이며, 변경이 가능하다.', () => {
+describe('RadioButton', () => {
+  it('라디오 버튼의 기본값은 `false`이며, 변경이 가능하다.', () => {
     const { getAllByRole } = render(
       <>
-        <FillCheckbox />
-        <FillCheckbox checked />
+        <RadioButton />
+        <RadioButton checked />
       </>
     );
     const [isNotChanged, isChanged] = getAllByRole('checkbox');
@@ -15,9 +15,9 @@ describe('FillCheckbox', () => {
     expect(isChanged).toBeChecked();
   });
 
-  it('체크 박스는 클릭할 수 있으며, 클릭 시 `checked` 상태 변경이 가능하다.', () => {
+  it('라디오 버튼은 클릭할 수 있으며, 클릭 시 `checked` 상태 변경이 가능하다.', () => {
     const onChange = jest.fn();
-    const { getByRole } = render(<FillCheckbox onChange={onChange} />);
+    const { getByRole } = render(<RadioButton onChange={onChange} />);
     const checkbox = getByRole('checkbox');
 
     expect(onChange).not.toHaveBeenCalled();
@@ -33,8 +33,8 @@ describe('FillCheckbox', () => {
     expect(onChange).toHaveBeenCalled();
   });
 
-  it('체크 박스는 `disabled`일 때, 상태 변경이 불가능하다.', () => {
-    const { getByRole } = render(<FillCheckbox disabled />);
+  it('라디오 버튼이 `disabled`일 때, 상태 변경이 불가능하다.', () => {
+    const { getByRole } = render(<RadioButton disabled />);
     const checkbox = getByRole('checkbox');
 
     checkbox.click();

@@ -2,7 +2,7 @@ import OutlineCheckbox from '@components/Checkboxes/OutlineCheckbox';
 import { render } from '@tests/test-utils';
 
 describe('OutlineCheckbox', () => {
-  it('체크박스의 기본값은 `false`이며, 변경이 가능하다.', () => {
+  it('체크 박스의 기본값은 `false`이며, 변경이 가능하다.', () => {
     const { getAllByRole } = render(
       <>
         <OutlineCheckbox text='TEXT' />
