@@ -18,6 +18,9 @@ export const Template: Story<ComponentProps<typeof NestedCheckbox>> = (props) =>
   </NestedCheckbox>
 );
 Template.storyName = 'Playground';
+Template.args = {
+  text: 'you can control to NestedCheckbox',
+};
 
 type CheckOption = {
   id: number;
