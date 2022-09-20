@@ -73,10 +73,10 @@ const Button = styled.button<{ selected: boolean }>`
     color: ${({ theme }) => theme.color.grayScale.gray400};
     cursor: not-allowed;
   }
-  &:before {
-    ${({ selected, theme }) =>
-      selected &&
-      css`
+  ${({ selected, theme }) =>
+    selected &&
+    css`
+      &:before {
         position: absolute;
         content: '';
         width: 4px;
@@ -84,8 +84,8 @@ const Button = styled.button<{ selected: boolean }>`
         top: 0;
         left: 0;
         background: ${theme.color.grayScale.basic.black};
-      `}
-  }
+      }
+    `}
 `;
 
 const Span = styled.span`
