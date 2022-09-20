@@ -4,7 +4,6 @@ import {
   PropsWithChildren,
   ReactNode,
   useEffect,
-  useId,
   useRef,
   useState,
 } from 'react';
@@ -38,9 +37,7 @@ export default function Dropdown({
   error,
   children,
 }: PropsWithChildren<Props>) {
-  const dropdownId = useId();
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const [menuRef, setMenuRef] = useState<HTMLUListElement | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [focused, setFocused] = useState<number>(-1);
   const [open, setOpen] = useState(false);
 
@@ -52,10 +49,10 @@ export default function Dropdown({
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
-    if (!menuRef) {
+    if (!ref.current) {
       return;
     }
-    const dropdownList = Array.from(menuRef.querySelectorAll<HTMLElement>(`.${DROPDOWN_ITEM}`));
+    const dropdownList = Array.from(ref.current.querySelectorAll<HTMLElement>(`.${DROPDOWN_ITEM}`));
     dropdownList.forEach((item) => item.classList.remove(FOCUSED));
     const focusedItem = dropdownList.at(focused);
     switch (e.key) {
@@ -85,15 +82,15 @@ export default function Dropdown({
   };
 
   useEffect(() => {
-    if (!menuRef || focused === -1) {
+    if (!ref.current || focused === -1) {
       return;
     }
-    Array.from(menuRef.querySelectorAll<HTMLElement>(`.${DROPDOWN_ITEM}`))
+    Array.from(ref.current.querySelectorAll<HTMLElement>(`.${DROPDOWN_ITEM}`))
       .at(focused)
-      ?.scrollIntoView({ block: 'center' });
-  }, [menuRef, focused]);
+      ?.scrollIntoView({ block: 'nearest' });
+  }, [focused]);
 
-  useOnClickOutside(dropdownRef.current, resetDropdown);
+  useOnClickOutside(ref.current, resetDropdown);
 
   useEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -132,9 +129,8 @@ export default function Dropdown({
   );
 
   return (
-    <Relative ref={dropdownRef}>
+    <Relative ref={ref}>
       <Trigger
-        data-dropdown-id={dropdownId}
         open={open}
         dropdownType={type}
         disabled={disabled}
@@ -145,11 +141,7 @@ export default function Dropdown({
         {content}
         {arrowIcon}
       </Trigger>
-      {open && (
-        <Menu ref={setMenuRef} onClick={resetDropdown}>
-          {children}
-        </Menu>
-      )}
+      {open && <Menu onClick={resetDropdown}>{children}</Menu>}
     </Relative>
   );
 }
