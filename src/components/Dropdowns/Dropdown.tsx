@@ -57,7 +57,9 @@ export default function Dropdown({
     const focusedItem = dropdownList.at(focused);
     switch (e.key) {
       case 'Enter':
-        focusedItem?.click();
+        if (focused !== -1 && focusedItem) {
+          focusedItem?.click();
+        }
         break;
       case 'ArrowDown':
         setFocused((prev) => {
