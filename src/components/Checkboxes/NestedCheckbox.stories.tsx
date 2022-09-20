@@ -17,6 +17,7 @@ export const Template: Story<ComponentProps<typeof NestedCheckbox>> = (props) =>
     <NestedCheckbox.Item text='Children' />
   </NestedCheckbox>
 );
+Template.storyName = 'Playground';
 
 type CheckOption = {
   id: number;
