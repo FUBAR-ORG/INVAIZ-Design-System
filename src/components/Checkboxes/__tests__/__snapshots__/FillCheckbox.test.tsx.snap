@@ -15,7 +15,9 @@ exports[`FillCheckbox Snapshot 1`] = `
   >
     <svg
       className="css-1a3jyl"
-      data-file-name="SvgCheck"
+      data-file-name="Check.svg"
+      data-svg-name="Check"
+      data-test-id="Check"
       height={20}
       width={20}
     />
@@ -37,7 +39,9 @@ exports[`FillCheckbox Snapshot 2`] = `
   >
     <svg
       className="css-1a3jyl"
-      data-file-name="SvgCheck"
+      data-file-name="Check.svg"
+      data-svg-name="Check"
+      data-test-id="Check"
       height={20}
       width={20}
     />
