@@ -1,5 +1,12 @@
-import RadioButton from '@components/Checkboxes/RadioButton';
 import { render } from '@tests/test-utils';
+import { create } from 'react-test-renderer';
+// test utils
+
+import RadioButton from '@components/Checkboxes/RadioButton';
+// components
+
+import GlobalThemeProvider from '@themes/GlobalThemeProvider';
+// providers
 
 describe('RadioButton', () => {
   it('라디오 버튼의 기본값은 `false`이며, 변경이 가능하다.', () => {
@@ -40,4 +47,20 @@ describe('RadioButton', () => {
     checkbox.click();
     expect(checkbox).not.toBeChecked();
   });
+});
+
+test('RadioButton Snapshot', () => {
+  const checked = create(
+    <GlobalThemeProvider>
+      <RadioButton checked />
+    </GlobalThemeProvider>
+  );
+  expect(checked).toMatchSnapshot();
+
+  const unChecked = create(
+    <GlobalThemeProvider>
+      <RadioButton />
+    </GlobalThemeProvider>
+  );
+  expect(unChecked).toMatchSnapshot();
 });

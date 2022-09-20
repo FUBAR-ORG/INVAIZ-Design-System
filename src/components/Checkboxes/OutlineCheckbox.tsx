@@ -1,6 +1,8 @@
-import type { ReactNode } from 'react';
 import type { CheckboxDefaultProps } from '@components/Checkboxes/interfaces/Checkbox.interface';
 // types
+
+import { type ReactNode, useMemo } from 'react';
+// React modules
 
 import {
   CLASSNAME_OUTLINE_CHECK_ICON,
@@ -65,17 +67,18 @@ interface ParentCheckboxProps extends OutlineCheckboxProps {
   isIndeterminate?: boolean;
 }
 
-export const ParentCheckbox = ({ isIndeterminate, ...props }: ParentCheckboxProps) => (
-  <OutlineCheckboxBase
-    iconComponent={
+export const ParentCheckbox = ({ isIndeterminate, ...props }: ParentCheckboxProps) => {
+  const indeterminateIcon = useMemo(
+    () =>
       isIndeterminate ? (
-        <StyleOutlineCheckIcon size={20} icon='Subtract' className={CLASSNAME_OUTLINE_CHECK_ICON} />
+        <StyleOutlineCheckIcon icon='Subtract' size={20} className={CLASSNAME_OUTLINE_CHECK_ICON} />
       ) : (
-        <StyleOutlineCheckIcon size={20} icon='Check' />
-      )
-    }
-    {...props}
-  />
-);
+        <StyleOutlineCheckIcon icon='Check' size={20} />
+      ),
+    [isIndeterminate]
+  );
+
+  return <OutlineCheckboxBase iconComponent={indeterminateIcon} {...props} />;
+};
 
 export default OutlineCheckbox;

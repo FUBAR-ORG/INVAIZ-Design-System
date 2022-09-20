@@ -9,13 +9,11 @@ import OutlineCheckbox, { ParentCheckbox } from '@components/Checkboxes/OutlineC
 
 function SubCheckboxList({
   children,
-  text,
-  onChange,
   ...props
 }: PropsWithChildren<ComponentProps<typeof ParentCheckbox>>) {
   return (
     <div>
-      <ParentCheckbox text={text} onChange={onChange} {...props} />
+      <ParentCheckbox {...props} />
       <StyleSubCheckList>{children}</StyleSubCheckList>
     </div>
   );

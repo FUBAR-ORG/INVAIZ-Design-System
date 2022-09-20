@@ -1,5 +1,12 @@
-import FillCheckbox from '@components/Checkboxes/FillCheckbox';
 import { render } from '@tests/test-utils';
+import { create } from 'react-test-renderer';
+// test utils
+
+import FillCheckbox from '@components/Checkboxes/FillCheckbox';
+// components
+
+import GlobalThemeProvider from '@themes/GlobalThemeProvider';
+// providers
 
 describe('FillCheckbox', () => {
   it('체크 박스의 기본값은 `false`이며, 변경이 가능하다.', () => {
@@ -40,4 +47,20 @@ describe('FillCheckbox', () => {
     checkbox.click();
     expect(checkbox).not.toBeChecked();
   });
+});
+
+test('FillCheckbox Snapshot', () => {
+  const checked = create(
+    <GlobalThemeProvider>
+      <FillCheckbox checked />
+    </GlobalThemeProvider>
+  );
+  expect(checked).toMatchSnapshot();
+
+  const unChecked = create(
+    <GlobalThemeProvider>
+      <FillCheckbox />
+    </GlobalThemeProvider>
+  );
+  expect(unChecked).toMatchSnapshot();
 });

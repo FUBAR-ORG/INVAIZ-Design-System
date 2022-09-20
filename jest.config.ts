@@ -2,7 +2,7 @@ const config = {
   preset: 'ts-jest',
   transform: {
     '\\.(ts|tsx)$': 'ts-jest',
-    '\\.svg$': 'svg-jest',
+    '\\.svg$': '<rootDir>/config/svgTransformer.js',
   },
   testEnvironment: 'jsdom',
   moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
