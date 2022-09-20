@@ -5,6 +5,7 @@ import {
   ReactNode,
   useEffect,
   useId,
+  useRef,
   useState,
 } from 'react';
 import styled from '@emotion/styled';
@@ -38,27 +39,30 @@ export default function Dropdown({
   children,
 }: PropsWithChildren<Props>) {
   const dropdownId = useId();
-  const [ref, setRef] = useState<HTMLUListElement | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [menuRef, setMenuRef] = useState<HTMLUListElement | null>(null);
   const [focused, setFocused] = useState<number>(-1);
   const [open, setOpen] = useState(false);
-  const handleOpen = () => !disabled && setOpen((prev) => !prev);
+
+  const toggleOpen = () => setOpen((prev) => !prev);
 
   const resetDropdown = () => {
     setOpen(false);
     setFocused(-1);
   };
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (!ref) {
+  const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+    if (!menuRef) {
       return;
     }
-    const dropdownList = Array.from(ref.querySelectorAll<HTMLElement>(`.${DROPDOWN_ITEM}`));
+    const dropdownList = Array.from(menuRef.querySelectorAll<HTMLElement>(`.${DROPDOWN_ITEM}`));
     dropdownList.forEach((item) => item.classList.remove(FOCUSED));
     const focusedItem = dropdownList.at(focused);
     switch (e.key) {
       case 'Enter':
         if (focused !== -1 && focusedItem) {
-          focusedItem?.click();
+          focusedItem.focus();
+          focusedItem.click();
         }
         break;
       case 'ArrowDown':
@@ -81,15 +85,15 @@ export default function Dropdown({
   };
 
   useEffect(() => {
-    if (!ref || focused === -1) {
+    if (!menuRef || focused === -1) {
       return;
     }
-    Array.from(ref.querySelectorAll<HTMLElement>(`.${DROPDOWN_ITEM}`))
+    Array.from(menuRef.querySelectorAll<HTMLElement>(`.${DROPDOWN_ITEM}`))
       .at(focused)
-      ?.scrollIntoView({ block: 'nearest' });
-  }, [ref, focused]);
+      ?.scrollIntoView({ block: 'center' });
+  }, [menuRef, focused]);
 
-  useOnClickOutside(ref, resetDropdown);
+  useOnClickOutside(dropdownRef.current, resetDropdown);
 
   useEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -128,19 +132,24 @@ export default function Dropdown({
   );
 
   return (
-    <Relative onKeyDown={handleKeyDown}>
+    <Relative ref={dropdownRef}>
       <Trigger
         data-dropdown-id={dropdownId}
         open={open}
         dropdownType={type}
         disabled={disabled}
         error={error}
-        onClick={handleOpen}
+        onClick={toggleOpen}
+        onKeyDown={handleKeyDown}
       >
         {content}
         {arrowIcon}
       </Trigger>
-      {open && <Menu ref={setRef}>{children}</Menu>}
+      {open && (
+        <Menu ref={setMenuRef} onClick={resetDropdown}>
+          {children}
+        </Menu>
+      )}
     </Relative>
   );
 }
