@@ -10,9 +10,9 @@ import {
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import SvgIcon from '@components/SvgIcons/SvgIcon';
-import useEventListener from '@components/Dropdowns/hooks/use-event-listener';
+import useEventListener from '@components/Dropdowns/hooks/useEventListener';
 import normalColor from '@themes/colors/normal-color';
-import useExternalClick from '@components/Dropdowns/hooks/use-external-click';
+import useOnClickOutside from '@components/Dropdowns/hooks/useOnClickOutside';
 
 export const FOCUSED = 'focused' as const;
 export const DROPDOWN_ITEM = 'dropdown-item' as const;
@@ -89,10 +89,7 @@ export default function Dropdown({
       ?.scrollIntoView({ block: 'nearest' });
   }, [ref, focused]);
 
-  useExternalClick({
-    selector: `[data-dropdown-id='${dropdownId}']`,
-    listener: resetDropdown,
-  });
+  useOnClickOutside(ref, resetDropdown);
 
   useEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
