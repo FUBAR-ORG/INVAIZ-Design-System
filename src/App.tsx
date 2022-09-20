@@ -1,7 +1,7 @@
 import OutlineCheckbox from '@components/Checkboxes/OutlineCheckbox';
 import FillCheckbox from '@components/Checkboxes/FillCheckbox';
 import RadioButton from '@components/Checkboxes/RadioButton';
-import SubCheckboxList from '@components/Checkboxes/SubCheckboxList';
+import NestedCheckbox from '@components/Checkboxes/NestedCheckbox';
 import { useMemo, useState } from 'react';
 
 interface CheckOption {
@@ -40,14 +40,14 @@ export default function App() {
       <OutlineCheckbox text='Please enter your text here.' />
       <FillCheckbox />
       <RadioButton />
-      <SubCheckboxList
+      <NestedCheckbox
         text='Please enter your text here.'
         checked={allCheck}
         isIndeterminate={indeterminate}
         onChange={onAllChange}
       >
         {checkedList.map(({ id, checked }) => (
-          <SubCheckboxList.Item
+          <NestedCheckbox.Item
             key={id}
             text={`Test ${id}`}
             checked={checked}
@@ -55,7 +55,7 @@ export default function App() {
           />
         ))}
         <OutlineCheckbox text='Jump out the window. if you are the object of passion. Flee it if you feel it. Passion goes, boredom remains' />
-      </SubCheckboxList>
+      </NestedCheckbox>
     </>
   );
 }

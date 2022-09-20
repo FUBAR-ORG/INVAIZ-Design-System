@@ -1,8 +1,6 @@
 import type { ComponentProps } from 'react';
+import type { Story } from '@storybook/react';
 // types
-
-import { Story } from '@storybook/react';
-// storybook modules
 
 import RadioButton from '@components/Checkboxes/RadioButton';
 // components
@@ -12,8 +10,28 @@ export default {
   component: RadioButton,
 };
 
-const Template: Story<ComponentProps<typeof RadioButton>> = (props) => <RadioButton {...props} />;
+export const Template: Story<ComponentProps<typeof RadioButton>> = (props) => (
+  <RadioButton {...props} />
+);
+Template.storyName = 'Playground';
 
-export const Primary = Template.bind({});
+export const All = () => (
+  <>
+    <RadioButton checked={false} />
+    <RadioButton checked />
+    <RadioButton checked={false} disabled />
+    <RadioButton checked disabled />
+  </>
+);
 
-Primary.args = {};
+export const Unchecked = Template.bind({});
+Unchecked.args = { checked: false };
+
+export const Checked = Template.bind({});
+Checked.args = { checked: true };
+
+export const UncheckedDisabled = Template.bind({});
+UncheckedDisabled.args = { disabled: true };
+
+export const CheckedDisabled = Template.bind({});
+CheckedDisabled.args = { checked: true, disabled: true };

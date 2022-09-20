@@ -12,7 +12,7 @@ const OUTLINE_TEXT = 'Outline Checkbox' as const;
 // constants
 
 describe('OutlineCheckbox', () => {
-  it('체크 박스의 기본값은 `false`이며, 변경이 가능하다.', () => {
+  it('체크박스의 기본값은 `false`이며, 변경이 가능하다.', () => {
     const { getAllByRole } = render(
       <>
         <OutlineCheckbox text={OUTLINE_TEXT} />
@@ -25,7 +25,7 @@ describe('OutlineCheckbox', () => {
     expect(isChanged).toBeChecked();
   });
 
-  it('체크 박스는 클릭할 수 있으며, 클릭 시 `checked` 상태 변경이 가능하다.', () => {
+  it('체크박스는 클릭할 수 있으며, 클릭 시 `checked` 상태 변경이 가능하다.', () => {
     const onChange = jest.fn();
     const { getByRole } = render(<OutlineCheckbox text={OUTLINE_TEXT} onChange={onChange} />);
     const checkbox = getByRole('checkbox');
@@ -43,7 +43,7 @@ describe('OutlineCheckbox', () => {
     expect(onChange).toHaveBeenCalled();
   });
 
-  it('체크 박스는 텍스트 영역을 클릭하여도 상태 변경이 가능하다.', () => {
+  it('체크박스는 텍스트 영역을 클릭하여도 상태 변경이 가능하다.', () => {
     const { getByRole, getByText } = render(<OutlineCheckbox text={OUTLINE_TEXT} />);
 
     const checkbox = getByRole('checkbox');
@@ -53,7 +53,7 @@ describe('OutlineCheckbox', () => {
     expect(checkbox).toBeChecked();
   });
 
-  it('체크 박스는 `disabled`일 때, 상태 변경이 불가능하다.', () => {
+  it('체크박스는 `disabled`일 때, 상태 변경이 불가능하다.', () => {
     const { getByRole } = render(<OutlineCheckbox text={OUTLINE_TEXT} disabled />);
     const checkbox = getByRole('checkbox');
 
