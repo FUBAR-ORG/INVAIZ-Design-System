@@ -1,7 +1,6 @@
 import { type InputHTMLAttributes, useRef, useState, useEffect } from 'react';
-import styled from '@emotion/styled';
 
-import SvgIcon from '@components/SvgIcons/SvgIcon';
+import { Wrapper, Input, ClearableIcon, RequiredIcon } from '@components/Inputs/Input.style';
 
 /**
  * INVAIZ Input Box Props
@@ -60,63 +59,5 @@ const InputBox = ({ ...props }: InputBoxProps) => {
     </Wrapper>
   );
 };
-
-// style ------------------------------------------------------------------------------------------
-
-interface WrapperProps {
-  boxWidth?: number;
-}
-
-const Wrapper = styled.div<WrapperProps>`
-  position: relative;
-  width: ${({ boxWidth }) => (boxWidth ? `${boxWidth}px` : '100%')};
-  display: flex;
-  align-items: center;
-
-  & > svg {
-    position: absolute;
-    right: 16px;
-  }
-`;
-
-interface InputProps {
-  boxWidth?: number;
-  isClearable?: boolean;
-}
-
-const Input = styled.input<InputProps>`
-  width: 100%;
-  height: 32px;
-  padding-left: 16px;
-  padding-right: ${({ isClearable, required }) => (isClearable || required ? 34 : 16)}px;
-
-  font-size: ${({ theme }) => theme.fontSize.size14}px;
-
-  color: ${({ theme, disabled }) =>
-    disabled ? theme.color.system.off1 : theme.color.grayScale.basic.white};
-
-  background-color: ${({ theme, disabled }) =>
-    disabled ? theme.color.grayScale.gray200 : theme.color.grayScale.coolGray400};
-
-  border: none;
-  border-radius: 5px;
-  outline: none;
-
-  &:focus {
-    ${({ theme }) => theme.style.border.selected}
-    padding-left: 14px;
-    padding-right: ${({ isClearable, required }) => (isClearable || required ? 32 : 14)}px;
-  }
-`;
-
-const ClearableIcon = styled(SvgIcon)`
-  fill: ${({ theme }) => theme.color.grayScale.coolGray500};
-  cursor: pointer;
-`;
-
-const RequiredIcon = styled(SvgIcon)`
-  fill: ${({ theme }) => theme.normal.system.caution1};
-  stroke: ${({ theme }) => theme.light.grayScale.coolGray600};
-`;
 
 export default InputBox;
