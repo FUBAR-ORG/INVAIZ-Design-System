@@ -1,7 +1,7 @@
 const config = {
   preset: 'ts-jest',
   transform: {
-    '\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.tsx?$': 'ts-jest',
   },
   testEnvironment: 'jsdom',
   moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
