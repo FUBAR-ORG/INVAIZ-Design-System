@@ -1,0 +1,14 @@
+import { Meta,  IconGallery, IconItem } from '@storybook/addon-docs';
+import SVG_ICONS from "@assets/svg";
+import SvgIcon from './SvgIcon';
+
+
+<Meta title="Components/SvgIcons/Gallery" />
+
+<IconGallery>
+  {Object.keys(SVG_ICONS).map((SVG_ICON) =>
+    <IconItem name={SVG_ICON}>
+      <SvgIcon icon={SVG_ICON} />
+    </IconItem>
+  )}
+</IconGallery>
