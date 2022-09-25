@@ -1,5 +1,4 @@
-import type { ChangeEventHandler } from 'react';
-import { useState } from 'react';
+import { type ChangeEventHandler, useState } from 'react';
 import { Story } from '@storybook/react';
 
 import InputBox, { InputBoxProps } from '@components/Inputs/InputBox';
@@ -16,17 +15,19 @@ const Template: Story<InputBoxProps> = ({ ...args }) => {
     setInput(e.target.value);
   };
 
-  return <InputBox value={input} onChange={onChange} {...args} />;
+  const clear = () => setInput('');
+
+  return <InputBox value={input} onChange={onChange} clear={clear} {...args} />;
 };
 
 export const Basic = Template.bind({});
-Basic.args = { boxWidth: 240, placeholder: 'placeholder' };
+Basic.args = { boxWidth: 240, placeholder: 'placeholder', clear: undefined };
 
 export const Disabled = Template.bind({});
 Disabled.args = { boxWidth: 240, placeholder: 'placeholder', disabled: true };
 
 export const Clearable = Template.bind({});
-Clearable.args = { boxWidth: 240, placeholder: 'placeholder', clearable: true };
+Clearable.args = { boxWidth: 240, placeholder: 'placeholder' };
 
 export const Required = Template.bind({});
 Required.args = { boxWidth: 240, placeholder: 'placeholder', required: true };

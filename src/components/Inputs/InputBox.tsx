@@ -1,40 +1,62 @@
-import type { InputHTMLAttributes } from 'react';
-
-import { useRef } from 'react';
+import { type InputHTMLAttributes, useRef, useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 
 import SvgIcon from '@components/SvgIcons/SvgIcon';
 
 /**
- * HTML input tag props
+ * INVAIZ Input Box Props
+ *
  * @param boxWidth type="image"의 width와 구분을 위한 box 자체의 width
- * @param clearable clear 버튼 표시 여부
+ * @param clear clear 기능
  */
 export interface InputBoxProps extends InputHTMLAttributes<HTMLInputElement> {
   boxWidth?: number;
-  clearable?: boolean;
+  clear?: () => void;
 }
 
 /**
- * INVAIZ input box
+ * INVAIZ Input Box
+ *
  * @param InputHTMLAttributes
  * @param boxWidth type="image"의 width와 구분을 위한 box 자체의 width
- * @param clearable clear 버튼 표시 여부
- * @returns HTML div > input
+ * @param clear clear 기능
+ *
+ * @returns HTMLElment div > input
  */
-const InputBox = ({ boxWidth, clearable = false, ...props }: InputBoxProps) => {
+const InputBox = ({ ...props }: InputBoxProps) => {
+  const { disabled, required, value, boxWidth, clear } = props;
+  const isClearable = clear !== undefined;
+
   const ref = useRef<HTMLInputElement | null>(null);
   const { current } = ref;
 
-  const clear = () => {
-    if (current) current.value = '';
+  const [isFilled, setIsFilled] = useState(false);
+
+  const onClear = () => {
+    if (current && isClearable) {
+      clear();
+      current.focus();
+      setIsFilled(false);
+    }
   };
+
+  useEffect(() => {
+    if (value === '') {
+      setIsFilled(false);
+    } else {
+      setIsFilled(true);
+    }
+  }, [value]);
 
   return (
     <Wrapper boxWidth={boxWidth}>
-      <Input clearable={clearable} {...props} ref={ref} />
-      {clearable && <SvgIcon icon='Cancel' size={16} onClick={clear} />}
-      {props.required && <SvgIcon icon='Caution' size={16} />}
+      <Input ref={ref} isClearable={isClearable} {...props} />
+      {!disabled && (
+        <>
+          {isClearable && isFilled && <ClearableIcon icon='Cancel' size={16} onClick={onClear} />}
+          {required && !isFilled && <RequiredIcon icon='Caution' size={16} />}
+        </>
+      )}
     </Wrapper>
   );
 };
@@ -54,20 +76,19 @@ const Wrapper = styled.div<WrapperProps>`
   & > svg {
     position: absolute;
     right: 16px;
-    cursor: pointer;
   }
 `;
 
 interface InputProps {
   boxWidth?: number;
-  clearable?: boolean;
+  isClearable?: boolean;
 }
 
 const Input = styled.input<InputProps>`
   width: 100%;
   height: 32px;
   padding-left: 16px;
-  padding-right: ${({ clearable, required }) => (clearable || required ? 34 : 16)}px;
+  padding-right: ${({ isClearable, required }) => (isClearable || required ? 34 : 16)}px;
 
   font-size: ${({ theme }) => theme.fontSize.size14}px;
 
@@ -84,8 +105,18 @@ const Input = styled.input<InputProps>`
   &:focus {
     ${({ theme }) => theme.style.border.selected}
     padding-left: 14px;
-    padding-right: ${({ clearable, required }) => (clearable || required ? 32 : 14)}px;
+    padding-right: ${({ isClearable, required }) => (isClearable || required ? 32 : 14)}px;
   }
+`;
+
+const ClearableIcon = styled(SvgIcon)`
+  fill: ${({ theme }) => theme.color.grayScale.coolGray500};
+  cursor: pointer;
+`;
+
+const RequiredIcon = styled(SvgIcon)`
+  fill: ${({ theme }) => theme.normal.system.caution1};
+  stroke: ${({ theme }) => theme.light.grayScale.coolGray600};
 `;
 
 export default InputBox;
