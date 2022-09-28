@@ -14,10 +14,10 @@ export default function TextButton({
   shape = 'default',
   ...props
 }: ButtonProps) {
-  const isLoading = loading ? 'loading' : '';
-  const isDisabled = disabled ? 'disabled' : '';
-  const isSelected = selected ? 'selected' : '';
-  const isShape = shape === 'pill' ? 'pill' : '';
+  const isLoading = loading && 'loading';
+  const isDisabled = disabled && 'disabled';
+  const isSelected = selected && 'selected';
+  const isShape = shape === 'pill' && 'pill';
   return (
     <StyledTextButton
       {...props}
