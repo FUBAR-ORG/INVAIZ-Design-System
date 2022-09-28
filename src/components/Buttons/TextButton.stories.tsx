@@ -11,5 +11,4 @@ const Template: Story<ButtonProps> = (props) => <TextButton {...props} />;
 export const Primary = Template.bind({});
 Primary.args = {
   children: 'Button',
-  onClick: () => console.log('click'),
 };
