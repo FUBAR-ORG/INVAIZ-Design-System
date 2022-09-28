@@ -34,7 +34,6 @@ const StyledTextButton = styled(Button)`
   &:hover {
     background-color: ${({ theme }) => theme.color.grayScale.coolGray100};
   }
-
   &.selected {
     color: ${({ theme }) => theme.color.primary.blue500};
   }
@@ -44,8 +43,6 @@ const StyledTextButton = styled(Button)`
   &.disabled {
     cursor: default;
     color: ${({ theme }) => theme.color.system.off1};
-    &:hover {
-      background-color: transparent;
-    }
+    background-color: transparent;
   }
 `;
