@@ -1,53 +1,51 @@
 import styled from '@emotion/styled';
-import { ButtonHTMLAttributes } from 'react';
-
-type Size = 'small' | 'default' | 'large' | 'x-large';
-
-export interface TextButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  text?: string;
-  size?: Size;
-  disabled?: boolean;
-  loading?: boolean;
-  selected?: boolean;
-}
+import Button, { ButtonProps } from '@components/Buttons/Button';
 
 export default function TextButton({
-  text,
+  children,
+  /** 버튼 사이즈 */
   size = 'default',
+  /** 버튼 사용 여부 */
   disabled,
-  loading,
+  /** 버튼 로딩 상태 */
+  loading = false,
+  /** 버튼 선택 여부 */
   selected,
+  shape = 'default',
   ...props
-}: TextButtonProps) {
-  return <Text {...props}>{text}</Text>;
+}: ButtonProps) {
+  const isLoading = loading ? 'loading' : '';
+  const isDisabled = disabled ? 'disabled' : '';
+  const isSelected = selected ? 'selected' : '';
+  const isShape = shape === 'pill' ? 'pill' : '';
+  return (
+    <StyledTextButton
+      {...props}
+      className={[size, isShape, isLoading, isDisabled, isSelected].join(' ')}
+    >
+      {loading ? '...' : <>{children}</>}
+    </StyledTextButton>
+  );
 }
 
-const Text = styled.button`
-  //default style
-  min-width: 80px;
-  min-height: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  transition: all 0.15s ease-in-out;
-  border-radius: 5px;
-
-  // space
-  padding: ${({ theme }) => theme.whiteSpace.whiteSpace4}px;
-  box-sizing: border-box;
-
-  // font
-  font-size: ${({ theme }) => theme.fontSize.size14}px;
-  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
-
-  // color
+const StyledTextButton = styled(Button)`
   background-color: transparent;
-  color: ${({ theme }) => theme.color.grayScale.gray900};
 
   &:hover {
     background-color: ${({ theme }) => theme.color.grayScale.coolGray100};
+  }
+
+  &.selected {
+    color: ${({ theme }) => theme.color.primary.blue500};
+  }
+  &.loading {
+    color: ${({ theme }) => theme.color.grayScale.basic.black};
+  }
+  &.disabled {
+    cursor: default;
+    color: ${({ theme }) => theme.color.system.off1};
+    &:hover {
+      background-color: transparent;
+    }
   }
 `;

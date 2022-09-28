@@ -1,13 +1,15 @@
 import { Story } from '@storybook/react';
-import TextButton, { TextButtonProps } from '@components/Buttons/TextButton';
+import TextButton from '@components/Buttons/TextButton';
+import { ButtonProps } from '@components/Buttons/Button';
 
 export default {
   title: 'Components/TextButton',
   component: TextButton,
 };
 
-const Template: Story<TextButtonProps> = (props) => <TextButton {...props} />;
+const Template: Story<ButtonProps> = (props) => <TextButton {...props} />;
 export const Primary = Template.bind({});
 Primary.args = {
-  children: 'button',
+  children: 'Button',
+  onClick: () => console.log('click'),
 };
