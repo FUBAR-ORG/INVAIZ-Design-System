@@ -1,9 +1,20 @@
 {
-  "name": "gitlog",
+  "name": "invaiz-design-system",
+  "productName": "INVAIZ Design System",
+  "private": true,
   "version": "1.0.0",
-  "main": "src/index.tsx",
-  "repository": "https://github.com/HelloMandu/GitLog",
+  "description": "INVAIZ Design System development project",
+  "author": "INVAIZ Inc.",
   "license": "MIT",
+  "homepage": "https://github.com/FUBAR-ORG/INVAIZ-Design-System#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FUBAR-ORG/INVAIZ-Design-System.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FUBAR-ORG/INVAIZ-Design-System/issues"
+  },
+  "main": "src/index.tsx",
   "scripts": {
     "start": "vite",
     "build": "vite build",
