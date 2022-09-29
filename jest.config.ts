@@ -1,4 +1,7 @@
-const config = {
+import type { Config } from 'jest';
+// types
+
+const config: Config = {
   preset: 'ts-jest',
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
