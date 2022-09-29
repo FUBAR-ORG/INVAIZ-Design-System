@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NestedCheckbox Snapshot 1`] = `
+<div>
+  <label
+    className="css-0"
+  >
+    <span
+      className="css-1u8zmlt"
+    >
+      <input
+        className="css-18gtr08"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <div
+        className="css-3xhjcj"
+      >
+        <svg
+          className="visible css-bw5rgr"
+          data-file-name="Subtract.svg"
+          data-svg-name="Subtract"
+          data-test-id="Subtract"
+          height={20}
+          width={20}
+        />
+      </div>
+    </span>
+    <p
+      className="css-1m9p5pv"
+    >
+      Parent Checkbox
+    </p>
+  </label>
+  <ul
+    className="css-1tsmip4"
+  >
+    <li
+      className="css-llbbcb"
+    >
+      <label
+        className="css-0"
+      >
+        <span
+          className="css-1u8zmlt"
+        >
+          <input
+            className="css-18gtr08"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <div
+            className="css-3xhjcj"
+          >
+            <svg
+              className="css-bw5rgr"
+              data-file-name="Check.svg"
+              data-svg-name="Check"
+              data-test-id="Check"
+              height={20}
+              width={20}
+            />
+          </div>
+        </span>
+        <p
+          className="css-1m9p5pv"
+        >
+          Children
+        </p>
+      </label>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`NestedCheckbox Snapshot 2`] = `
+<div>
+  <label
+    className="css-0"
+  >
+    <span
+      className="css-1u8zmlt"
+    >
+      <input
+        className="css-18gtr08"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <div
+        className="css-3xhjcj"
+      >
+        <svg
+          className="visible css-bw5rgr"
+          data-file-name="Subtract.svg"
+          data-svg-name="Subtract"
+          data-test-id="Subtract"
+          height={20}
+          width={20}
+        />
+      </div>
+    </span>
+    <p
+      className="css-1m9p5pv"
+    >
+      Parent Checkbox
+    </p>
+  </label>
+  <ul
+    className="css-1tsmip4"
+  >
+    <li
+      className="css-llbbcb"
+    >
+      <label
+        className="css-0"
+      >
+        <span
+          className="css-1u8zmlt"
+        >
+          <input
+            className="css-18gtr08"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <div
+            className="css-3xhjcj"
+          >
+            <svg
+              className="css-bw5rgr"
+              data-file-name="Check.svg"
+              data-svg-name="Check"
+              data-test-id="Check"
+              height={20}
+              width={20}
+            />
+          </div>
+        </span>
+        <p
+          className="css-1m9p5pv"
+        >
+          Children
+        </p>
+      </label>
+    </li>
+  </ul>
+</div>
+`;

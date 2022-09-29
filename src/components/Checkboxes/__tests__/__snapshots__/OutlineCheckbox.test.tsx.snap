@@ -18,7 +18,9 @@ exports[`OutlineCheckbox Snapshot 1`] = `
     >
       <svg
         className="css-bw5rgr"
-        data-file-name="SvgCheck"
+        data-file-name="Check.svg"
+        data-svg-name="Check"
+        data-test-id="Check"
         height={20}
         width={20}
       />
@@ -49,7 +51,9 @@ exports[`OutlineCheckbox Snapshot 2`] = `
     >
       <svg
         className="css-bw5rgr"
-        data-file-name="SvgCheck"
+        data-file-name="Check.svg"
+        data-svg-name="Check"
+        data-test-id="Check"
         height={20}
         width={20}
       />

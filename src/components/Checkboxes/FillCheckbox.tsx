@@ -12,7 +12,7 @@ import {
 // styles
 
 /**
- * 다중 선택 체크박스
+ * 내부 컬러가 강조된 체크박스입니다.
  */
 const FillCheckbox = ({ disabled, onChange, ...props }: CheckboxDefaultProps) => (
   <HoverCircle disabled={disabled}>

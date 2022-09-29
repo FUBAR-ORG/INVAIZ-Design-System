@@ -22,6 +22,9 @@ interface OutlineCheckboxBaseProps extends OutlineCheckboxProps {
   iconComponent: ReactNode;
 }
 
+/**
+ * 가장 자리가 강조된 체크박스의 베이스 컴포넌트입니다.
+ */
 const OutlineCheckboxBase = ({
   iconComponent,
   text,
@@ -45,13 +48,13 @@ const OutlineCheckboxBase = ({
 
 interface OutlineCheckboxProps extends CheckboxDefaultProps {
   /**
-   * 체크 박스 우측에 표시될 텍스트입니다.
+   * 체크박스 우측에 표시될 텍스트입니다.
    */
   text: string;
 }
 
 /**
- * 단독 선택 체크박스
+ * 가장 자리 테두리가 강조된 체크박스입니다.
  */
 const OutlineCheckbox = ({ ...props }: OutlineCheckboxProps) => (
   <OutlineCheckboxBase
@@ -67,6 +70,9 @@ interface ParentCheckboxProps extends OutlineCheckboxProps {
   isIndeterminate?: boolean;
 }
 
+/**
+ * 서브 체크박스 리스트의 부모 역할 체크박스입니다.
+ */
 export const ParentCheckbox = ({ isIndeterminate, ...props }: ParentCheckboxProps) => {
   const indeterminateIcon = useMemo(
     () =>
