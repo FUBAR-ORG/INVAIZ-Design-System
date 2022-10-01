@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import mediaQuery from '@themes/media';
-import { normal } from './colors/color';
+import { normal } from '@themes/colors/color';
+import style from '@themes/style';
 
 const fontSize = {
   size64: 64,
@@ -50,6 +51,7 @@ const font = {
      * `64px`
      */
     title1: css`
+      ${style.fontFace.invaiz}
       font-size: ${fontSize.size64}px;
     `,
     /**
@@ -58,6 +60,7 @@ const font = {
      * `40px`
      */
     title2: css`
+      ${style.fontFace.invaiz}
       font-size: ${fontSize.size40}px;
     `,
     /**
@@ -66,6 +69,7 @@ const font = {
      * `32px`
      */
     title3: css`
+      ${style.fontFace.invaiz}
       font-size: ${fontSize.size32}px;
     `,
     /**
@@ -74,6 +78,7 @@ const font = {
      * `24px`
      */
     title4: css`
+      ${style.fontFace.invaiz}
       font-size: ${fontSize.size24}px;
     `,
     /**
@@ -82,6 +87,7 @@ const font = {
      * `20px`
      */
     title5: css`
+      ${style.fontFace.invaiz}
       font-size: ${fontSize.size20}px;
     `,
   },
@@ -100,6 +106,7 @@ const font = {
      * - Mobile: `24px`, `Bold`
      */
     title1: css`
+      ${style.fontFace.kopub}
       font-size: ${fontSize.size48}px;
       font-weight: ${fontWeight.bold};
       ${mediaQuery.tablet} {
@@ -117,6 +124,7 @@ const font = {
      * - Mobile: `20px`, `Bold`
      */
     title2: css`
+      ${style.fontFace.kopub}
       font-size: ${fontSize.size40}px;
       font-weight: ${fontWeight.bold};
       ${mediaQuery.tablet} {
@@ -131,6 +139,7 @@ const font = {
      * - Mobile: `18px`, `Medium`
      */
     title3: css`
+      ${style.fontFace.kopub}
       font-size: ${fontSize.size32}px;
       font-weight: ${fontWeight.bold};
       ${mediaQuery.tablet} {
@@ -146,6 +155,7 @@ const font = {
      * - Mobile: `20px`, `Bold`
      */
     subT1: css`
+      ${style.fontFace.kopub}
       font-size: ${fontSize.size24}px;
       font-weight: ${fontWeight.bold};
       ${mediaQuery.tablet} {
@@ -163,6 +173,7 @@ const font = {
      * - Mobile: `20px`, `Medium`
      */
     subT2: css`
+      ${style.fontFace.kopub}
       font-size: ${fontSize.size24}px;
       font-weight: ${fontWeight.medium};
       ${mediaQuery.tablet} {
@@ -181,6 +192,7 @@ const font = {
      * - Mobile: `16px`, `Bold`
      */
     subT3: css`
+      ${style.fontFace.kopub}
       font-size: ${fontSize.size20}px;
       font-weight: ${fontWeight.bold};
       ${mediaQuery.tablet} {
@@ -200,6 +212,7 @@ const font = {
      * - Mobile: `16px`, `Bold`
      */
     contents1: css`
+      ${style.fontFace.kopub}
       font-size: ${fontSize.size24}px;
       font-weight: ${fontWeight.medium};
       ${mediaQuery.tablet} {
@@ -215,6 +228,7 @@ const font = {
      * - Mobile: `16px`, `Bold`
      */
     contents2: css`
+      ${style.fontFace.kopub}
       font-size: ${fontSize.size20}px;
       font-weight: ${fontWeight.medium};
       ${mediaQuery.tablet} {
@@ -229,6 +243,7 @@ const font = {
      * - Mobile: `16px`, `Medium`
      */
     contents3: css`
+      ${style.fontFace.kopub}
       font-size: ${fontSize.size16}px;
       font-weight: ${fontWeight.bold};
       ${mediaQuery.tablet} {
@@ -246,6 +261,7 @@ const font = {
      * - Mobile: `14px`, `Bold`
      */
     contents4: css`
+      ${style.fontFace.kopub}
       font-size: ${fontSize.size16}px;
       font-weight: ${fontWeight.medium};
       ${mediaQuery.tablet} {
@@ -261,6 +277,7 @@ const font = {
      * - Mobile: `14px`, `Medium`
      */
     contents5: css`
+      ${style.fontFace.kopub}
       font-size: ${fontSize.size16}px;
       font-weight: ${fontWeight.light};
       ${mediaQuery.tablet} {
@@ -276,6 +293,7 @@ const font = {
      * - Mobile: `12px`, `Bold`
      */
     contents6: css`
+      ${style.fontFace.kopub}
       font-size: ${fontSize.size14}px;
       font-weight: ${fontWeight.bold};
       ${mediaQuery.tablet} {
@@ -290,6 +308,7 @@ const font = {
      * - Mobile: `12px`, `Medium`
      */
     contents7: css`
+      ${style.fontFace.kopub}
       font-size: ${fontSize.size14}px;
       font-weight: ${fontWeight.medium};
       ${mediaQuery.tablet} {
@@ -304,6 +323,7 @@ const font = {
      * - Mobile: `10px`, `Medium`
      */
     small: css`
+      ${style.fontFace.kopub}
       font-size: ${fontSize.size10}px;
       font-weight: ${fontWeight.medium};
     `,
@@ -315,6 +335,7 @@ const font = {
      * - Mobile: `8px`, `Medium`
      */
     micro: css`
+      ${style.fontFace.kopub}
       font-size: ${fontSize.size8}px;
       font-weight: ${fontWeight.medium};
     `,
@@ -331,6 +352,7 @@ const font = {
      * `32px`, `SemiBold`
      */
     title1: css`
+      ${style.fontFace.notoSans}
       font-size: ${fontSize.size32}px;
       font-weight: ${fontWeight.semiBold};
     `,
@@ -340,6 +362,7 @@ const font = {
      * `28px`, `SemiBold`
      */
     title2: css`
+      ${style.fontFace.notoSans}
       font-size: ${fontSize.size28}px;
       font-weight: ${fontWeight.semiBold};
     `,
@@ -349,6 +372,7 @@ const font = {
      * `24px`, `SemiBold`
      */
     title3: css`
+      ${style.fontFace.notoSans}
       font-size: ${fontSize.size24}px;
       font-weight: ${fontWeight.semiBold};
     `,
@@ -358,6 +382,7 @@ const font = {
      * `24px`, `Regular`
      */
     title4: css`
+      ${style.fontFace.notoSans}
       font-size: ${fontSize.size24}px;
       font-weight: ${fontWeight.regular};
     `,
@@ -367,6 +392,7 @@ const font = {
      * `12px`, `Bold`
      */
     contents1: css`
+      ${style.fontFace.notoSans}
       font-size: ${fontSize.size12}px;
       font-weight: ${fontWeight.bold};
     `,
@@ -376,6 +402,7 @@ const font = {
      * `12px`, `Medium`
      */
     contents2: css`
+      ${style.fontFace.notoSans}
       font-size: ${fontSize.size12}px;
       font-weight: ${fontWeight.medium};
     `,
@@ -385,6 +412,7 @@ const font = {
      * `10px`, `Bold`
      */
     contents3: css`
+      ${style.fontFace.notoSans}
       font-size: ${fontSize.size10}px;
       font-weight: ${fontWeight.bold};
     `,
@@ -394,6 +422,7 @@ const font = {
      * `10px`, `Medium`
      */
     contents4: css`
+      ${style.fontFace.notoSans}
       font-size: ${fontSize.size10}px;
       font-weight: ${fontWeight.medium};
     `,
