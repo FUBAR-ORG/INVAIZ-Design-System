@@ -13,12 +13,8 @@ interface Props {
   itemType: keyof typeof DropdownItem;
 }
 
-const Template: Story<ComponentProps<typeof Dropdown> & Props> = ({
-  itemType = 'Default',
-  text,
-  ...props
-}) => {
-  const [{ value, label }, setSelected] = useState({ value: 0, label: 'item' });
+const Template: Story<ComponentProps<typeof Dropdown> & Props> = ({ itemType = 'Default' }) => {
+  const [{ value }, setSelected] = useState({ value: 0, label: 'item' });
   const options = [
     { value: 0, label: 'item0' },
     { value: 1, label: 'item1' },
@@ -29,46 +25,46 @@ const Template: Story<ComponentProps<typeof Dropdown> & Props> = ({
     { value: 6, label: 'item6' },
   ];
 
+  const renderItem = (option: typeof options[number]) => {
+    switch (itemType) {
+      case 'Default':
+        return (
+          <DropdownItem.Default
+            key={option.value}
+            selected={value === option.value}
+            onClick={() => setSelected(option)}
+          >
+            {option.label}
+          </DropdownItem.Default>
+        );
+      case 'IconMenus':
+        return (
+          <DropdownItem.IconMenus
+            icon={<SvgIcon icon='Web' />}
+            key={option.value}
+            selected={value === option.value}
+            onClick={() => setSelected(option)}
+          >
+            {option.label}
+          </DropdownItem.IconMenus>
+        );
+      case 'OnlyIcon':
+        return (
+          <DropdownItem.OnlyIcon
+            icon={<SvgIcon icon='Web' />}
+            key={option.value}
+            selected={value === option.value}
+            onClick={() => setSelected(option)}
+          />
+        );
+      default:
+        return <div>Not Found</div>;
+    }
+  };
+
   return (
     <div style={{ padding: '20px' }}>
-      <Dropdown text={text || label} {...props}>
-        {options.map((option) => {
-          switch (itemType) {
-            case 'Default':
-              return (
-                <DropdownItem.Default
-                  key={option.value}
-                  selected={value === option.value}
-                  onClick={() => setSelected(option)}
-                >
-                  {option.label}
-                </DropdownItem.Default>
-              );
-            case 'IconMenus':
-              return (
-                <DropdownItem.IconMenus
-                  icon={<SvgIcon icon='Web' />}
-                  key={option.value}
-                  selected={value === option.value}
-                  onClick={() => setSelected(option)}
-                >
-                  {option.label}
-                </DropdownItem.IconMenus>
-              );
-            case 'OnlyIcon':
-              return (
-                <DropdownItem.OnlyIcon
-                  icon={<SvgIcon icon='Web' />}
-                  key={option.value}
-                  selected={value === option.value}
-                  onClick={() => setSelected(option)}
-                />
-              );
-            default:
-              return null;
-          }
-        })}
-      </Dropdown>
+      <Dropdown type='default' list={options} selected={value} render={renderItem} />
     </div>
   );
 };

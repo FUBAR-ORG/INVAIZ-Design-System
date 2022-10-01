@@ -8,7 +8,7 @@ type Option = {
 };
 
 export default function App() {
-  const [{ value, label }, setSelected] = useState({ value: 0, label: 'test' });
+  const [{ value }, setSelected] = useState({ value: 0, label: 'test' });
   const options: Option[] = [
     { value: 0, label: 'test0' },
     { value: 1, label: 'test1' },
@@ -18,19 +18,15 @@ export default function App() {
     { value: 5, label: 'test5' },
     { value: 6, label: 'test6' },
   ];
+
+  const renderItem = (option: Option) => (
+    <DropdownItem.Default selected={value === option.value} onClick={() => setSelected(option)}>
+      {option.label}
+    </DropdownItem.Default>
+  );
   return (
     <div style={{ padding: '20px' }}>
-      <Dropdown text={label} type='default'>
-        {options.map((option) => (
-          <DropdownItem.Default
-            key={option.value}
-            selected={value === option.value}
-            onClick={() => setSelected(option)}
-          >
-            {option.label}
-          </DropdownItem.Default>
-        ))}
-      </Dropdown>
+      <Dropdown type='default' list={options} selected={value} render={renderItem} />
     </div>
   );
 }

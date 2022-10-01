@@ -1,12 +1,4 @@
-import {
-  ComponentProps,
-  KeyboardEvent,
-  PropsWithChildren,
-  ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { ComponentProps, KeyboardEvent, ReactNode, useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import SvgIcon from '@components/SvgIcons/SvgIcon';
@@ -17,10 +9,18 @@ import useOnClickOutside from '@components/Dropdowns/hooks/useOnClickOutside';
 export const FOCUSED = 'focused' as const;
 export const DROPDOWN_ITEM = 'dropdown-item' as const;
 
+type Option<T> = {
+  id?: string;
+  value: T;
+  label: string;
+};
+
 type DropdownType = 'default' | 'outline-fill' | 'outline';
 
-interface Props {
-  text: ReactNode;
+interface Props<T> {
+  selected?: T;
+  list: Array<Option<T>>;
+  render: (option: Option<T>) => JSX.Element;
   type?: DropdownType;
   icon?: ReactNode;
   arrowIconProps?: Partial<ComponentProps<typeof SvgIcon>>;
@@ -28,15 +28,16 @@ interface Props {
   error?: string;
 }
 
-export default function Dropdown({
-  text,
+export default function Dropdown<T>({
+  selected,
+  list,
+  render: Render,
   type = 'default',
   icon,
   arrowIconProps,
   disabled,
   error,
-  children,
-}: PropsWithChildren<Props>) {
+}: Props<T>) {
   const ref = useRef<HTMLDivElement>(null);
   const [focused, setFocused] = useState<number>(-1);
   const [open, setOpen] = useState(false);
@@ -108,6 +109,8 @@ export default function Dropdown({
     return normalColor.grayScale.basic.black;
   })();
 
+  const text = list.find((item) => item.value === selected)?.label;
+
   const content = icon ? (
     <WithIcon>
       <Icon>{icon}</Icon> {text}
@@ -141,7 +144,13 @@ export default function Dropdown({
         {content}
         {arrowIcon}
       </Trigger>
-      {open && <Menu onClick={resetDropdown}>{children}</Menu>}
+      {open && (
+        <Menu onClick={resetDropdown}>
+          {list.map((option, index) => (
+            <Render key={option.id ?? index} {...option} />
+          ))}
+        </Menu>
+      )}
     </Relative>
   );
 }
