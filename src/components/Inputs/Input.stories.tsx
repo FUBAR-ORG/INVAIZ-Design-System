@@ -8,26 +8,15 @@ export default {
   component: InputBox,
 };
 
-const Template: Story<InputBoxProps> = ({ ...args }) => {
+const InputBoxTemplate: Story<InputBoxProps> = ({ ...args }) => {
   const [input, setInput] = useState('');
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setInput(e.target.value);
   };
 
-  const clear = () => setInput('');
-
-  return <InputBox value={input} onChange={onChange} clear={clear} {...args} />;
+  return <InputBox value={input} onChange={onChange} {...args} />;
 };
 
-export const Basic = Template.bind({});
-Basic.args = { boxWidth: 240, placeholder: 'placeholder', clear: undefined };
-
-export const Disabled = Template.bind({});
-Disabled.args = { boxWidth: 240, placeholder: 'placeholder', disabled: true };
-
-export const Clearable = Template.bind({});
-Clearable.args = { boxWidth: 240, placeholder: 'placeholder' };
-
-export const Required = Template.bind({});
-Required.args = { boxWidth: 240, placeholder: 'placeholder', required: true };
+export const Basic = InputBoxTemplate.bind({});
+Basic.args = { boxWidth: 240, placeholder: 'placeholder' };

@@ -23,8 +23,8 @@ interface InputProps {
   isClearable?: boolean;
 }
 
-export const Input = styled.input<InputProps>`
-  width: 100%;
+export const Box = styled.input<InputProps>`
+  width: ${({ boxWidth }) => (boxWidth ? `${boxWidth}px` : '100%')};
   height: 32px;
   padding-left: 16px;
   padding-right: ${({ isClearable, required }) => (isClearable || required ? 34 : 16)}px;
