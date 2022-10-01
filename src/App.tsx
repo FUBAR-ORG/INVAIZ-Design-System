@@ -20,7 +20,7 @@ export default function App() {
   ];
   return (
     <div style={{ padding: '20px' }}>
-      <Dropdown text={label} type='outline'>
+      <Dropdown text={label} type='default'>
         {options.map((option) => (
           <DropdownItem.Default
             key={option.value}

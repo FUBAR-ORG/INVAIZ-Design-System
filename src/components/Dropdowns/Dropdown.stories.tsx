@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react';
-import { useState } from 'react';
+import { ComponentProps, useState } from 'react';
 import Dropdown from '@components/Dropdowns/Dropdown';
 import DropdownItem from '@components/Dropdowns/DropdownItem';
 import SvgIcon from '@components/SvgIcons/SvgIcon';
@@ -13,21 +13,25 @@ interface Props {
   itemType: keyof typeof DropdownItem;
 }
 
-const Template: Story<Props> = ({ itemType = 'Default' }) => {
-  const [{ value, label }, setSelected] = useState({ value: 0, label: 'test' });
+const Template: Story<ComponentProps<typeof Dropdown> & Props> = ({
+  itemType = 'Default',
+  text,
+  ...props
+}) => {
+  const [{ value, label }, setSelected] = useState({ value: 0, label: 'item' });
   const options = [
-    { value: 0, label: 'test0' },
-    { value: 1, label: 'test1' },
-    { value: 2, label: 'test2' },
-    { value: 3, label: 'test3' },
-    { value: 4, label: 'test4' },
-    { value: 5, label: 'test5' },
-    { value: 6, label: 'test6' },
+    { value: 0, label: 'item0' },
+    { value: 1, label: 'item1' },
+    { value: 2, label: 'item2' },
+    { value: 3, label: 'item3' },
+    { value: 4, label: 'item4' },
+    { value: 5, label: 'item5' },
+    { value: 6, label: 'item6' },
   ];
 
   return (
     <div style={{ padding: '20px' }}>
-      <Dropdown text={label} type='outline'>
+      <Dropdown text={text || label} {...props}>
         {options.map((option) => {
           switch (itemType) {
             case 'Default':
