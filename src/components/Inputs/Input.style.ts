@@ -12,6 +12,15 @@ export const Wrapper = styled.div<WrapperProps>`
   display: flex;
   align-items: center;
 
+  & > button {
+    position: absolute;
+    right: 16px;
+    border: none;
+    outline: none;
+    background: none;
+    height: 16px;
+  }
+
   & > svg {
     position: absolute;
     right: 16px;

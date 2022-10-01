@@ -1,4 +1,4 @@
-import { type InputHTMLAttributes } from 'react';
+import { type InputHTMLAttributes, forwardRef } from 'react';
 
 import { Box } from '@components/Inputs/Input.style';
 
@@ -19,6 +19,8 @@ export interface InputBoxProps extends InputHTMLAttributes<HTMLInputElement> {
  *
  * @returns HTMLInputElement
  */
-const InputBox = ({ ...props }: InputBoxProps) => <Box boxWidth={props.boxWidth} {...props} />;
+const InputBox = forwardRef<HTMLInputElement, InputBoxProps>((props, ref) => (
+  <Box {...props} ref={ref} />
+));
 
 export default InputBox;

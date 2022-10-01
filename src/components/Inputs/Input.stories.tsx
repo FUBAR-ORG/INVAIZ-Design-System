@@ -2,6 +2,7 @@ import { type ChangeEventHandler, useState } from 'react';
 import { Story } from '@storybook/react';
 
 import InputBox, { InputBoxProps } from '@components/Inputs/InputBox';
+import InputBoxFeature, { InputBoxFeatureProps } from './InputBoxFeature';
 
 export default {
   title: 'Components/Input/Box',
@@ -18,5 +19,32 @@ const InputBoxTemplate: Story<InputBoxProps> = ({ ...args }) => {
   return <InputBox value={input} onChange={onChange} {...args} />;
 };
 
+const InputBoxFeatureTemplate: Story<InputBoxFeatureProps> = ({ ...args }) => {
+  const [input, setInput] = useState('');
+
+  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setInput(e.target.value);
+  };
+
+  return <InputBoxFeature value={input} onChange={onChange} {...args} />;
+};
+
 export const Basic = InputBoxTemplate.bind({});
 Basic.args = { boxWidth: 240, placeholder: 'placeholder' };
+
+export const Disabled = InputBoxTemplate.bind({});
+Disabled.args = { boxWidth: 240, placeholder: 'placeholder', disabled: true };
+
+export const Clearable = InputBoxFeatureTemplate.bind({});
+Clearable.args = { boxWidth: 240, placeholder: 'placeholder', clearable: true };
+
+export const Required = InputBoxFeatureTemplate.bind({});
+Required.args = { boxWidth: 240, placeholder: 'placeholder', required: true };
+
+export const ClearableRequired = InputBoxFeatureTemplate.bind({});
+ClearableRequired.args = {
+  boxWidth: 240,
+  placeholder: 'placeholder',
+  clearable: true,
+  required: true,
+};
