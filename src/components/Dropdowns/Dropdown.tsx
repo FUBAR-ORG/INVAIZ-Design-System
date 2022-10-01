@@ -42,7 +42,7 @@ export default function Dropdown<T>({
   const [focused, setFocused] = useState<number>(-1);
   const [open, setOpen] = useState(false);
 
-  const toggleOpen = () => setOpen((prev) => !prev);
+  const toggle = () => setOpen((prev) => !prev);
 
   const resetDropdown = () => {
     setOpen(false);
@@ -138,7 +138,7 @@ export default function Dropdown<T>({
         dropdownType={type}
         disabled={disabled}
         error={error}
-        onClick={toggleOpen}
+        onClick={toggle}
         onKeyDown={handleKeyDown}
       >
         {content}
