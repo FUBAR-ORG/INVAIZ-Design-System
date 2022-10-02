@@ -1,31 +1,31 @@
 import { type InputHTMLAttributes, useEffect, useRef, useState, SyntheticEvent } from 'react';
 
-import InputBox from '@components/Inputs/InputBox';
+import InputBar from '@components/Inputs/InputBar';
 
 import { ClearableIcon, RequiredIcon, Wrapper } from '@components/Inputs/Input.style';
 
 /**
- * INVAIZ Input Box Feature Props
+ * INVAIZ Input Bar Feature Props
  *
- * @param boxWidth type="image"의 width와 구분을 위한 box 자체의 width
+ * @param barWidth type="image"의 width와 구분을 위한 bar 자체의 width
  * @param clearable clear 기능 여부
  */
-export interface InputBoxFeatureProps extends InputHTMLAttributes<HTMLInputElement> {
-  boxWidth?: number;
+export interface InputBarFeatureProps extends InputHTMLAttributes<HTMLInputElement> {
+  barWidth?: number;
   clearable?: boolean;
 }
 
 /**
- * INVAIZ Input Box Feature
+ * INVAIZ Input Bar Feature
  *
  * @param InputHTMLAttributes
- * @param boxWidth type="image"의 width와 구분을 위한 box 자체의 width
+ * @param barWidth type="image"의 width와 구분을 위한 bar 자체의 width
  * @param clearable clear 기능 여부
  *
  * @returns HTMLDivElement > HTMLInputElement
  */
-const InputBoxFeature = ({ ...props }: InputBoxFeatureProps) => {
-  const { disabled, clearable, required, value, boxWidth, onChange } = props;
+const InputBarFeature = ({ ...props }: InputBarFeatureProps) => {
+  const { disabled, clearable, required, value, barWidth, onChange } = props;
 
   const [isFilled, setIsFilled] = useState(false);
 
@@ -50,8 +50,8 @@ const InputBoxFeature = ({ ...props }: InputBoxFeatureProps) => {
   }, [value]);
 
   return (
-    <Wrapper width={boxWidth}>
-      <InputBox {...props} ref={ref} />
+    <Wrapper width={barWidth}>
+      <InputBar {...props} ref={ref} />
       {!disabled && (
         <>
           {clearable && isFilled && (
@@ -68,4 +68,4 @@ const InputBoxFeature = ({ ...props }: InputBoxFeatureProps) => {
   );
 };
 
-export default InputBoxFeature;
+export default InputBarFeature;

@@ -3,18 +3,17 @@ import styled from '@emotion/styled';
 import SvgIcon from '@components/SvgIcons/SvgIcon';
 
 interface WrapperProps {
-  boxWidth?: number;
+  width?: number;
 }
 
 export const Wrapper = styled.div<WrapperProps>`
   position: relative;
-  width: ${({ boxWidth }) => (boxWidth ? `${boxWidth}px` : '100%')};
+  width: ${({ width }) => (width ? `${width}px` : '100%')};
   display: flex;
   align-items: center;
 
   & > button {
     position: absolute;
-    right: 16px;
     border: none;
     outline: none;
     background: none;
@@ -23,20 +22,20 @@ export const Wrapper = styled.div<WrapperProps>`
 
   & > svg {
     position: absolute;
-    right: 16px;
   }
 `;
 
 interface InputProps {
   boxWidth?: number;
-  isClearable?: boolean;
+  barWidth?: number;
+  clearable?: boolean;
 }
 
 export const Box = styled.input<InputProps>`
   width: ${({ boxWidth }) => (boxWidth ? `${boxWidth}px` : '100%')};
   height: 32px;
   padding-left: 16px;
-  padding-right: ${({ isClearable, required }) => (isClearable || required ? 34 : 16)}px;
+  padding-right: ${({ clearable: isClearable, required }) => (isClearable || required ? 34 : 16)}px;
 
   font-size: ${({ theme }) => theme.fontSize.size14}px;
 
@@ -53,7 +52,40 @@ export const Box = styled.input<InputProps>`
   &:focus {
     ${({ theme }) => theme.style.border.selected}
     padding-left: 14px;
-    padding-right: ${({ isClearable, required }) => (isClearable || required ? 32 : 14)}px;
+    padding-right: ${({ clearable: isClearable, required }) =>
+      isClearable || required ? 32 : 14}px;
+  }
+
+  & + button,
+  & + svg {
+    right: 16px;
+  }
+`;
+
+export const Bar = styled.input<InputProps>`
+  width: ${({ barWidth }) => (barWidth ? `${barWidth}px` : '100%')};
+  height: 32px;
+  padding-right: ${({ clearable: isClearable, required }) => (isClearable || required ? 16 : 0)}px;
+
+  font-size: ${({ theme }) => theme.fontSize.size14}px;
+
+  color: ${({ theme, disabled }) =>
+    disabled ? theme.color.system.off1 : theme.color.grayScale.basic.black};
+
+  border: none;
+  border-bottom: 1px solid ${({ theme }) => theme.color.grayScale.coolGray500};
+
+  background: none;
+  outline: none;
+
+  /* &:focus {
+    padding-right: ${({ clearable: isClearable, required }) =>
+    isClearable || required ? 16 : 14}px;
+  } */
+
+  & + button,
+  & + svg {
+    right: 0;
   }
 `;
 
