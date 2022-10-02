@@ -1,7 +1,7 @@
 import Dropdown, { DROPDOWN_ITEM, FOCUSED } from '@components/Dropdowns/Dropdown';
 import { render } from '@tests/test-utils';
 import { fireEvent, waitFor } from '@testing-library/react';
-import DropdownItem from './DropdownItem';
+import DropdownItem from '../DropdownItem';
 
 const dropdownOptions = [
   { value: 0, label: 'test0' },
