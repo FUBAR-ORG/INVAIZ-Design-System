@@ -10,6 +10,9 @@ import {
 } from '@components/Checkboxes/styles/RadioButton.style';
 // styles
 
+/**
+ * 라디오 버튼을 나타내는 컴포넌트입니다.
+ */
 const RadioButton = ({ disabled, onChange, ...props }: CheckboxDefaultProps) => (
   <HoverCircle disabled={disabled}>
     <StyleRadioButtonInput

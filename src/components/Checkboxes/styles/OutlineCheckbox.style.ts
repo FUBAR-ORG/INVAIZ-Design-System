@@ -76,7 +76,6 @@ interface StyleOutlineCheckboxTextProps {
 
 export const StyleCheckboxText = styled.p<StyleOutlineCheckboxTextProps>`
   display: inline-block;
-  max-width: 180px;
 
   color: ${({ theme }) => theme.color.grayScale.basic.black};
   ${({ theme }) => theme.font.kopub.contents7};

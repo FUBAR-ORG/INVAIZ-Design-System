@@ -7,6 +7,9 @@ interface HoverCircleProps {
   disabled?: boolean;
 }
 
+/**
+ * 호버 시 발생하는 원형 요소를 표현하는 컴포넌트입니다.
+ */
 const HoverCircle = styled.span<HoverCircleProps>`
   position: relative;
 

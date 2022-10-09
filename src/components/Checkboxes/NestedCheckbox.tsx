@@ -30,6 +30,9 @@ const NestedCheckboxItem = ({ ...props }: ComponentProps<typeof OutlineCheckbox>
   </StyleNestedCheckItem>
 );
 
+/**
+ * 중첩 계층 구조를 표현할 때 사용하는 체크박스 아이템 컴포넌트입니다.
+ */
 NestedCheckbox.Item = NestedCheckboxItem;
 
 const StyleNestedCheckList = styled.ul`
