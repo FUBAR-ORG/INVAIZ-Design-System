@@ -7,11 +7,15 @@ import NestedCheckbox from '@components/Checkboxes/NestedCheckbox';
 import GlobalThemeProvider from '@themes/GlobalThemeProvider';
 // providers
 
+const PARENT_TEXT = 'Parent Checkbox' as const;
+const CHILDREN_TEXT = 'Children' as const;
+// constant
+
 test('NestedCheckbox Snapshot', () => {
   const indeterminate = create(
     <GlobalThemeProvider>
-      <NestedCheckbox text='Parent Checkbox' isIndeterminate>
-        <NestedCheckbox.Item text='Children' />
+      <NestedCheckbox text={PARENT_TEXT} isIndeterminate>
+        <NestedCheckbox.Item text={CHILDREN_TEXT} />
       </NestedCheckbox>
     </GlobalThemeProvider>
   );
@@ -19,8 +23,8 @@ test('NestedCheckbox Snapshot', () => {
 
   const determinate = create(
     <GlobalThemeProvider>
-      <NestedCheckbox text='Parent Checkbox' isIndeterminate>
-        <NestedCheckbox.Item text='Children' />
+      <NestedCheckbox text={PARENT_TEXT}>
+        <NestedCheckbox.Item text={CHILDREN_TEXT} />
       </NestedCheckbox>
     </GlobalThemeProvider>
   );

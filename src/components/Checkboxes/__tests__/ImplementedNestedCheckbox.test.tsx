@@ -1,29 +1,37 @@
 import { render } from '@tests/test-utils';
+import { create } from 'react-test-renderer';
 // test utils
 
 import ImplementedNestedCheckbox from '@components/Checkboxes/ImplementedNestedCheckbox';
 // components
 
+import GlobalThemeProvider from '@themes/GlobalThemeProvider';
+// providers
+
+const PARENT_TEXT = 'Parent Checkbox' as const;
+const CHILDREN_TEXT = 'Children' as const;
+// constant
+
 describe('ImplementedNestedCheckbox', () => {
   it('체크박스의 하위 요소는 `checkList` `props`를 통해 결정된다.', () => {
-    const nestedCheckboxState = [
-      { id: 1, checked: true, text: '' },
-      { id: 2, checked: false, text: '' },
+    const nestedCheckboxList = [
+      { id: 1, checked: true, text: CHILDREN_TEXT },
+      { id: 2, checked: false, text: CHILDREN_TEXT },
     ];
-    const falseCheckboxState = [
-      { id: 1, checked: false, text: '' },
-      { id: 2, checked: false, text: '' },
+    const falseCheckboxList = [
+      { id: 1, checked: false, text: CHILDREN_TEXT },
+      { id: 2, checked: false, text: CHILDREN_TEXT },
     ];
-    const trueCheckboxState = [
-      { id: 1, checked: true, text: '' },
-      { id: 2, checked: true, text: '' },
+    const trueCheckboxList = [
+      { id: 1, checked: true, text: CHILDREN_TEXT },
+      { id: 2, checked: true, text: CHILDREN_TEXT },
     ];
 
     const { getAllByRole } = render(
       <>
-        <ImplementedNestedCheckbox text='' checkList={nestedCheckboxState} />
-        <ImplementedNestedCheckbox text='' checkList={falseCheckboxState} />
-        <ImplementedNestedCheckbox text='' checkList={trueCheckboxState} />
+        <ImplementedNestedCheckbox text={PARENT_TEXT} checkList={nestedCheckboxList} />
+        <ImplementedNestedCheckbox text={PARENT_TEXT} checkList={falseCheckboxList} />
+        <ImplementedNestedCheckbox text={PARENT_TEXT} checkList={trueCheckboxList} />
       </>
     );
     const [, oneAndOne, oneAndTwo, , twoAndOne, twoAndTwo, , threeAndOne, threeAndTwo] =
@@ -39,24 +47,24 @@ describe('ImplementedNestedCheckbox', () => {
   });
 
   it('체크박스의 부모 `checked` 상태는 하위 체크박스의 `checked` 상태에 따라 결정되며, 하위 체크박스가 모두 `checked`일 때에만 `true`이다.', () => {
-    const nestedCheckboxState = [
-      { id: 1, checked: true, text: '' },
-      { id: 2, checked: false, text: '' },
+    const nestedCheckboxList = [
+      { id: 1, checked: true, text: CHILDREN_TEXT },
+      { id: 2, checked: false, text: CHILDREN_TEXT },
     ];
-    const falseCheckboxState = [
-      { id: 1, checked: false, text: '' },
-      { id: 2, checked: false, text: '' },
+    const falseCheckboxList = [
+      { id: 1, checked: false, text: CHILDREN_TEXT },
+      { id: 2, checked: false, text: CHILDREN_TEXT },
     ];
-    const trueCheckboxState = [
-      { id: 1, checked: true, text: '' },
-      { id: 2, checked: true, text: '' },
+    const trueCheckboxList = [
+      { id: 1, checked: true, text: CHILDREN_TEXT },
+      { id: 2, checked: true, text: CHILDREN_TEXT },
     ];
 
     const { getAllByRole } = render(
       <>
-        <ImplementedNestedCheckbox text='' checkList={nestedCheckboxState} />
-        <ImplementedNestedCheckbox text='' checkList={falseCheckboxState} />
-        <ImplementedNestedCheckbox text='' checkList={trueCheckboxState} />
+        <ImplementedNestedCheckbox text={PARENT_TEXT} checkList={nestedCheckboxList} />
+        <ImplementedNestedCheckbox text={PARENT_TEXT} checkList={falseCheckboxList} />
+        <ImplementedNestedCheckbox text={PARENT_TEXT} checkList={trueCheckboxList} />
       </>
     );
     const [isNested, , , isFalse, , ,] = getAllByRole('checkbox');
@@ -66,17 +74,17 @@ describe('ImplementedNestedCheckbox', () => {
   });
 
   it('체크박스의 부모는 클릭할 수 있으며, 클릭 시 하위 요소의 `checked` 상태도 함께 변경한다.', () => {
-    const nestedCheckboxState = [
-      { id: 1, checked: true, text: '' },
-      { id: 2, checked: false, text: '' },
+    const nestedCheckboxList = [
+      { id: 1, checked: true, text: CHILDREN_TEXT },
+      { id: 2, checked: false, text: CHILDREN_TEXT },
     ];
 
     const onAllChange = jest.fn();
 
     const { getAllByRole } = render(
       <ImplementedNestedCheckbox
-        text=''
-        checkList={nestedCheckboxState}
+        text={PARENT_TEXT}
+        checkList={nestedCheckboxList}
         onAllChange={onAllChange}
       />
     );
@@ -94,9 +102,9 @@ describe('ImplementedNestedCheckbox', () => {
   });
 
   it('체크박스의 하위 요소는 클릭할 수 있으며, `onChange` 함수에 자신의 id와 변경 상태를 포함하여 호출한다.', () => {
-    const nestedCheckboxState = [
-      { id: 1, checked: true, text: '' },
-      { id: 2, checked: false, text: '' },
+    const nestedCheckboxList = [
+      { id: 1, checked: true, text: CHILDREN_TEXT },
+      { id: 2, checked: false, text: CHILDREN_TEXT },
     ];
 
     const onAllChange = jest.fn();
@@ -104,8 +112,8 @@ describe('ImplementedNestedCheckbox', () => {
 
     const { getAllByRole } = render(
       <ImplementedNestedCheckbox
-        text=''
-        checkList={nestedCheckboxState}
+        text={PARENT_TEXT}
+        checkList={nestedCheckboxList}
         onAllChange={onAllChange}
         onChange={onChange}
       />
@@ -123,4 +131,29 @@ describe('ImplementedNestedCheckbox', () => {
     // expect(one).not.toBeChecked();
     // expect(two).not.toBeChecked();
   });
+});
+
+test('ImplementedNestedCheckbox Snapshot', () => {
+  const nestedCheckboxList = [
+    { id: 1, checked: true, text: CHILDREN_TEXT },
+    { id: 2, checked: false, text: CHILDREN_TEXT },
+  ];
+
+  const indeterminate = create(
+    <GlobalThemeProvider>
+      <ImplementedNestedCheckbox
+        text={PARENT_TEXT}
+        checkList={nestedCheckboxList}
+        isIndeterminate
+      />
+    </GlobalThemeProvider>
+  );
+  expect(indeterminate).toMatchSnapshot();
+
+  const determinate = create(
+    <GlobalThemeProvider>
+      <ImplementedNestedCheckbox text={PARENT_TEXT} checkList={nestedCheckboxList} />
+    </GlobalThemeProvider>
+  );
+  expect(determinate).toMatchSnapshot();
 });
