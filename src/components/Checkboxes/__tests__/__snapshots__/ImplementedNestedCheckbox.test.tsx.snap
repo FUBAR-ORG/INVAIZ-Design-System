@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NestedCheckbox Snapshot 1`] = `
+exports[`ImplementedNestedCheckbox Snapshot 1`] = `
 <div>
   <label
     className="css-9ncwx"
@@ -45,7 +45,45 @@ exports[`NestedCheckbox Snapshot 1`] = `
           className="css-1u8zmlt"
         >
           <input
+            checked={true}
             className="css-18gtr08"
+            id={1}
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <div
+            className="css-3xhjcj"
+          >
+            <svg
+              className="css-bw5rgr"
+              data-file-name="Check.svg"
+              data-svg-name="Check"
+              data-test-id="Check"
+              height={20}
+              width={20}
+            />
+          </div>
+        </span>
+        <p
+          className="css-4ccycq"
+        >
+          Children
+        </p>
+      </label>
+    </li>
+    <li
+      className="css-llbbcb"
+    >
+      <label
+        className="css-9ncwx"
+      >
+        <span
+          className="css-1u8zmlt"
+        >
+          <input
+            checked={false}
+            className="css-18gtr08"
+            id={2}
             onChange={[Function]}
             type="checkbox"
           />
@@ -73,7 +111,7 @@ exports[`NestedCheckbox Snapshot 1`] = `
 </div>
 `;
 
-exports[`NestedCheckbox Snapshot 2`] = `
+exports[`ImplementedNestedCheckbox Snapshot 2`] = `
 <div>
   <label
     className="css-9ncwx"
@@ -118,7 +156,45 @@ exports[`NestedCheckbox Snapshot 2`] = `
           className="css-1u8zmlt"
         >
           <input
+            checked={true}
             className="css-18gtr08"
+            id={1}
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <div
+            className="css-3xhjcj"
+          >
+            <svg
+              className="css-bw5rgr"
+              data-file-name="Check.svg"
+              data-svg-name="Check"
+              data-test-id="Check"
+              height={20}
+              width={20}
+            />
+          </div>
+        </span>
+        <p
+          className="css-4ccycq"
+        >
+          Children
+        </p>
+      </label>
+    </li>
+    <li
+      className="css-llbbcb"
+    >
+      <label
+        className="css-9ncwx"
+      >
+        <span
+          className="css-1u8zmlt"
+        >
+          <input
+            checked={false}
+            className="css-18gtr08"
+            id={2}
             onChange={[Function]}
             type="checkbox"
           />
