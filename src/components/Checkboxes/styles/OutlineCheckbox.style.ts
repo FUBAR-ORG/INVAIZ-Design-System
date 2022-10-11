@@ -14,7 +14,9 @@ import {
 
 export const CLASSNAME_OUTLINE_CHECK_ICON = 'visible' as const;
 
-export const StyleLabel = styled.label``;
+export const StyleLabel = styled.label`
+  display: inline-flex;
+`;
 
 export const StyleOutlineCheckIcon = styled(SvgIcon)`
   width: 100%;

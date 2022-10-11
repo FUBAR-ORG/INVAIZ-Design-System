@@ -35,7 +35,7 @@ interface ImplementedNestedCheckboxProps
    *
    * * `useNestedCheckboxState` 훅을 사용하여 가져온 객체 내의 함수를 그대로 사용할 수 있습니다.
    */
-  onAllChange: () => void;
+  onAllChange?: () => void;
 }
 
 /**
@@ -59,16 +59,16 @@ export const useNestedCheckboxState = (
     [checkList, allCheck]
   );
 
+  const onChange = (checked: boolean, id: CheckItemId) =>
+    setCheckList((prevList) =>
+      prevList.map((checkItem) => (id === checkItem.id ? { ...checkItem, checked } : checkItem))
+    );
+
   const onAllChange = () =>
     setCheckList((prevList) =>
       prevList.map((checkItem) =>
         checkItem.disabled ? checkItem : { ...checkItem, checked: !allCheck }
       )
-    );
-
-  const onChange = (checked: boolean, id: CheckItemId) =>
-    setCheckList((prevList) =>
-      prevList.map((checkItem) => (id === checkItem.id ? { ...checkItem, checked } : checkItem))
     );
 
   return { checkList, checked: allCheck, isIndeterminate, onChange, onAllChange };

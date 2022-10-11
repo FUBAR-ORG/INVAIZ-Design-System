@@ -2,7 +2,7 @@
 
 exports[`OutlineCheckbox Snapshot 1`] = `
 <label
-  className="css-0"
+  className="css-9ncwx"
 >
   <span
     className="css-1u8zmlt"
@@ -27,7 +27,7 @@ exports[`OutlineCheckbox Snapshot 1`] = `
     </div>
   </span>
   <p
-    className="css-14jdknz"
+    className="css-4ccycq"
   >
     Outline Checkbox
   </p>
@@ -36,7 +36,7 @@ exports[`OutlineCheckbox Snapshot 1`] = `
 
 exports[`OutlineCheckbox Snapshot 2`] = `
 <label
-  className="css-0"
+  className="css-9ncwx"
 >
   <span
     className="css-1u8zmlt"
@@ -60,7 +60,7 @@ exports[`OutlineCheckbox Snapshot 2`] = `
     </div>
   </span>
   <p
-    className="css-14jdknz"
+    className="css-4ccycq"
   >
     Outline Checkbox
   </p>

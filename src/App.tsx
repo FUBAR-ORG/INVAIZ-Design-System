@@ -27,22 +27,27 @@ export default function App() {
     { id: 2, checked: false, disabled: false },
   ]);
 
+  const allCheck = useMemo(
+    () => checkedList.every(({ checked, disabled }) => disabled || checked),
+    [checkedList]
+  );
+
+  const indeterminate = useMemo(
+    () => !allCheck && checkedList.some(({ checked, disabled }) => !disabled && checked),
+    [checkedList, allCheck]
+  );
+
   const onChange = (newChecked: boolean, setId: number) => {
     setCheckedList((prevList) =>
       prevList.map((prev) => ({ ...prev, checked: prev.id === setId ? newChecked : prev.checked }))
     );
   };
 
-  const allCheck = useMemo(() => checkedList.every(({ checked }) => checked), [checkedList]);
-
   const onAllChange = () => {
-    setCheckedList((prevList) => prevList.map((prev) => ({ ...prev, checked: !allCheck })));
+    setCheckedList((prevList) =>
+      prevList.map((prev) => (prev.disabled ? prev : { ...prev, checked: !allCheck }))
+    );
   };
-
-  const indeterminate = useMemo(
-    () => !allCheck && checkedList.some(({ checked }) => checked),
-    [checkedList, allCheck]
-  );
 
   return (
     <>
