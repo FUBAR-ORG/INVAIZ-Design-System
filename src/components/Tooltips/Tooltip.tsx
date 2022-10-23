@@ -1,48 +1,38 @@
 import type { TooltipBaseProps } from '@components/Tooltips/interfaces/Tooltip.interface';
 // types
 
-import {
-  useState,
-  useRef,
-  Children,
-  cloneElement,
-  // FunctionComponentElement,
-  // RefAttributes,
-} from 'react';
+import { useState, useRef, cloneElement } from 'react';
+import { createPortal } from 'react-dom';
 // React modules
 
-const Tooltip = ({ text, textSize, borderRadiusRatio, children }: TooltipBaseProps) => {
-  const childrenRef = useRef<HTMLElement>(null);
+const Tooltip = ({ children }: TooltipBaseProps) => {
   const timer = useRef<NodeJS.Timer | null>(null);
-  const child = Children.only(children);
+  const childrenRef = useRef<HTMLElement>(null);
 
   const [visible, setVisible] = useState(false);
 
-  console.log(visible, child, childrenRef.current);
-
-  if (!visible) {
-    return child;
-  }
-
-  return cloneElement(
-    <div role='tooltip'>
-      {text} {textSize} {borderRadiusRatio}
-      {child}
-    </div>,
-    {
-      ref: childrenRef,
-      onMouseOver: () => {
-        if (timer.current) {
-          clearTimeout(timer.current);
-        }
-        setVisible(() => true);
-      },
-      onMouseLeave: () => {
-        timer.current = setTimeout(() => {
-          setVisible(() => false);
-        });
-      },
+  const onMouseOver = () => {
+    if (timer.current) {
+      clearTimeout(timer.current);
     }
+    setVisible(() => true);
+  };
+
+  const onMouseLeave = () => {
+    timer.current = setTimeout(() => {
+      setVisible(() => false);
+    }, 200);
+  };
+
+  return (
+    <>
+      {visible && createPortal(<div role='tooltip'>this is ToolTip</div>, document.body)}
+      {cloneElement(children, {
+        ref: childrenRef,
+        onMouseOver,
+        onMouseLeave,
+      })}
+    </>
   );
 };
 

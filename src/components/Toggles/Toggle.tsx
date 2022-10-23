@@ -5,8 +5,7 @@ export interface ToggleProps {
   onChange?: (checked: boolean) => void;
 }
 
-function Toggle({ checked, onChange, ...restProps }: ToggleProps) {
-  console.log(restProps);
+function Toggle({ checked, onChange }: ToggleProps) {
   return (
     <Label>
       <Input type='checkbox' checked={checked} onChange={(e) => onChange?.(e.target.checked)} />

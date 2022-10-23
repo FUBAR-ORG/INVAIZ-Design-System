@@ -22,14 +22,14 @@ describe('Tooltip', () => {
   });
 
   it('적용된 요소에 `mouseover` 시 툴팁이 브라우저에 렌더링된다.', async () => {
-    const { getByRole } = render(
+    const { getByRole, queryByRole } = render(
       <Tooltip text={TOOLTIP_TEXT}>
         <button type='button'>This is button</button>
       </Tooltip>
     );
 
-    // const tooltip = getByRole('tooltip');
-    // expect(tooltip).not.toBeInTheDocument();
+    const tooltip = queryByRole('tooltip');
+    expect(tooltip).not.toBeInTheDocument();
 
     fireEvent.mouseOver(getByRole('button'));
 
@@ -38,15 +38,15 @@ describe('Tooltip', () => {
   });
 
   it('툴팁 컴포넌트에 `mouseleave` 후 일정 시간이 지나면 사라진다.', async () => {
-    const { getByRole } = render(
+    const { getByRole, queryByRole } = render(
       <Tooltip text={TOOLTIP_TEXT}>
         <button type='button'>This is button</button>
       </Tooltip>
     );
 
     const button = getByRole('button');
-    // const tooltip = getByRole('tooltip');
-    // expect(tooltip).not.toBeInTheDocument();
+    const tooltip = queryByRole('tooltip');
+    expect(tooltip).not.toBeInTheDocument();
 
     fireEvent.mouseOver(button);
 
@@ -55,20 +55,20 @@ describe('Tooltip', () => {
 
     fireEvent.mouseLeave(button);
 
-    // await waitForElementToBeRemoved(renderTooltip);
+    await waitForElementToBeRemoved(renderTooltip);
   });
 
   it('툴팁 `mouseleave` 후 사라지기 전에 `mouseover` 시 정상적으로 렌더링 상태를 유지한다.', async () => {
     jest.useFakeTimers();
-    const { getByRole } = render(
+    const { getByRole, queryByRole } = render(
       <Tooltip text={TOOLTIP_TEXT}>
         <button type='button'>This is button</button>
       </Tooltip>
     );
 
     const button = getByRole('button');
-    // const tooltip = getByRole('tooltip');
-    // expect(tooltip).not.toBeInTheDocument();
+    const tooltip = queryByRole('tooltip');
+    expect(tooltip).not.toBeInTheDocument();
 
     fireEvent.mouseOver(button);
 
