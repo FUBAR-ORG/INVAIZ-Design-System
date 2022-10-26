@@ -1,11 +1,17 @@
-import type { TooltipBaseProps } from '@components/Tooltips/interfaces/Tooltip.interface';
-// types
-
 import { useState, useRef, cloneElement } from 'react';
 import { createPortal } from 'react-dom';
 // React modules
 
-const Tooltip = ({ children }: TooltipBaseProps) => {
+import {
+  type TooltipBaseProps,
+  TOOLTIP_BORDER_RADIUS_UNIT,
+} from '@components/Tooltips/interfaces/Tooltip.interface';
+// interfaces
+
+/**
+ * 기본적인 툴팁입니다.
+ */
+const Tooltip = ({ children, text, textSize, borderRadiusRatio = 2 }: TooltipBaseProps) => {
   const timer = useRef<NodeJS.Timer | null>(null);
   const childrenRef = useRef<HTMLElement>(null);
 
@@ -26,7 +32,19 @@ const Tooltip = ({ children }: TooltipBaseProps) => {
 
   return (
     <>
-      {visible && createPortal(<div role='tooltip'>this is ToolTip</div>, document.body)}
+      {visible &&
+        createPortal(
+          <div
+            role='tooltip'
+            style={{
+              fontSize: textSize,
+              borderRadius: borderRadiusRatio * TOOLTIP_BORDER_RADIUS_UNIT,
+            }}
+          >
+            {text}
+          </div>,
+          document.body
+        )}
       {cloneElement(children, {
         ref: childrenRef,
         onMouseOver,
@@ -35,12 +53,5 @@ const Tooltip = ({ children }: TooltipBaseProps) => {
     </>
   );
 };
-
-// interface TestProps {
-//   children: FunctionComponentElement<RefAttributes<HTMLElement>>;
-// }
-//
-// const Test = ({ children }: TestProps) => {
-// };
 
 export default Tooltip;

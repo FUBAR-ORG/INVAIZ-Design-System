@@ -2,6 +2,7 @@ import type { TooltipBaseProps } from '@components/Tooltips/interfaces/Tooltip.i
 import type SVG_ICONS from '@assets/svg';
 // types
 
+import Tooltip from '@components/Tooltips/Tooltip';
 import SvgIcon from '@components/SvgIcons/SvgIcon';
 // components
 
@@ -12,6 +13,9 @@ interface HaveIconTooltipProps extends TooltipBaseProps {
   icon: keyof typeof SVG_ICONS;
 }
 
+/**
+ * 아이콘을 함께 사용하는 툴팁입니다.
+ */
 const HaveIconTooltip = ({
   text,
   textSize,
@@ -19,11 +23,18 @@ const HaveIconTooltip = ({
   icon,
   children,
 }: HaveIconTooltipProps) => (
-  <div>
-    {text} {textSize} {borderRadiusRatio}
+  <Tooltip
+    text={
+      <>
+        <SvgIcon icon={icon} />
+        {text}
+      </>
+    }
+    textSize={textSize}
+    borderRadiusRatio={borderRadiusRatio}
+  >
     {children}
-    <SvgIcon icon={icon} />
-  </div>
+  </Tooltip>
 );
 
 export default HaveIconTooltip;

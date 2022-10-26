@@ -1,11 +1,11 @@
-import type { ReactElement } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 // React modules
 
 export interface TooltipParentProps {
   /**
    * 툴팁에 보여질 내용(텍스트)입니다.
    */
-  text: string;
+  text: string | ReactNode;
   /**
    * 텍스트 사이즈를 조절합니다.
    */
@@ -24,3 +24,5 @@ export interface TooltipBaseProps extends TooltipParentProps {
    */
   children: ReactElement;
 }
+
+export const TOOLTIP_BORDER_RADIUS_UNIT = 5 as const;

@@ -9,6 +9,11 @@ interface MultipleContentsTooltipProps extends TooltipParentProps {
   children: ReactElement[];
 }
 
+/**
+ * 다수의 콘텐츠를 보여주는 툴팁입니다.
+ *
+ * 말풍선 꼬리를 생성합니다.
+ */
 const MultipleContentsTooltip = ({
   text,
   textSize,
