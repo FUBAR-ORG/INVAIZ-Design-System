@@ -11,7 +11,7 @@ function buildModule(functionName, pathname, filename) {
           ...props, 
           'data-file-name': '${pathname}',
           'data-svg-name': '${filename}',
-          'data-test-id': '${functionName}'
+          'data-testid': '${functionName}'
         });
       }
       module.exports.default = ${functionName};

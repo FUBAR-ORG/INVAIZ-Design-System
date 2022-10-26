@@ -22,7 +22,7 @@ describe('HaveIconTooltip', () => {
   });
 
   it('아이콘 포함 툴팁은 기본적으로 렌더링되지 않으며, 하위 요소에 `mouseover` 시 툴팁이 body 아래에 `text`와 아이콘을 포함하여 렌더링된 후 일정 시간이 지나면 사라진다.', async () => {
-    const { getByRole, queryByRole } = render(
+    const { getByRole, queryByRole, getByTestId } = render(
       <HaveIconTooltip icon={ICON_NAME} text={TOOLTIP_TEXT}>
         <button type='button'>{BUTTON_CONTENT}</button>
       </HaveIconTooltip>
@@ -37,7 +37,7 @@ describe('HaveIconTooltip', () => {
     const renderTooltip = await waitFor(() => getByRole('tooltip'));
     expect(renderTooltip).toBeInTheDocument();
     expect(renderTooltip).toHaveTextContent(TOOLTIP_TEXT);
-    expect(renderTooltip).toHaveTextContent(ICON_NAME);
+    getByTestId(ICON_NAME);
 
     fireEvent.mouseLeave(button);
 
