@@ -1,12 +1,19 @@
-import type { TooltipBaseProps } from '@components/Tooltips/interfaces/Tooltip.interface';
 import type SVG_ICONS from '@assets/svg';
+import type {
+  SingleChildrenProps,
+  TooltipCommonProps,
+} from '@components/Tooltips/interfaces/Tooltip.interface';
 // types
 
-import Tooltip from '@components/Tooltips/Tooltip';
 import SvgIcon from '@components/SvgIcons/SvgIcon';
+import TooltipBase from '@components/Tooltips/TooltipBase';
 // components
 
-interface HaveIconTooltipProps extends TooltipBaseProps {
+interface HaveIconTooltipProps extends SingleChildrenProps, TooltipCommonProps {
+  /**
+   * 텍스트 및 아이콘 사이즈를 조절합니다.
+   */
+  textSize?: 16 | 20 | 24;
   /**
    * 툴팁과 함께 보여질 아이콘의 키(이름)입니다.
    */
@@ -18,23 +25,22 @@ interface HaveIconTooltipProps extends TooltipBaseProps {
  */
 const HaveIconTooltip = ({
   text,
-  textSize,
+  textSize = 16,
   borderRadiusRatio,
   icon,
   children,
 }: HaveIconTooltipProps) => (
-  <Tooltip
-    text={
-      <>
-        <SvgIcon icon={icon} />
+  <TooltipBase
+    contents={
+      <p style={{ fontSize: textSize }}>
+        <SvgIcon icon={icon} size={textSize} />
         {text}
-      </>
+      </p>
     }
-    textSize={textSize}
     borderRadiusRatio={borderRadiusRatio}
   >
     {children}
-  </Tooltip>
+  </TooltipBase>
 );
 
 export default HaveIconTooltip;

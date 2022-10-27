@@ -1,10 +1,13 @@
-import type { TooltipBaseProps } from '@components/Tooltips/interfaces/Tooltip.interface';
+import type {
+  SingleChildrenProps,
+  TooltipCommonProps,
+} from '@components/Tooltips/interfaces/Tooltip.interface';
 // types
 
-import Tooltip from '@components/Tooltips/Tooltip';
+import TooltipBase from '@components/Tooltips/TooltipBase';
 // components
 
-interface HaveImageTooltipProps extends TooltipBaseProps {
+interface HaveImageTooltipProps extends SingleChildrenProps, TooltipCommonProps {
   /**
    * 툴팁과 함께 보여질 이미지의 경로(이름)입니다.
    */
@@ -21,18 +24,17 @@ const HaveImageTooltip = ({
   imageUrl,
   children,
 }: HaveImageTooltipProps) => (
-  <Tooltip
-    text={
-      <>
+  <TooltipBase
+    contents={
+      <p style={{ fontSize: textSize }}>
         <img src={imageUrl} alt='TooltipImage' />
         {text}
-      </>
+      </p>
     }
-    textSize={textSize}
     borderRadiusRatio={borderRadiusRatio}
   >
     {children}
-  </Tooltip>
+  </TooltipBase>
 );
 
 export default HaveImageTooltip;
