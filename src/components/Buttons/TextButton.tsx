@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Button, { ButtonProps } from '@components/Buttons/Button';
+import SvgIcon from '@components/SvgIcons/SvgIcon';
 
 export default function TextButton({
   children,
@@ -12,6 +13,7 @@ export default function TextButton({
   /** 버튼 선택 여부 */
   selected,
   shape = 'default',
+
   ...props
 }: ButtonProps) {
   const isLoading = loading && 'loading';
