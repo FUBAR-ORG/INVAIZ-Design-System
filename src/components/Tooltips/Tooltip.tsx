@@ -1,13 +1,13 @@
 import type {
-  SingleChildrenProps,
-  TooltipCommonProps,
+  TooltipSingleChildrenProps,
+  TooltipTextProps,
 } from '@components/Tooltips/interfaces/Tooltip.interface';
 // types
 
 import TooltipBase from '@components/Tooltips/TooltipBase';
 // interfaces
 
-interface TooltipProps extends SingleChildrenProps, TooltipCommonProps {}
+interface TooltipProps extends TooltipSingleChildrenProps, TooltipTextProps {}
 
 /**
  * 기본적인 툴팁입니다.

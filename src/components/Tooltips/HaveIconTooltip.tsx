@@ -1,7 +1,7 @@
 import type SVG_ICONS from '@assets/svg';
 import type {
-  SingleChildrenProps,
-  TooltipCommonProps,
+  TooltipSingleChildrenProps,
+  TooltipTextProps,
 } from '@components/Tooltips/interfaces/Tooltip.interface';
 // types
 
@@ -9,7 +9,7 @@ import SvgIcon from '@components/SvgIcons/SvgIcon';
 import TooltipBase from '@components/Tooltips/TooltipBase';
 // components
 
-interface HaveIconTooltipProps extends SingleChildrenProps, TooltipCommonProps {
+interface HaveIconTooltipProps extends TooltipSingleChildrenProps, TooltipTextProps {
   /**
    * 텍스트 및 아이콘 사이즈를 조절합니다.
    */

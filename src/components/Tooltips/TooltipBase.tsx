@@ -3,8 +3,8 @@ import { createPortal } from 'react-dom';
 // React modules
 
 import {
-  type BorderRadiusProps,
-  type SingleChildrenProps,
+  type TooltipBorderRadiusProps,
+  type TooltipSingleChildrenProps,
   TOOLTIP_BORDER_RADIUS_UNIT,
 } from '@components/Tooltips/interfaces/Tooltip.interface';
 // interfaces
@@ -18,7 +18,7 @@ interface Point {
   y: number;
 }
 
-interface TooltipBaseProps extends BorderRadiusProps, SingleChildrenProps {
+interface TooltipBaseProps extends TooltipBorderRadiusProps, TooltipSingleChildrenProps {
   contents: ReactNode;
 }
 
@@ -83,7 +83,7 @@ const TooltipBase = ({ contents, borderRadiusRatio = 2, children }: TooltipBaseP
   );
 };
 
-interface StyleTooltipProps extends Partial<Point>, Required<BorderRadiusProps> {}
+interface StyleTooltipProps extends Partial<Point>, Required<TooltipBorderRadiusProps> {}
 
 const StyleTooltip = styled.div<StyleTooltipProps>`
   position: fixed;

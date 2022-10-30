@@ -1,13 +1,13 @@
 import type {
-  SingleChildrenProps,
-  TooltipCommonProps,
+  TooltipSingleChildrenProps,
+  TooltipTextProps,
 } from '@components/Tooltips/interfaces/Tooltip.interface';
 // types
 
 import TooltipBase from '@components/Tooltips/TooltipBase';
 // components
 
-interface HaveImageTooltipProps extends SingleChildrenProps, TooltipCommonProps {
+interface HaveImageTooltipProps extends TooltipSingleChildrenProps, TooltipTextProps {
   /**
    * 툴팁과 함께 보여질 이미지의 경로(이름)입니다.
    */

@@ -1,11 +1,11 @@
 import type { ReactElement } from 'react';
-import type { TooltipCommonProps } from '@components/Tooltips/interfaces/Tooltip.interface';
+import type { TooltipTextProps } from '@components/Tooltips/interfaces/Tooltip.interface';
 // types
 
 import TooltipBase from '@components/Tooltips/TooltipBase';
 // components
 
-interface MultipleContentsTooltipProps extends TooltipCommonProps {
+interface MultipleContentsTooltipProps extends TooltipTextProps {
   /**
    * 툴팁을 적용하기 위한 다수 콘텐츠(배열 요소)입니다.
    */
