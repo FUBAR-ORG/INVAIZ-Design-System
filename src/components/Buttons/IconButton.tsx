@@ -17,12 +17,14 @@ export default function IconButton({ icon, size = 24, color = '#fff', ...props }
   );
 }
 
-const StyledIconButton = styled.div`
+const StyledIconButton = styled.button`
   display: inline-flex;
   justify-content: center;
   align-items: center;
 
   cursor: pointer;
+  outline: none;
+  border: none;
   min-width: 36px;
   min-height: 36px;
   padding: ${({ theme }) => theme.whiteSpace.whiteSpace10}px;
