@@ -26,7 +26,9 @@ const InputBoxFeatureTemplate: Story<InputBoxFeatureProps> = ({ ...args }) => {
     setInput(e.target.value);
   };
 
-  return <InputBoxFeature value={input} onChange={onChange} {...args} />;
+  const onClear = () => setInput('');
+
+  return <InputBoxFeature value={input} onChange={onChange} onClear={onClear} {...args} />;
 };
 
 export const Basic = InputBoxTemplate.bind({});
@@ -36,15 +38,14 @@ export const Disabled = InputBoxTemplate.bind({});
 Disabled.args = { boxWidth: 240, placeholder: 'placeholder', disabled: true };
 
 export const Clearable = InputBoxFeatureTemplate.bind({});
-Clearable.args = { boxWidth: 240, placeholder: 'placeholder', clearable: true };
+Clearable.args = { boxWidth: 240, placeholder: 'placeholder' };
 
 export const Required = InputBoxFeatureTemplate.bind({});
-Required.args = { boxWidth: 240, placeholder: 'placeholder', required: true };
+Required.args = { boxWidth: 240, placeholder: 'placeholder', required: true, onClear: undefined };
 
 export const ClearableRequired = InputBoxFeatureTemplate.bind({});
 ClearableRequired.args = {
   boxWidth: 240,
   placeholder: 'placeholder',
-  clearable: true,
   required: true,
 };

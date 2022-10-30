@@ -1,4 +1,4 @@
-import { type InputHTMLAttributes, useEffect, useRef, useState, SyntheticEvent } from 'react';
+import { type InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 
 import InputBar from '@components/Inputs/InputBar';
 
@@ -8,11 +8,11 @@ import { ClearableIcon, RequiredIcon, Wrapper } from '@components/Inputs/Input.s
  * INVAIZ Input Bar Feature Props
  *
  * @param barWidth type="image"의 width와 구분을 위한 bar 자체의 width
- * @param clearable clear 기능 여부
+ * @param onClear clear 기능
  */
 export interface InputBarFeatureProps extends InputHTMLAttributes<HTMLInputElement> {
   barWidth?: number;
-  clearable?: boolean;
+  onClear?: () => void;
 }
 
 /**
@@ -20,22 +20,22 @@ export interface InputBarFeatureProps extends InputHTMLAttributes<HTMLInputEleme
  *
  * @param InputHTMLAttributes
  * @param barWidth type="image"의 width와 구분을 위한 bar 자체의 width
- * @param clearable clear 기능 여부
+ * @param onClear clear 기능
  *
  * @returns HTMLDivElement > HTMLInputElement
  */
 const InputBarFeature = ({ ...props }: InputBarFeatureProps) => {
-  const { disabled, clearable, required, value, barWidth, onChange } = props;
+  const { disabled, onClear, required, value, barWidth, onChange } = props;
 
   const [isFilled, setIsFilled] = useState(false);
 
   const ref = useRef<HTMLInputElement | null>(null);
   const { current } = ref;
 
-  const onClear = clearable
-    ? (e: SyntheticEvent) => {
+  const clear = onClear
+    ? () => {
         if (current && onChange) {
-          onChange({ ...e, target: { value: '' } });
+          onClear();
           current.focus();
         }
       }
@@ -54,8 +54,8 @@ const InputBarFeature = ({ ...props }: InputBarFeatureProps) => {
       <InputBar {...props} ref={ref} />
       {!disabled && (
         <>
-          {clearable && isFilled && (
-            <button type='button' onClick={onClear}>
+          {onClear && isFilled && (
+            <button type='button' onClick={clear}>
               <ClearableIcon icon='Cancel' size={16} />
             </button>
           )}

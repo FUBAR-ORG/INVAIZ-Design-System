@@ -26,7 +26,9 @@ const InputBarFeatureTemplate: Story<InputBarFeatureProps> = ({ ...args }) => {
     setInput(e.target.value);
   };
 
-  return <InputBarFeature value={input} onChange={onChange} {...args} />;
+  const onClear = () => setInput('');
+
+  return <InputBarFeature value={input} onChange={onChange} onClear={onClear} {...args} />;
 };
 
 export const Basic = InputBarTemplate.bind({});
@@ -36,15 +38,14 @@ export const Disabled = InputBarTemplate.bind({});
 Disabled.args = { barWidth: 160, placeholder: 'placeholder', disabled: true };
 
 export const Clearable = InputBarFeatureTemplate.bind({});
-Clearable.args = { barWidth: 160, placeholder: 'placeholder', clearable: true };
+Clearable.args = { barWidth: 160, placeholder: 'placeholder' };
 
 export const Required = InputBarFeatureTemplate.bind({});
-Required.args = { barWidth: 160, placeholder: 'placeholder', required: true };
+Required.args = { barWidth: 160, placeholder: 'placeholder', required: true, onClear: undefined };
 
 export const ClearableRequired = InputBarFeatureTemplate.bind({});
 ClearableRequired.args = {
   barWidth: 160,
   placeholder: 'placeholder',
-  clearable: true,
   required: true,
 };
