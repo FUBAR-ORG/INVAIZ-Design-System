@@ -5,6 +5,18 @@ import path from 'path';
 import { type UserConfig, mergeConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 
+import { compilerOptions } from '../tsconfig.json';
+// Typescript Config files
+
+const pathsToModuleNameMapper = (paths: Record<string, string[]>): Record<string, string> =>
+  Object.entries(paths).reduce(
+    (previous, [alias, [p]]) => ({
+      ...previous,
+      [alias.replace('/*', '')]: path.resolve(process.cwd(), p.replace('/*', '')),
+    }),
+    {}
+  );
+
 const config: StorybookViteConfig = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
@@ -27,10 +39,7 @@ const config: StorybookViteConfig = {
         ...config.resolve,
         alias: {
           ...config.resolve?.alias,
-          '@components': path.resolve(__dirname, '../src/components'),
-          '@themes': path.resolve(__dirname, '../src/themes'),
-          '@assets': path.resolve(__dirname, '../src/assets'),
-          '@tests': path.resolve(__dirname, '../src/tests'),
+          ...pathsToModuleNameMapper(compilerOptions.paths),
         },
       },
     });
