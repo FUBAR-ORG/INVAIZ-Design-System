@@ -1,6 +1,12 @@
 import { type InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 
-import { Wrapper, Box, ClearableIcon, RequiredIcon } from '@components/Inputs/Input.style';
+import {
+  Wrapper,
+  Box,
+  ClearableIcon,
+  RequiredIcon,
+  ErrorMessage,
+} from '@components/Inputs/Input.style';
 
 /**
  * INVAIZ Input Props
@@ -8,11 +14,13 @@ import { Wrapper, Box, ClearableIcon, RequiredIcon } from '@components/Inputs/In
  * @param type box | bar | search
  * @param width 박스의 가로 길이
  * @param onClear 내용 지우기 버튼의 기능
+ * @param errorMessage 내용과 관련된 에러 메세지
  */
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   type?: 'box';
   width?: number;
   onClear?: () => void;
+  errorMessage?: string;
 }
 
 /**
@@ -22,10 +30,11 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
  * @param type box | bar | search
  * @param width 박스의 가로 길이
  * @param onClear 내용 지우기 버튼의 기능
+ * @param errorMessage 내용과 관련된 에러 메세지
  *
  * @returns HTMLDivElement > HTMLInputElement
  */
-const Input = ({ type = 'box', width, onClear, ...props }: InputProps) => {
+const Input = ({ type = 'box', width, onClear, errorMessage = '', ...props }: InputProps) => {
   const { value, disabled, required } = props;
 
   const [isFilled, setIsFilled] = useState(false);
@@ -60,7 +69,10 @@ const Input = ({ type = 'box', width, onClear, ...props }: InputProps) => {
             </button>
           )}
           {required && !isFilled && (
-            <RequiredIcon data-testid='required-icon' icon='Caution' size={16} />
+            <>
+              <RequiredIcon data-testid='required-icon' icon='Caution' size={16} />
+              {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+            </>
           )}
         </>
       )}

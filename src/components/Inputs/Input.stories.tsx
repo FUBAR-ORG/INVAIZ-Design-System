@@ -40,6 +40,15 @@ Required.args = {
   onClear: undefined,
 };
 
+export const RequiredErrorMessage = InputTemplate.bind({});
+RequiredErrorMessage.args = {
+  width: 240,
+  placeholder: 'Hello. Text Field',
+  required: true,
+  errorMessage: 'Hello. Error Message',
+  onClear: undefined,
+};
+
 export const ClearableRequired = InputTemplate.bind({});
 ClearableRequired.args = {
   width: 240,

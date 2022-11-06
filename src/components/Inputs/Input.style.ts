@@ -41,7 +41,7 @@ export const Box = styled.input<InputProps>`
   padding-right: ${({ isClearable }) => (isClearable ? 34 : 16)}px;
 
   ${({ theme }) => theme.font.kopub};
-  font-size: ${({ theme }) => theme.fontSize.size14};
+  font-size: 14px;
   color: ${({ theme, disabled }) =>
     disabled ? theme.color.system.off1 : theme.color.grayScale.basic.black};
 
@@ -69,4 +69,13 @@ export const ClearableIcon = styled(SvgIcon)`
 
 export const RequiredIcon = styled(SvgIcon)`
   fill: ${({ theme }) => theme.normal.system.caution1};
+`;
+
+export const ErrorMessage = styled.p`
+  position: absolute;
+  top: -14px;
+  left: 4px;
+  ${({ theme }) => theme.font.kopub};
+  font-size: 10px;
+  color: ${({ theme }) => theme.color.system.caution1};
 `;
