@@ -40,18 +40,22 @@ Required.args = {
   onClear: undefined,
 };
 
-export const RequiredErrorMessage = InputTemplate.bind({});
-RequiredErrorMessage.args = {
+export const BoxAllOptions = InputTemplate.bind({});
+BoxAllOptions.args = {
   width: 240,
   placeholder: 'Hello. Text Field',
   required: true,
   errorMessage: 'Hello. Error Message',
-  onClear: undefined,
 };
 
-export const ClearableRequired = InputTemplate.bind({});
-ClearableRequired.args = {
-  width: 240,
+export const Bar = InputTemplate.bind({});
+Bar.args = { type: 'bar', width: 160, placeholder: 'Hello. Text Field', onClear: undefined };
+
+export const BarAllOptions = InputTemplate.bind({});
+BarAllOptions.args = {
+  type: 'bar',
+  width: 160,
   placeholder: 'Hello. Text Field',
   required: true,
+  errorMessage: 'Hello. Error Message',
 };

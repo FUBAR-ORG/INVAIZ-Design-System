@@ -3,6 +3,7 @@ import { type InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 import {
   Wrapper,
   Box,
+  Bar,
   ClearableIcon,
   RequiredIcon,
   ErrorMessage,
@@ -17,7 +18,7 @@ import {
  * @param errorMessage 내용과 관련된 에러 메세지
  */
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  type?: 'box';
+  type?: 'box' | 'bar';
   width?: number;
   onClear?: () => void;
   errorMessage?: string;
@@ -60,6 +61,7 @@ const Input = ({ type = 'box', width, onClear, errorMessage = '', ...props }: In
   return (
     <Wrapper width={width}>
       {type === 'box' && <Box type='text' isClearable={!!onClear} {...props} ref={ref} />}
+      {type === 'bar' && <Bar type='text' isClearable={!!onClear} {...props} ref={ref} />}
 
       {!disabled && (
         <>

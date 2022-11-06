@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 import SvgIcon from '@components/SvgIcons/SvgIcon';
 
@@ -29,16 +30,10 @@ interface InputProps {
   isClearable?: boolean;
 }
 
-export const Box = styled.input<InputProps>`
+const Input = styled.input<InputProps>`
   width: 100%;
-  height: 40px;
   border: none;
-  border-radius: 5px;
   outline: none;
-  background: ${({ theme, disabled }) =>
-    disabled ? theme.color.grayScale.gray200 : theme.color.grayScale.coolGray100};
-  padding-left: 16px;
-  padding-right: ${({ isClearable }) => (isClearable ? 34 : 16)}px;
 
   ${({ theme }) => theme.font.kopub};
   font-size: 14px;
@@ -49,6 +44,15 @@ export const Box = styled.input<InputProps>`
     color: ${({ theme, disabled }) =>
       disabled ? theme.color.system.off1 : theme.color.grayScale.coolGray400};
   }
+`;
+
+export const Box = styled(Input)`
+  height: 40px;
+  border-radius: 5px;
+  background: ${({ theme, disabled }) =>
+    disabled ? theme.color.grayScale.gray200 : theme.color.grayScale.coolGray100};
+  padding-left: 16px;
+  padding-right: ${({ isClearable }) => (isClearable ? 34 : 16)}px;
 
   &:focus {
     ${({ theme }) => theme.style.border.selected};
@@ -59,6 +63,30 @@ export const Box = styled.input<InputProps>`
   & + button,
   & + svg {
     right: 16px;
+  }
+`;
+
+export const Bar = styled(Input)`
+  height: 21px;
+  border-bottom: 1px solid ${({ theme }) => theme.color.grayScale.coolGray700};
+  ${({ isClearable }) =>
+    isClearable &&
+    css`
+      padding-right: 18px;
+    `}
+
+  &:focus {
+    border-bottom-color: ${({ theme }) => theme.color.primary.blue500};
+    ${({ isClearable }) =>
+      isClearable &&
+      css`
+        padding-right: 18px;
+      `}
+  }
+
+  & + button,
+  & + svg {
+    right: 0;
   }
 `;
 
