@@ -13,8 +13,13 @@ const InputTemplate: Story<InputProps> = ({ ...args }) => {
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => setInput(e.target.value);
 
-  return <InputBar value={input} onChange={onChange} {...args} />;
+  const onClear = () => setInput('');
+
+  return <InputBar value={input} onChange={onChange} onClear={onClear} {...args} />;
 };
 
 export const Box = InputTemplate.bind({});
-Box.args = { width: 240, placeholder: 'Hello. Text Field' };
+Box.args = { width: 240, placeholder: 'Hello. Text Field', onClear: undefined };
+
+export const Clearable = InputTemplate.bind({});
+Clearable.args = { width: 240, placeholder: 'Hello. Text Field' };

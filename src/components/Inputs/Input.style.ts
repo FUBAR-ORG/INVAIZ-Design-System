@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+import SvgIcon from '@components/SvgIcons/SvgIcon';
+
 interface WrapperProps {
   width?: number;
 }
@@ -9,6 +11,14 @@ export const Wrapper = styled.div<WrapperProps>`
   width: ${({ width }) => (width ? `${width}px` : '100%')};
   display: flex;
   align-items: center;
+
+  & > button {
+    position: absolute;
+    border: none;
+    outline: none;
+    background: none;
+    height: 16px;
+  }
 `;
 
 export const Box = styled.input`
@@ -31,4 +41,13 @@ export const Box = styled.input`
     ${({ theme }) => theme.style.border.selected};
     padding: 0 14px;
   }
+
+  & + button {
+    right: 16px;
+  }
+`;
+
+export const ClearableIcon = styled(SvgIcon)`
+  fill: ${({ theme }) => theme.color.grayScale.coolGray500};
+  cursor: pointer;
 `;
