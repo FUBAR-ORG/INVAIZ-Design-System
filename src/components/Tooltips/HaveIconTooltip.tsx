@@ -9,6 +9,10 @@ import SvgIcon from '@components/SvgIcons/SvgIcon';
 import TooltipBase from '@components/Tooltips/TooltipBase';
 // components
 
+import styled from '@emotion/styled';
+import { StyleTooltipText } from '@components/Tooltips/styles/Tooltip.style';
+// styles
+
 interface HaveIconTooltipProps extends TooltipSingleChildrenProps, TooltipTextProps {
   /**
    * 텍스트 및 아이콘 사이즈를 조절합니다.
@@ -32,15 +36,25 @@ const HaveIconTooltip = ({
 }: HaveIconTooltipProps) => (
   <TooltipBase
     contents={
-      <p style={{ fontSize: textSize }}>
-        <SvgIcon icon={icon} size={textSize} />
-        {text}
-      </p>
+      <StyleTooltipText textSize={textSize}>
+        <StyleSvgIcon icon={icon} size={textSize} color='#fff' />
+        <StyleText>{text}</StyleText>
+      </StyleTooltipText>
     }
     borderRadiusRatio={borderRadiusRatio}
   >
     {children}
   </TooltipBase>
 );
+
+export const StyleSvgIcon = styled(SvgIcon)`
+  vertical-align: middle;
+
+  margin-right: 4px;
+`;
+
+export const StyleText = styled.span`
+  vertical-align: middle;
+`;
 
 export default HaveIconTooltip;

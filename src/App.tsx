@@ -13,7 +13,7 @@ export default function App() {
           <Toggle />
         </span>
       </Tooltip>
-      <HaveIconTooltip icon='Caution' text='Test'>
+      <HaveIconTooltip icon='Download' text='Test'>
         <span>
           <Toggle />
         </span>

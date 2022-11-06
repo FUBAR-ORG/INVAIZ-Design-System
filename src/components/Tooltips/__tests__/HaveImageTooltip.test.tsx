@@ -9,7 +9,7 @@ const IMAGE_URL = 'https://github.com/FUBAR-ORG.git' as const;
 const BUTTON_CONTENT = 'This is button' as const;
 
 describe('HaveImageTooltip', () => {
-  it('이미지 포함 툴팁은 하위 요소에 렌더링에 영향을 주지 않는다.', () => {
+  it('이미지 포함 툴팁은 하위 요소 렌더링에 영향을 주지 않는다.', () => {
     const { getByRole } = render(
       <HaveImageTooltip imageUrl={IMAGE_URL} text={TOOLTIP_TEXT}>
         <button type='button'>{BUTTON_CONTENT}</button>

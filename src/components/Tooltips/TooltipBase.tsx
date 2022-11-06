@@ -1,4 +1,4 @@
-import { type ReactNode, useState, useRef, cloneElement, useEffect } from 'react';
+import { type ReactNode, useState, useRef, useEffect, cloneElement } from 'react';
 import { createPortal } from 'react-dom';
 // React modules
 
@@ -27,6 +27,7 @@ interface TooltipBaseProps extends TooltipBorderRadiusProps, TooltipSingleChildr
  */
 const TooltipBase = ({ contents, borderRadiusRatio = 2, children }: TooltipBaseProps) => {
   const timer = useRef<NodeJS.Timer | null>(null);
+  const tooltipRef = useRef<HTMLDivElement>(null);
   const childrenRef = useRef<HTMLElement>(null);
 
   const [visible, setVisible] = useState(false);
@@ -35,24 +36,26 @@ const TooltipBase = ({ contents, borderRadiusRatio = 2, children }: TooltipBaseP
     y: -1,
   });
 
-  const onMouseOver = () => {
-    if (timer.current) {
-      clearTimeout(timer.current);
-    }
-    setVisible(() => true);
-  };
-
-  const onMouseLeave = () => {
-    timer.current = setTimeout(() => {
-      setVisible(() => false);
-    }, 200);
-  };
-
   useEffect(() => {
+    const onMouseOver = () => {
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
+      setVisible(() => true);
+    };
+
+    const onMouseLeave = () => {
+      timer.current = setTimeout(() => {
+        setVisible(() => false);
+      }, 200);
+    };
+
+    const tooltipRefValue = tooltipRef.current;
     const childrenRefValue = childrenRef.current;
     childrenRefValue?.addEventListener('mouseover', onMouseOver);
     childrenRefValue?.addEventListener('mouseleave', onMouseLeave);
 
+    console.log(tooltipRefValue, childrenRefValue);
     if (childrenRefValue) {
       const { x, y, width, height } = childrenRefValue.getBoundingClientRect();
       setPoint({
@@ -65,13 +68,18 @@ const TooltipBase = ({ contents, borderRadiusRatio = 2, children }: TooltipBaseP
       childrenRefValue?.removeEventListener('mouseover', onMouseOver);
       childrenRefValue?.removeEventListener('mouseleave', onMouseLeave);
     };
-  }, [childrenRef]);
+  }, [tooltipRef, childrenRef]);
 
   return (
     <>
       {visible &&
         createPortal(
-          <StyleTooltip role='tooltip' {...point} borderRadiusRatio={borderRadiusRatio}>
+          <StyleTooltip
+            role='tooltip'
+            ref={tooltipRef}
+            {...point}
+            borderRadiusRatio={borderRadiusRatio}
+          >
             {contents}
           </StyleTooltip>,
           document.body
@@ -94,8 +102,15 @@ const StyleTooltip = styled.div<StyleTooltipProps>`
       top: ${y}px;
       left: ${x}px;
     `};
-  transform: translateX(-50%);
+
+  padding: 20px;
+
+  background: ${({ theme }) => theme.color.grayScale.coolGray800}e6; // 투명도 90%
+
   border-radius: ${({ borderRadiusRatio }) => borderRadiusRatio * TOOLTIP_BORDER_RADIUS_UNIT}px;
+
+  ${({ theme }) => theme.style.boxShadow.dropdownEmphasis};
+  transform: translateX(-50%);
 `;
 
 export default TooltipBase;

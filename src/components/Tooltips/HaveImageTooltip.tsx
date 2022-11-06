@@ -7,6 +7,9 @@ import type {
 import TooltipBase from '@components/Tooltips/TooltipBase';
 // components
 
+import { StyleTooltipText } from '@components/Tooltips/styles/Tooltip.style';
+// styles
+
 interface HaveImageTooltipProps extends TooltipSingleChildrenProps, TooltipTextProps {
   /**
    * 툴팁과 함께 보여질 이미지의 경로(이름)입니다.
@@ -26,10 +29,10 @@ const HaveImageTooltip = ({
 }: HaveImageTooltipProps) => (
   <TooltipBase
     contents={
-      <p style={{ fontSize: textSize }}>
+      <StyleTooltipText textSize={textSize}>
         <img src={imageUrl} alt='TooltipImage' />
         {text}
-      </p>
+      </StyleTooltipText>
     }
     borderRadiusRatio={borderRadiusRatio}
   >

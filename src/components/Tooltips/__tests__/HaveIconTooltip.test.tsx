@@ -9,7 +9,7 @@ const ICON_NAME = 'Caution' as const;
 const BUTTON_CONTENT = 'This is button' as const;
 
 describe('HaveIconTooltip', () => {
-  it('아이콘 포함 툴팁은 하위 요소에 렌더링에 영향을 주지 않는다.', () => {
+  it('아이콘 포함 툴팁은 하위 요소 렌더링에 영향을 주지 않는다.', () => {
     const { getByRole } = render(
       <HaveIconTooltip icon={ICON_NAME} text={TOOLTIP_TEXT}>
         <button type='button'>{BUTTON_CONTENT}</button>

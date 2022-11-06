@@ -7,6 +7,9 @@ import type {
 import TooltipBase from '@components/Tooltips/TooltipBase';
 // interfaces
 
+import { StyleTooltipText } from '@components/Tooltips/styles/Tooltip.style';
+// styles
+
 interface TooltipProps extends TooltipSingleChildrenProps, TooltipTextProps {}
 
 /**
@@ -14,7 +17,7 @@ interface TooltipProps extends TooltipSingleChildrenProps, TooltipTextProps {}
  */
 const Tooltip = ({ text, textSize, borderRadiusRatio, children }: TooltipProps) => (
   <TooltipBase
-    contents={<p style={{ fontSize: textSize }}>{text}</p>}
+    contents={<StyleTooltipText textSize={textSize}>{text}</StyleTooltipText>}
     borderRadiusRatio={borderRadiusRatio}
   >
     {children}
