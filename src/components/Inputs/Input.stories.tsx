@@ -1,11 +1,11 @@
 import { type ChangeEventHandler, useState } from 'react';
 import { Story } from '@storybook/react';
 
-import InputBar, { InputProps } from '@components/Inputs/Input';
+import Input, { InputProps } from '@components/Inputs/Input';
 
 export default {
   title: 'Components/Input',
-  component: InputBar,
+  component: Input,
 };
 
 const InputTemplate: Story<InputProps> = ({ ...args }) => {
@@ -15,11 +15,19 @@ const InputTemplate: Story<InputProps> = ({ ...args }) => {
 
   const onClear = () => setInput('');
 
-  return <InputBar value={input} onChange={onChange} onClear={onClear} {...args} />;
+  return <Input value={input} onChange={onChange} onClear={onClear} {...args} />;
 };
 
 export const Box = InputTemplate.bind({});
 Box.args = { width: 240, placeholder: 'Hello. Text Field', onClear: undefined };
+
+export const Disabled = InputTemplate.bind({});
+Disabled.args = {
+  width: 240,
+  placeholder: 'Hello. Text Field',
+  onClear: undefined,
+  disabled: true,
+};
 
 export const Clearable = InputTemplate.bind({});
 Clearable.args = { width: 240, placeholder: 'Hello. Text Field' };

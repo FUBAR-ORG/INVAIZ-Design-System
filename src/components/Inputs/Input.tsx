@@ -1,6 +1,6 @@
 import { type InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 
-import { Wrapper, Box, ClearableIcon } from '@components/Inputs/Input.style';
+import { Wrapper, Box, ClearableIcon, RequiredIcon } from '@components/Inputs/Input.style';
 
 /**
  * INVAIZ Input Props
@@ -25,7 +25,9 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
  *
  * @returns HTMLDivElement > HTMLInputElement
  */
-const Input = ({ type = 'box', width, onClear, value, ...props }: InputProps) => {
+const Input = ({ type = 'box', width, onClear, ...props }: InputProps) => {
+  const { value, disabled, required } = props;
+
   const [isFilled, setIsFilled] = useState(false);
 
   const ref = useRef<HTMLInputElement | null>(null);
@@ -50,10 +52,17 @@ const Input = ({ type = 'box', width, onClear, value, ...props }: InputProps) =>
     <Wrapper width={width}>
       {type === 'box' && <Box type='text' {...props} ref={ref} />}
 
-      {onClear && isFilled && (
-        <button type='button' onClick={clear}>
-          <ClearableIcon icon='Cancel' size={16} />
-        </button>
+      {!disabled && (
+        <>
+          {onClear && isFilled && (
+            <button type='button' onClick={clear}>
+              <ClearableIcon icon='Cancel' size={16} />
+            </button>
+          )}
+          {required && !isFilled && (
+            <RequiredIcon data-testid='required-icon' icon='Caution' size={16} />
+          )}
+        </>
       )}
     </Wrapper>
   );

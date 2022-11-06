@@ -27,14 +27,18 @@ export const Box = styled.input`
   border: none;
   border-radius: 5px;
   outline: none;
-  background: ${({ theme }) => theme.color.grayScale.coolGray100};
+  background: ${({ theme, disabled }) =>
+    disabled ? theme.color.grayScale.gray200 : theme.color.grayScale.coolGray100};
   padding: 0 16px;
 
   ${({ theme }) => theme.font.kopub};
-  font-size: ${({ theme }) => theme.color.grayScale.basic.black};
+  font-size: ${({ theme }) => theme.fontSize.size14};
+  color: ${({ theme, disabled }) =>
+    disabled ? theme.color.system.off1 : theme.color.grayScale.basic.black};
 
   &::placeholder {
-    color: ${({ theme }) => theme.color.grayScale.coolGray400};
+    color: ${({ theme, disabled }) =>
+      disabled ? theme.color.system.off1 : theme.color.grayScale.coolGray400};
   }
 
   &:focus {
@@ -50,4 +54,9 @@ export const Box = styled.input`
 export const ClearableIcon = styled(SvgIcon)`
   fill: ${({ theme }) => theme.color.grayScale.coolGray500};
   cursor: pointer;
+`;
+
+export const RequiredIcon = styled(SvgIcon)`
+  fill: ${({ theme }) => theme.normal.system.caution1};
+  stroke: ${({ theme }) => theme.light.grayScale.coolGray600};
 `;
