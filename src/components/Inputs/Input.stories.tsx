@@ -31,3 +31,18 @@ Disabled.args = {
 
 export const Clearable = InputTemplate.bind({});
 Clearable.args = { width: 240, placeholder: 'Hello. Text Field' };
+
+export const Required = InputTemplate.bind({});
+Required.args = {
+  width: 240,
+  placeholder: 'Hello. Text Field',
+  required: true,
+  onClear: undefined,
+};
+
+export const ClearableRequired = InputTemplate.bind({});
+ClearableRequired.args = {
+  width: 240,
+  placeholder: 'Hello. Text Field',
+  required: true,
+};

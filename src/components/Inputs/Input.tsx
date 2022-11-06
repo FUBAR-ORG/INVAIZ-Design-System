@@ -50,7 +50,7 @@ const Input = ({ type = 'box', width, onClear, ...props }: InputProps) => {
 
   return (
     <Wrapper width={width}>
-      {type === 'box' && <Box type='text' {...props} ref={ref} />}
+      {type === 'box' && <Box type='text' isClearable={!!onClear} {...props} ref={ref} />}
 
       {!disabled && (
         <>

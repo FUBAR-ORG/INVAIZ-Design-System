@@ -19,9 +19,17 @@ export const Wrapper = styled.div<WrapperProps>`
     background: none;
     height: 16px;
   }
+
+  & > svg {
+    position: absolute;
+  }
 `;
 
-export const Box = styled.input`
+interface InputProps {
+  isClearable?: boolean;
+}
+
+export const Box = styled.input<InputProps>`
   width: 100%;
   height: 40px;
   border: none;
@@ -29,7 +37,8 @@ export const Box = styled.input`
   outline: none;
   background: ${({ theme, disabled }) =>
     disabled ? theme.color.grayScale.gray200 : theme.color.grayScale.coolGray100};
-  padding: 0 16px;
+  padding-left: 16px;
+  padding-right: ${({ isClearable }) => (isClearable ? 34 : 16)}px;
 
   ${({ theme }) => theme.font.kopub};
   font-size: ${({ theme }) => theme.fontSize.size14};
@@ -43,10 +52,12 @@ export const Box = styled.input`
 
   &:focus {
     ${({ theme }) => theme.style.border.selected};
-    padding: 0 14px;
+    padding-left: 14px;
+    padding-right: ${({ isClearable }) => (isClearable ? 32 : 14)}px;
   }
 
-  & + button {
+  & + button,
+  & + svg {
     right: 16px;
   }
 `;
@@ -58,5 +69,4 @@ export const ClearableIcon = styled(SvgIcon)`
 
 export const RequiredIcon = styled(SvgIcon)`
   fill: ${({ theme }) => theme.normal.system.caution1};
-  stroke: ${({ theme }) => theme.light.grayScale.coolGray600};
 `;
