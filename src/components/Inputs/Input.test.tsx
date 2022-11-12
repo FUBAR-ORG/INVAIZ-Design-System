@@ -3,20 +3,41 @@ import { render } from '@tests/test-utils';
 import Input from '@components/Inputs/Input';
 
 describe('Input', () => {
-  it('onClear에 내용이 있고 value에 값이 있으면 내용을 지우는 버튼이 렌더링된다.', () => {
-    const onClear = jest.fn();
-    const { getByRole } = render(<Input value='filled' onClear={onClear} />);
+  const VALUE = 'filled';
 
-    const button = getByRole('button');
+  it('clearable이 true일 때 value에 값이 없으면 내용을 지우는 버튼이 렌더링되지 않는다.', () => {
+    const { queryByRole, queryByTestId } = render(<Input value='' clearable />);
 
-    expect(button).toBeInTheDocument();
+    const button = queryByRole('button');
+    const clearIcon = queryByTestId('clear-icon');
+
+    expect(button).toBeNull();
+    expect(clearIcon).toBeNull();
   });
 
-  it('required가 true이고 value에 값이 없으면 required icon이 렌더링된다.', () => {
+  it('clearable이 true일 때 value에 값이 있으면 내용을 지우는 버튼이 렌더링된다.', () => {
+    const { getByRole, getByTestId } = render(<Input value={VALUE} clearable />);
+
+    const button = getByRole('button');
+    const clearIcon = getByTestId('clear-icon');
+
+    expect(button).toBeInTheDocument();
+    expect(clearIcon).toBeInTheDocument();
+  });
+
+  it('required가 true일 때 value에 값이 없으면 required icon이 렌더링된다.', () => {
     const { getByTestId } = render(<Input value='' required />);
 
     const requiredIcon = getByTestId('required-icon');
 
     expect(requiredIcon).toBeInTheDocument();
+  });
+
+  it('required가 true일 때 value에 값이 있으면 required icon이 렌더링되지 않는다.', () => {
+    const { queryByTestId } = render(<Input value={VALUE} required />);
+
+    const requiredIcon = queryByTestId('required-icon');
+
+    expect(requiredIcon).toBeNull();
   });
 });

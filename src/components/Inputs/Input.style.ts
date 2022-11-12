@@ -27,10 +27,11 @@ export const Wrapper = styled.div<WrapperProps>`
 `;
 
 interface InputProps {
+  shape: 'box' | 'bar';
   isClearable?: boolean;
 }
 
-const Input = styled.input<InputProps>`
+export const StyleInput = styled.input<InputProps>`
   width: 100%;
   border: none;
   outline: none;
@@ -44,50 +45,51 @@ const Input = styled.input<InputProps>`
     color: ${({ theme, disabled }) =>
       disabled ? theme.color.system.off1 : theme.color.grayScale.coolGray400};
   }
-`;
 
-export const Box = styled(Input)`
-  height: 40px;
-  border-radius: 5px;
-  background: ${({ theme, disabled }) =>
-    disabled ? theme.color.grayScale.gray200 : theme.color.grayScale.coolGray100};
-  padding-left: 16px;
-  padding-right: ${({ isClearable }) => (isClearable ? 34 : 16)}px;
+  ${({ shape, theme, disabled, isClearable }) =>
+    shape === 'box'
+      ? css`
+          height: 40px;
+          border-radius: 5px;
+          background: ${disabled
+            ? theme.color.grayScale.gray200
+            : theme.color.grayScale.coolGray100};
 
-  &:focus {
-    ${({ theme }) => theme.style.border.selected};
-    padding-left: 14px;
-    padding-right: ${({ isClearable }) => (isClearable ? 32 : 14)}px;
-  }
+          padding-left: 16px;
+          padding-right: ${isClearable ? 34 : 16}px;
 
-  & + button,
-  & + svg {
-    right: 16px;
-  }
-`;
+          &:focus {
+            ${theme.style.border.selected};
+            padding-left: 14px;
+            padding-right: ${isClearable ? 32 : 14}px;
+          }
 
-export const Bar = styled(Input)`
-  height: 21px;
-  border-bottom: 1px solid ${({ theme }) => theme.color.grayScale.coolGray700};
-  ${({ isClearable }) =>
-    isClearable &&
-    css`
-      padding-right: 18px;
-    `}
+          & + button,
+          & + svg {
+            right: 16px;
+          }
+        `
+      : css`
+          height: 21px;
+          border-bottom: 1px solid ${theme.color.grayScale.coolGray700};
+          ${isClearable &&
+          css`
+            padding-right: 18px;
+          `}
 
-  &:focus {
-    border-bottom-color: ${({ theme }) => theme.color.primary.blue500};
-    ${({ isClearable }) =>
-      isClearable &&
-      css`
-        padding-right: 18px;
-      `}
-  }
+          &:focus {
+            border-bottom-color: ${theme.color.primary.blue500};
+            ${isClearable &&
+            css`
+              padding-right: 18px;
+            `}
+          }
 
-  & + button,
-  & + svg {
-    right: 0;
-  }
+          & + button,
+          & + svg {
+            right: 0;
+          }
+        `}
 `;
 
 export const ClearableIcon = styled(SvgIcon)`

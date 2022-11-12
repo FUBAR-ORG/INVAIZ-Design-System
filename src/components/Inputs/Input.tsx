@@ -1,9 +1,8 @@
-import { type InputHTMLAttributes, useEffect, useRef, useState } from 'react';
+import { type InputHTMLAttributes, useRef } from 'react';
 
 import {
   Wrapper,
-  Box,
-  Bar,
+  StyleInput,
   ClearableIcon,
   RequiredIcon,
   ErrorMessage,
@@ -12,65 +11,75 @@ import {
 /**
  * INVAIZ Input Props
  *
- * @param type box | bar | search
+ * @param shape box | bar
  * @param width 박스의 가로 길이
- * @param onClear 내용 지우기 버튼의 기능
+ * @param clearable 내용 지우기 기능 여부
  * @param errorMessage 내용과 관련된 에러 메세지
+ * @param onChange 입력 값을 관리하는 함수 (value: string) => string
  */
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  type?: 'box' | 'bar';
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+  shape?: 'box' | 'bar';
   width?: number;
-  onClear?: () => void;
+  clearable?: boolean;
   errorMessage?: string;
+  onChange?: (value: string) => void;
 }
 
 /**
  * INVAIZ Input
  *
  * @param InputHTMLAttributes
- * @param type box | bar | search
+ * @param shape box | bar
  * @param width 박스의 가로 길이
- * @param onClear 내용 지우기 버튼의 기능
+ * @param clearable 내용 지우기 기능 여부
  * @param errorMessage 내용과 관련된 에러 메세지
+ * @param onChange 입력 값을 관리하는 함수 (value: string) => string
  *
  * @returns HTMLDivElement > HTMLInputElement
  */
-const Input = ({ type = 'box', width, onClear, errorMessage = '', ...props }: InputProps) => {
+const Input = ({
+  shape = 'box',
+  width,
+  clearable = false,
+  errorMessage = '',
+  onChange,
+  ...props
+}: InputProps) => {
   const { value, disabled, required } = props;
-
-  const [isFilled, setIsFilled] = useState(false);
 
   const ref = useRef<HTMLInputElement | null>(null);
   const { current } = ref;
 
   const clear =
-    onClear &&
+    clearable &&
     // eslint-disable-next-line func-names
     function () {
-      if (current) {
+      if (current && onChange) {
+        onChange('');
         current.value = '';
         current.focus();
-        onClear();
       }
     };
 
-  useEffect(() => {
-    setIsFilled(!!value);
-  }, [value]);
-
   return (
     <Wrapper width={width}>
-      {type === 'box' && <Box type='text' isClearable={!!onClear} {...props} ref={ref} />}
-      {type === 'bar' && <Bar type='text' isClearable={!!onClear} {...props} ref={ref} />}
+      <StyleInput
+        ref={ref}
+        shape={shape}
+        isClearable={clearable}
+        onChange={(e) => onChange?.(e.target.value)}
+        value={value}
+        {...props}
+      />
 
       {!disabled && (
         <>
-          {onClear && isFilled && (
+          {clear && value && (
             <button type='button' onClick={clear}>
-              <ClearableIcon icon='Cancel' size={16} />
+              <ClearableIcon data-testid='clear-icon' icon='Cancel' size={16} />
             </button>
           )}
-          {required && !isFilled && (
+          {required && !value && (
             <>
               <RequiredIcon data-testid='required-icon' icon='Caution' size={16} />
               {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
