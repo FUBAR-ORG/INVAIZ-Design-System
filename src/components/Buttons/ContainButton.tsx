@@ -14,16 +14,16 @@ export default function ContainButton({
   shape = 'default',
   ...props
 }: ButtonProps) {
-  const isLoading = loading && 'loading';
-  const isDisabled = disabled && 'disabled';
-  const isSelected = selected && 'selected';
-  const isShape = shape === 'pill' && 'pill';
+  const isLoading = loading ? 'loading' : '';
+  const isDisabled = disabled ? 'disabled' : '';
+  const isSelected = selected ? 'selected' : '';
+  const isShape = shape === 'pill' ? 'pill' : '';
   return (
     <StyledButton
       {...props}
-      className={[size, isShape, isLoading, isDisabled, isSelected].join(' ')}
+      className={[size, isShape, isLoading, isDisabled, isSelected, props.className].join(' ')}
     >
-      {loading ? '...' : <>{children}</>}
+      {loading ? '...' : children}
     </StyledButton>
   );
 }

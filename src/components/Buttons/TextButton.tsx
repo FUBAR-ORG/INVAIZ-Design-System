@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import Button, { ButtonProps } from '@components/Buttons/Button';
-import SvgIcon from '@components/SvgIcons/SvgIcon';
 
 export default function TextButton({
   children,
@@ -16,16 +15,16 @@ export default function TextButton({
 
   ...props
 }: ButtonProps) {
-  const isLoading = loading && 'loading';
-  const isDisabled = disabled && 'disabled';
-  const isSelected = selected && 'selected';
-  const isShape = shape === 'pill' && 'pill';
+  const isLoading = loading ? 'loading' : '';
+  const isDisabled = disabled ? 'disabled' : '';
+  const isSelected = selected ? 'selected' : '';
+  const isShape = shape === 'pill' ? 'pill' : '';
   return (
     <StyledTextButton
       {...props}
-      className={[size, isShape, isLoading, isDisabled, isSelected].join(' ')}
+      className={[size, isShape, isLoading, isDisabled, isSelected, props.className].join(' ')}
     >
-      {loading ? '...' : <>{children}</>}
+      {loading ? '...' : children}
     </StyledTextButton>
   );
 }

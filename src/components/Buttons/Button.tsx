@@ -13,7 +13,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = styled.button`
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
 
