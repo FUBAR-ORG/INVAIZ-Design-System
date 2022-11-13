@@ -3,7 +3,6 @@ import ContainButton from '@components/Buttons/ContainButton';
 import OutlineButton from '@components/Buttons/OutlineButton';
 import TextButton from '@components/Buttons/TextButton';
 import { ButtonProps } from '@components/Buttons/Button';
-import { SvgIconProps } from '@components/SvgIcons/SvgIcon';
 
 export default {
   title: 'Components/Button',
