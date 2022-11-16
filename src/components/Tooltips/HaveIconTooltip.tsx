@@ -1,8 +1,5 @@
 import type SVG_ICONS from '@assets/svg';
-import type {
-  TooltipSingleChildrenProps,
-  TooltipTextProps,
-} from '@components/Tooltips/interfaces/Tooltip.interface';
+import type { TooltipProps } from '@components/Tooltips/interfaces/Tooltip.interface';
 // types
 
 import SvgIcon from '@components/SvgIcons/SvgIcon';
@@ -13,7 +10,7 @@ import styled from '@emotion/styled';
 import { StyleTooltipText } from '@components/Tooltips/styles/Tooltip.style';
 // styles
 
-interface HaveIconTooltipProps extends TooltipSingleChildrenProps, TooltipTextProps {
+interface HaveIconTooltipProps extends TooltipProps {
   /**
    * 텍스트 및 아이콘 사이즈를 조절합니다.
    */
@@ -31,6 +28,7 @@ const HaveIconTooltip = ({
   text,
   textSize = 16,
   borderRadiusRatio,
+  isArrow,
   icon,
   children,
 }: HaveIconTooltipProps) => (
@@ -42,6 +40,7 @@ const HaveIconTooltip = ({
       </StyleTooltipText>
     }
     borderRadiusRatio={borderRadiusRatio}
+    isArrow={isArrow}
   >
     {children}
   </TooltipBase>

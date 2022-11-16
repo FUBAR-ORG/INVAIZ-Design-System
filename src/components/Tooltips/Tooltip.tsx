@@ -1,7 +1,4 @@
-import type {
-  TooltipSingleChildrenProps,
-  TooltipTextProps,
-} from '@components/Tooltips/interfaces/Tooltip.interface';
+import type { TooltipProps } from '@components/Tooltips/interfaces/Tooltip.interface';
 // types
 
 import TooltipBase from '@components/Tooltips/TooltipBase';
@@ -10,15 +7,14 @@ import TooltipBase from '@components/Tooltips/TooltipBase';
 import { StyleTooltipText } from '@components/Tooltips/styles/Tooltip.style';
 // styles
 
-interface TooltipProps extends TooltipSingleChildrenProps, TooltipTextProps {}
-
 /**
  * 기본적인 툴팁입니다.
  */
-const Tooltip = ({ text, textSize, borderRadiusRatio, children }: TooltipProps) => (
+const Tooltip = ({ text, textSize, borderRadiusRatio, isArrow, children }: TooltipProps) => (
   <TooltipBase
     contents={<StyleTooltipText textSize={textSize}>{text}</StyleTooltipText>}
     borderRadiusRatio={borderRadiusRatio}
+    isArrow={isArrow}
   >
     {children}
   </TooltipBase>
