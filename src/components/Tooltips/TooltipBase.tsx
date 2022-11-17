@@ -9,6 +9,10 @@ import type { TooltipCommonProps } from '@components/Tooltips/interfaces/Tooltip
 import type { Point } from '@components/Tooltips/interfaces/Popper.interface';
 // interfaces
 
+const BETWEEN_CONTENTS_SPACE = 10 as const;
+const HAVE_ARROW_ADDITIONAL_SPACE = 7 as const;
+// constants
+
 interface TooltipBaseProps extends TooltipCommonProps {
   contents: ReactNode;
 }
@@ -48,7 +52,7 @@ const TooltipBase = ({ contents, borderRadiusRatio = 2, isArrow, children }: Too
       const { x, y, width, height } = childrenRefValue.getBoundingClientRect();
       setPoint({
         x: x + width / 2,
-        y: y + height + 10,
+        y: y + height + BETWEEN_CONTENTS_SPACE + (isArrow ? HAVE_ARROW_ADDITIONAL_SPACE : 0),
       });
     }
 
@@ -56,7 +60,7 @@ const TooltipBase = ({ contents, borderRadiusRatio = 2, isArrow, children }: Too
       childrenRefValue?.removeEventListener('mouseover', onMouseOver);
       childrenRefValue?.removeEventListener('mouseleave', onMouseLeave);
     };
-  }, [childrenRef]);
+  }, [childrenRef, isArrow]);
 
   return (
     <>

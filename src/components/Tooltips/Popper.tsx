@@ -13,12 +13,14 @@ import { css } from '@emotion/react';
 // styles
 
 const OUTLINE_PIXEL = 10 as const;
+// constants
 
 type PopperWrapperProps = Partial<Point>;
 type PopperBaseProps = Required<Pick<TooltipCommonProps, 'borderRadiusRatio'>>;
 type PopperProps = PropsWithChildren<
   PopperWrapperProps & PopperBaseProps & Pick<TooltipCommonProps, 'isArrow'>
 >;
+// types
 
 const Popper = ({ x, y, borderRadiusRatio, isArrow, children }: PopperProps) => {
   const tooltipRef = useRef<HTMLDivElement>(null);
@@ -59,7 +61,7 @@ const StylePopperArrow = styled.div`
   top: -7px;
   left: 50%;
 
-  display: inline-block;
+  display: flex;
   width: 8px;
   height: 7px;
 
@@ -69,14 +71,17 @@ const StylePopperArrow = styled.div`
 
   &::after {
     content: '';
+    position: absolute;
+    top: 5.5px;
+    left: 50%;
 
-    display: inline-block;
+    display: block;
     width: 7.35px;
     height: 7.35px;
 
     background: currentColor;
 
-    transform: scaleY(1.732435033686237) rotate(45deg);
+    transform: translateX(-50%) scaleY(1.732435033686237) rotate(45deg);
   }
 `;
 
