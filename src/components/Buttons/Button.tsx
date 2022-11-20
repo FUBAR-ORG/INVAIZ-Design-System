@@ -1,24 +1,57 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react';
 import styled from '@emotion/styled';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
+
+type Size = 'small' | 'default' | 'large' | 'x-large';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
+  size?: Size;
+  disabled?: boolean;
+  loading?: boolean;
+  selected?: boolean;
+  shape?: 'default' | 'pill';
 }
 
-export default function Button({ children, ...props }: ButtonProps) {
-  return <StyledButton {...props}>{children}</StyledButton>;
-}
+const Button = styled.button`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 
-const StyledButton = styled.button`
-  background-color: transparent;
-  padding: 8px;
   cursor: pointer;
   outline: none;
+
   border: none;
-  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 5px;
+
+  transition: all 0.15s ease-in-out;
+  box-sizing: border-box;
+
+  // color
+  color: ${({ theme }) => theme.color.grayScale.gray900};
+
+  &.pill {
+    border-radius: 18px;
   }
-  color: ${({ theme }) => theme.color.grayScale.basic.white};
-  font-size: ${({ theme }) => theme.fontSize.size14}px;
+  &.small {
+    min-width: 72px;
+    min-height: 32px;
+    ${({ theme }) => theme.font.kopub.contents6};
+  }
+  &.default {
+    min-width: 80px;
+    min-height: 36px;
+    ${({ theme }) => theme.font.kopub.contents4};
+  }
+  &.large {
+    min-width: 108px;
+    min-height: 40px;
+    ${({ theme }) => theme.font.kopub.contents1};
+  }
+  &.x-large {
+    min-width: 128px;
+    min-height: 56px;
+    ${({ theme }) => theme.font.kopub.subT1};
+  }
 `;
+
+export default Button;
