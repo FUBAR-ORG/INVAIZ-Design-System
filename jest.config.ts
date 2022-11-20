@@ -1,7 +1,27 @@
-const config = {
+import type { Config } from 'jest';
+// types
+
+import { compilerOptions } from './tsconfig.json';
+// Typescript Config files
+
+const pathsToModuleNameMapper = (
+  paths: Record<string, string[]>,
+  options: {
+    prefix: string;
+  }
+): Record<string, string> =>
+  Object.entries(paths).reduce(
+    (previous, [alias, [path]]) => ({
+      ...previous,
+      [`^${alias}`.replace('*', '(.*)')]: `${options.prefix}/${path}`.replace('*', '$1'),
+    }),
+    {}
+  );
+
+const config: Config = {
   preset: 'ts-jest',
   transform: {
-    '\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.tsx?$': 'ts-jest',
     '\\.svg$': '<rootDir>/config/svgJestTransformer.js',
   },
   testEnvironment: 'jsdom',
@@ -14,12 +34,9 @@ const config = {
   ],
   roots: ['<rootDir>/src'],
   setupFilesAfterEnv: ['@testing-library/jest-dom'],
-  moduleNameMapper: {
-    '^@components/(.*)': '<rootDir>/src/components/$1',
-    '^@themes/(.*)': '<rootDir>/src/themes/$1',
-    '^@assets/(.*)': '<rootDir>/src/assets/$1',
-    '^@tests/(.*)': '<rootDir>/src/tests/$1',
-  },
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+    prefix: '<rootDir>',
+  }),
 };
 
 export default config;
