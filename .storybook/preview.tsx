@@ -1,7 +1,8 @@
+import type { Story as StoryComponent } from '@storybook/react';
 import GlobalThemeProvider from '../src/themes/GlobalThemeProvider';
 
 export const decorators = [
-  (Story) => (
+  (Story: StoryComponent) => (
     <GlobalThemeProvider>
       <Story />
     </GlobalThemeProvider>

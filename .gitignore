@@ -15,3 +15,6 @@ build-storybook.log
 
 # log files
 yarn-error.log
+
+# error logs
+*error.log

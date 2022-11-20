@@ -11,6 +11,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
+    "isolatedModules": true,
+    "resolveJsonModule": true,
     "paths": {
       "@components/*": ["src/components/*"],
       "@themes/*": ["src/themes/*"],
