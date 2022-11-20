@@ -5,6 +5,17 @@ import react from '@vitejs/plugin-react';
 import eslint from 'vite-plugin-eslint';
 import svgr from 'vite-plugin-svgr';
 
+import { compilerOptions } from './tsconfig.json';
+// Typescript Config files
+
+const pathsToModuleNameMapper = (
+  paths: Record<string, string[]>
+): { find: string; replacement: string }[] =>
+  Object.entries(paths).map(([alias, [p]]) => ({
+    find: alias.replace('/*', ''),
+    replacement: path.resolve(__dirname, p.replace('/*', '')),
+  }));
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), eslint(), svgr()],
@@ -25,12 +36,7 @@ export default defineConfig({
     minify: 'esbuild',
   },
   resolve: {
-    alias: {
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@themes': path.resolve(__dirname, 'src/themes'),
-      '@assets': path.resolve(__dirname, 'src/assets'),
-      '@tests': path.resolve(__dirname, 'src/tests'),
-    },
+    alias: pathsToModuleNameMapper(compilerOptions.paths),
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
 });
