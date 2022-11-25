@@ -12,3 +12,6 @@ storybook-static
 
 # build log file of storybook
 build-storybook.log
+
+# error logs
+*error.log
