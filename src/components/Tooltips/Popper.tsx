@@ -15,11 +15,8 @@ import { css } from '@emotion/react';
 const OUTLINE_PIXEL = 10 as const;
 // constants
 
-type PopperWrapperProps = Partial<Point>;
 type PopperBaseProps = Required<Pick<TooltipCommonProps, 'borderRadiusRatio'>>;
-type PopperProps = PropsWithChildren<
-  PopperWrapperProps & PopperBaseProps & Pick<TooltipCommonProps, 'isArrow'>
->;
+type PopperProps = PropsWithChildren<PopperBaseProps & Pick<TooltipCommonProps, 'isArrow'> & Point>;
 // types
 
 const Popper = ({ x, y, borderRadiusRatio, isArrow, children }: PopperProps) => {
@@ -33,15 +30,28 @@ const Popper = ({ x, y, borderRadiusRatio, isArrow, children }: PopperProps) => 
 
   useLayoutEffect(() => {
     const tooltipRefValue = tooltipRef.current;
-    if (tooltipRefValue) {
-      const { x: deltaX, width } = tooltipRefValue.getBoundingClientRect();
-      if (deltaX < OUTLINE_PIXEL) {
-        setDelta((prev) => ({ ...prev, x: OUTLINE_PIXEL - deltaX }));
-      } else if (deltaX > window.innerWidth - OUTLINE_PIXEL) {
-        setDelta((prev) => ({ ...prev, x: window.innerHeight - OUTLINE_PIXEL - deltaX }));
+    const calculateDelta = () => {
+      if (tooltipRefValue) {
+        const { x: deltaX, width } = tooltipRefValue.getBoundingClientRect();
+        if (deltaX < OUTLINE_PIXEL) {
+          setDelta((prev) => ({ ...prev, x: OUTLINE_PIXEL - deltaX }));
+        } else if (deltaX > window.innerWidth - OUTLINE_PIXEL) {
+          setDelta((prev) => ({ ...prev, x: window.innerHeight - OUTLINE_PIXEL - deltaX }));
+        }
+        setDelta((prev) => ({ ...prev, width }));
       }
-      setDelta((prev) => ({ ...prev, width }));
+    };
+    calculateDelta();
+
+    const resizeObserver = new ResizeObserver(calculateDelta);
+    if (tooltipRefValue) {
+      resizeObserver.observe(tooltipRefValue);
     }
+    return () => {
+      if (tooltipRefValue) {
+        resizeObserver.unobserve(tooltipRefValue);
+      }
+    };
   }, [tooltipRef]);
 
   return (
@@ -55,6 +65,37 @@ const Popper = ({ x, y, borderRadiusRatio, isArrow, children }: PopperProps) => 
 };
 
 export default Popper;
+
+const StylePopperWrapper = styled.div<Point>`
+  position: fixed;
+  max-width: calc(100vw - ${OUTLINE_PIXEL * 2}px);
+
+  ${({ x, y }) =>
+    (x !== 0 || y !== 0) &&
+    css`
+      top: ${y}px;
+      left: ${x}px;
+    `};
+
+  color: ${({ theme }) => theme.color.grayScale.coolGray800}e6; // 투명도 90%
+
+  transform: translateX(-50%);
+`;
+
+interface StylePopperProps extends Point, PopperBaseProps {}
+
+const StylePopper = styled.div<StylePopperProps>`
+  padding: 20px;
+
+  background: currentColor;
+
+  border-radius: ${({ borderRadiusRatio }) => borderRadiusRatio * TOOLTIP_BORDER_RADIUS_UNIT}px;
+
+  ${({ theme }) => theme.style.boxShadow.dropdownEmphasis};
+
+  transform: translateX(${({ x }) => x}px);
+  overflow: hidden;
+`;
 
 const StylePopperArrow = styled.div`
   position: absolute;
@@ -81,38 +122,6 @@ const StylePopperArrow = styled.div`
 
     background: currentColor;
 
-    transform: translateX(-50%) scaleY(1.732435033686237) rotate(45deg);
+    transform: translateX(-50%) scaleY(${18 / (Math.sqrt(2) * 7.35)}) rotate(45deg);
   }
-`;
-
-const StylePopperWrapper = styled.div<PopperWrapperProps>`
-  position: fixed;
-  max-width: calc(100vw - ${OUTLINE_PIXEL * 2}px);
-
-  ${({ x, y }) =>
-    x !== undefined &&
-    y !== undefined &&
-    css`
-      top: ${y}px;
-      left: ${x}px;
-    `};
-
-  color: ${({ theme }) => theme.color.grayScale.coolGray800}e6; // 투명도 90%
-
-  transform: translateX(-50%);
-`;
-
-interface StylePopperProps extends Rect, PopperBaseProps {}
-
-const StylePopper = styled.div<StylePopperProps>`
-  padding: 20px;
-
-  background: currentColor;
-
-  border-radius: ${({ borderRadiusRatio }) => borderRadiusRatio * TOOLTIP_BORDER_RADIUS_UNIT}px;
-
-  ${({ theme }) => theme.style.boxShadow.dropdownEmphasis};
-
-  transform: translateX(${({ x }) => x}px);
-  overflow: hidden;
 `;

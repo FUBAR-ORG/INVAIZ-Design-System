@@ -21,27 +21,21 @@ interface TooltipBaseProps extends TooltipCommonProps {
  * 툴팁의 베이스 역할을 하는 컴포넌트입니다.
  */
 const TooltipBase = ({ contents, borderRadiusRatio = 2, isArrow, children }: TooltipBaseProps) => {
-  const timer = useRef<NodeJS.Timer | null>(null);
   const childrenRef = useRef<HTMLElement>(null);
 
   const [visible, setVisible] = useState(false);
   const [point, setPoint] = useState<Point>({
-    x: -1,
-    y: -1,
+    x: 0,
+    y: 0,
   });
 
   useEffect(() => {
     const onMouseOver = () => {
-      if (timer.current) {
-        clearTimeout(timer.current);
-      }
       setVisible(() => true);
     };
 
     const onMouseLeave = () => {
-      timer.current = setTimeout(() => {
-        setVisible(() => false);
-      }, 200);
+      setVisible(() => false);
     };
 
     const childrenRefValue = childrenRef.current;
