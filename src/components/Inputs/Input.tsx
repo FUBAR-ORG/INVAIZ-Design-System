@@ -1,7 +1,7 @@
 import { type InputHTMLAttributes, useRef } from 'react';
 
 import {
-  Wrapper,
+  Label,
   StyleInput,
   ClearableIcon,
   RequiredIcon,
@@ -62,7 +62,7 @@ const Input = ({
     };
 
   return (
-    <Wrapper width={width}>
+    <Label width={width}>
       <StyleInput
         ref={ref}
         shape={shape}
@@ -87,7 +87,7 @@ const Input = ({
           )}
         </>
       )}
-    </Wrapper>
+    </Label>
   );
 };
 

@@ -3,14 +3,14 @@ import { css } from '@emotion/react';
 
 import SvgIcon from '@components/SvgIcons/SvgIcon';
 
-interface WrapperProps {
+interface LabelProps {
   width?: number;
 }
 
-export const Wrapper = styled.div<WrapperProps>`
+export const Label = styled.label<LabelProps>`
   position: relative;
   width: ${({ width }) => (width ? `${width}px` : '100%')};
-  display: flex;
+  display: inline-flex;
   align-items: center;
 
   & > button {
