@@ -1,4 +1,4 @@
-import { type InputHTMLAttributes } from 'react';
+import { type InputHTMLAttributes, forwardRef } from 'react';
 
 import {
   Label,
@@ -34,34 +34,36 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
  *
  * @returns HTMLLabelElement > HTMLInputElement
  */
-const Input = ({ shape = 'box', width, onClear, errorMessage, ...props }: InputProps) => {
-  const { value, required, disabled } = props;
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ shape = 'box', width, onClear, errorMessage, ...props }, ref) => {
+    const { value, required, disabled } = props;
 
-  const isFilled = value !== '' && onClear;
-  const isRequired = value === '' && required;
+    const isFilled = value !== '' && onClear;
+    const isRequired = value === '' && required;
 
-  return (
-    <Label width={width}>
-      <StyleInput shape={shape} isClearable={!!onClear} {...props} />
+    return (
+      <Label width={width}>
+        <StyleInput ref={ref} shape={shape} isClearable={!!onClear} {...props} />
 
-      {!disabled && (
-        <>
-          {isFilled && (
-            <button type='button' onClick={onClear}>
-              <ClearableIcon data-testid='clear-icon' icon='Cancel' size={16} />
-            </button>
-          )}
+        {!disabled && (
+          <>
+            {isFilled && (
+              <button type='button' onClick={onClear}>
+                <ClearableIcon data-testid='clear-icon' icon='Cancel' size={16} />
+              </button>
+            )}
 
-          {isRequired && (
-            <>
-              <RequiredIcon data-testid='required-icon' icon='Caution' size={16} />
-              {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-            </>
-          )}
-        </>
-      )}
-    </Label>
-  );
-};
+            {isRequired && (
+              <>
+                <RequiredIcon data-testid='required-icon' icon='Caution' size={16} />
+                {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+              </>
+            )}
+          </>
+        )}
+      </Label>
+    );
+  }
+);
 
 export default Input;
