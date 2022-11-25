@@ -4,9 +4,10 @@ import Input from '@components/Inputs/Input';
 
 describe('Input', () => {
   const VALUE = 'filled';
+  const onClear = jest.fn();
 
   it('clearable이 true일 때 value에 값이 없으면 내용을 지우는 버튼이 렌더링되지 않는다.', () => {
-    const { queryByRole } = render(<Input value='' clearable />);
+    const { queryByRole } = render(<Input value='' onClear={onClear} />);
 
     const button = queryByRole('button');
 
@@ -14,7 +15,7 @@ describe('Input', () => {
   });
 
   it('clearable이 true일 때 value에 값이 있으면 내용을 지우는 버튼이 렌더링된다.', () => {
-    const { getByRole } = render(<Input value={VALUE} clearable />);
+    const { getByRole } = render(<Input value={VALUE} onClear={onClear} />);
 
     const button = getByRole('button');
 

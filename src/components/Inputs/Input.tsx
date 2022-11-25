@@ -1,4 +1,4 @@
-import { type InputHTMLAttributes, useRef } from 'react';
+import { type InputHTMLAttributes } from 'react';
 
 import {
   Label,
@@ -13,16 +13,14 @@ import {
  *
  * @param shape box | bar
  * @param width 박스의 가로 길이
- * @param clearable 내용 지우기 기능 여부
+ * @param onClear 지우기 기능
  * @param errorMessage 내용과 관련된 에러 메세지
- * @param onChange 입력 값을 관리하는 함수 (value: string) => string
  */
-export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   shape?: 'box' | 'bar';
   width?: number;
-  clearable?: boolean;
+  onClear?: () => void;
   errorMessage?: string;
-  onChange?: (value: string) => void;
 }
 
 /**
@@ -31,55 +29,30 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
  * @param InputHTMLAttributes
  * @param shape box | bar
  * @param width 박스의 가로 길이
- * @param clearable 내용 지우기 기능 여부
+ * @param onClear 지우기 기능
  * @param errorMessage 내용과 관련된 에러 메세지
- * @param onChange 입력 값을 관리하는 함수 (value: string) => string
  *
- * @returns HTMLDivElement > HTMLInputElement
+ * @returns HTMLLabelElement > HTMLInputElement
  */
-const Input = ({
-  shape = 'box',
-  width,
-  clearable = false,
-  errorMessage = '',
-  onChange,
-  ...props
-}: InputProps) => {
-  const { value, disabled, required } = props;
+const Input = ({ shape = 'box', width, onClear, errorMessage, ...props }: InputProps) => {
+  const { value, required, disabled } = props;
 
-  const ref = useRef<HTMLInputElement | null>(null);
-  const { current } = ref;
-
-  const clear =
-    clearable &&
-    // eslint-disable-next-line func-names
-    function () {
-      if (current && onChange) {
-        onChange('');
-        current.value = '';
-        current.focus();
-      }
-    };
+  const isFilled = value !== '' && onClear;
+  const isRequired = value === '' && required;
 
   return (
     <Label width={width}>
-      <StyleInput
-        ref={ref}
-        shape={shape}
-        isClearable={clearable}
-        onChange={(e) => onChange?.(e.target.value)}
-        value={value}
-        {...props}
-      />
+      <StyleInput shape={shape} isClearable={!!onClear} {...props} />
 
       {!disabled && (
         <>
-          {clear && value && (
-            <button type='button' onClick={clear}>
+          {isFilled && (
+            <button type='button' onClick={onClear}>
               <ClearableIcon data-testid='clear-icon' icon='Cancel' size={16} />
             </button>
           )}
-          {required && !value && (
+
+          {isRequired && (
             <>
               <RequiredIcon data-testid='required-icon' icon='Caution' size={16} />
               {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}

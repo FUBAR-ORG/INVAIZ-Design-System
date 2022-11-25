@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type ChangeEventHandler, useState } from 'react';
 import { Story } from '@storybook/react';
 
 import Input, { InputProps } from '@components/Inputs/Input';
@@ -11,49 +11,58 @@ export default {
 const InputTemplate: Story<InputProps> = ({ ...args }) => {
   const [input, setInput] = useState('');
 
-  const onChange = (value: string) => setInput(value);
+  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => setInput(e.target.value);
 
-  return <Input value={input} onChange={onChange} {...args} />;
+  const onClear = () => setInput('');
+
+  return <Input value={input} onChange={onChange} onClear={onClear} {...args} />;
 };
 
 export const Box = InputTemplate.bind({});
-Box.args = { width: 240, placeholder: 'Hello. Text Field' };
+Box.args = { width: 240, placeholder: 'Hello. Text Field', onClear: undefined };
 
 export const Disabled = InputTemplate.bind({});
 Disabled.args = {
+  value: 'Disabled',
   width: 240,
   placeholder: 'Hello. Text Field',
   disabled: true,
+  onClear: undefined,
 };
 
 export const Clearable = InputTemplate.bind({});
-Clearable.args = { width: 240, placeholder: 'Hello. Text Field', clearable: true };
+Clearable.args = { width: 240, placeholder: 'Hello. Text Field' };
 
 export const Required = InputTemplate.bind({});
 Required.args = {
   width: 240,
   placeholder: 'Hello. Text Field',
+  onClear: undefined,
   required: true,
 };
 
-export const BoxAllOptions = InputTemplate.bind({});
-BoxAllOptions.args = {
+export const ErrorMessage = InputTemplate.bind({});
+ErrorMessage.args = {
   width: 240,
   placeholder: 'Hello. Text Field',
-  clearable: true,
+  onClear: undefined,
+  required: true,
+  errorMessage: 'Hello, Error Message',
+};
+
+export const BoxClearableRequired = InputTemplate.bind({});
+BoxClearableRequired.args = {
+  width: 240,
+  placeholder: 'Hello. Text Field',
   required: true,
   errorMessage: 'Hello. Error Message',
 };
 
-export const Bar = InputTemplate.bind({});
-Bar.args = { shape: 'bar', width: 160, placeholder: 'Hello. Text Field' };
-
-export const BarAllOptions = InputTemplate.bind({});
-BarAllOptions.args = {
+export const BarClearableRequired = InputTemplate.bind({});
+BarClearableRequired.args = {
   shape: 'bar',
   width: 160,
   placeholder: 'Hello. Text Field',
-  clearable: true,
   required: true,
   errorMessage: 'Hello. Error Message',
 };
