@@ -62,11 +62,13 @@ export const StyleInput = styled.input<InputProps>`
             ${theme.style.border.selected};
             padding-left: 14px;
             padding-right: ${isClearable ? 32 : 14}px;
+            height: 36px;
           }
 
           & + button,
           & + svg {
             right: 16px;
+            padding: 0;
           }
         `
       : css`
