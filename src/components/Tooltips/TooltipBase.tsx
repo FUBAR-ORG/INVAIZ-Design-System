@@ -1,4 +1,4 @@
-import { type ReactNode, useState, useRef, useEffect, cloneElement } from 'react';
+import { type ReactNode, useState, useEffect, cloneElement } from 'react';
 import { createPortal } from 'react-dom';
 // React modules
 
@@ -21,7 +21,7 @@ interface TooltipBaseProps extends TooltipCommonProps {
  * 툴팁의 베이스 역할을 하는 컴포넌트입니다.
  */
 const TooltipBase = ({ contents, borderRadiusRatio = 2, isArrow, children }: TooltipBaseProps) => {
-  const childrenRef = useRef<HTMLElement>(null);
+  const [childrenRef, setChildrenRef] = useState<HTMLElement | null>(null);
 
   const [visible, setVisible] = useState(false);
   const [point, setPoint] = useState<Point>({
@@ -38,12 +38,11 @@ const TooltipBase = ({ contents, borderRadiusRatio = 2, isArrow, children }: Too
       setVisible(() => false);
     };
 
-    const childrenRefValue = childrenRef.current;
-    childrenRefValue?.addEventListener('mouseover', onMouseOver);
-    childrenRefValue?.addEventListener('mouseleave', onMouseLeave);
+    childrenRef?.addEventListener('mouseover', onMouseOver);
+    childrenRef?.addEventListener('mouseleave', onMouseLeave);
 
-    if (childrenRefValue) {
-      const { x, y, width, height } = childrenRefValue.getBoundingClientRect();
+    if (childrenRef) {
+      const { x, y, width, height } = childrenRef.getBoundingClientRect();
       setPoint({
         x: x + width / 2,
         y: y + height + BETWEEN_CONTENTS_SPACE + (isArrow ? HAVE_ARROW_ADDITIONAL_SPACE : 0),
@@ -51,8 +50,8 @@ const TooltipBase = ({ contents, borderRadiusRatio = 2, isArrow, children }: Too
     }
 
     return () => {
-      childrenRefValue?.removeEventListener('mouseover', onMouseOver);
-      childrenRefValue?.removeEventListener('mouseleave', onMouseLeave);
+      childrenRef?.removeEventListener('mouseover', onMouseOver);
+      childrenRef?.removeEventListener('mouseleave', onMouseLeave);
     };
   }, [childrenRef, isArrow]);
 
@@ -66,7 +65,7 @@ const TooltipBase = ({ contents, borderRadiusRatio = 2, isArrow, children }: Too
           document.body
         )}
       {cloneElement(children, {
-        ref: childrenRef,
+        ref: setChildrenRef,
       })}
     </>
   );

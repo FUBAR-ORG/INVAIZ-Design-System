@@ -17,7 +17,7 @@ interface HaveImageTooltipProps extends TooltipProps {
 /**
  * 이미지를 함께 사용하는 툴팁입니다.
  */
-const HaveImageTooltip = ({
+const ImageTooltip = ({
   text,
   textSize,
   borderRadiusRatio,
@@ -39,4 +39,4 @@ const HaveImageTooltip = ({
   </TooltipBase>
 );
 
-export default HaveImageTooltip;
+export default ImageTooltip;

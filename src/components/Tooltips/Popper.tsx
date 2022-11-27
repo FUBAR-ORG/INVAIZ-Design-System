@@ -1,4 +1,4 @@
-import { type PropsWithChildren, useLayoutEffect, useRef, useState } from 'react';
+import { type PropsWithChildren, useState, useEffect } from 'react';
 // React modules
 
 import {
@@ -20,7 +20,7 @@ type PopperProps = PropsWithChildren<PopperBaseProps & Pick<TooltipCommonProps, 
 // types
 
 const Popper = ({ x, y, borderRadiusRatio, isArrow, children }: PopperProps) => {
-  const popperRef = useRef<HTMLDivElement>(null);
+  const [popperRef, setPopperRef] = useState<HTMLDivElement | null>(null);
   const [delta, setDelta] = useState<Rect>({
     x: 0,
     y: 0,
@@ -28,11 +28,10 @@ const Popper = ({ x, y, borderRadiusRatio, isArrow, children }: PopperProps) => 
     height: 0,
   });
 
-  useLayoutEffect(() => {
-    const popperRefValue = popperRef.current;
+  useEffect(() => {
     const calculateDelta = () => {
-      if (popperRefValue) {
-        const { x: deltaX, width } = popperRefValue.getBoundingClientRect();
+      if (popperRef) {
+        const { x: deltaX, width } = popperRef.getBoundingClientRect();
         if (deltaX < OUTLINE_PIXEL) {
           setDelta((prev) => ({ ...prev, x: OUTLINE_PIXEL - deltaX }));
         } else if (deltaX > window.innerWidth - OUTLINE_PIXEL) {
@@ -44,18 +43,18 @@ const Popper = ({ x, y, borderRadiusRatio, isArrow, children }: PopperProps) => 
     calculateDelta();
 
     const resizeObserver = new ResizeObserver(calculateDelta);
-    if (popperRefValue) {
-      resizeObserver.observe(popperRefValue);
+    if (popperRef) {
+      resizeObserver.observe(popperRef);
     }
     return () => {
-      if (popperRefValue) {
-        resizeObserver.unobserve(popperRefValue);
+      if (popperRef) {
+        resizeObserver.unobserve(popperRef);
       }
     };
   }, [popperRef]);
 
   return (
-    <StylePopperWrapper ref={popperRef} role='tooltip' x={x} y={y}>
+    <StylePopperWrapper ref={setPopperRef} role='tooltip' x={x} y={y}>
       <StylePopper {...delta} borderRadiusRatio={borderRadiusRatio}>
         {children}
       </StylePopper>

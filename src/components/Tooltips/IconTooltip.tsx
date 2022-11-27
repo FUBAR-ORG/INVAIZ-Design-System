@@ -10,7 +10,7 @@ import styled from '@emotion/styled';
 import { StyleTooltipText } from '@components/Tooltips/styles/Tooltip.style';
 // styles
 
-interface HaveIconTooltipProps extends TooltipProps {
+interface IconTooltipProps extends TooltipProps {
   /**
    * 텍스트 및 아이콘 사이즈를 조절합니다.
    */
@@ -24,14 +24,14 @@ interface HaveIconTooltipProps extends TooltipProps {
 /**
  * 아이콘을 함께 사용하는 툴팁입니다.
  */
-const HaveIconTooltip = ({
+const IconTooltip = ({
   text,
   textSize = 16,
   borderRadiusRatio,
   isArrow,
   icon,
   children,
-}: HaveIconTooltipProps) => (
+}: IconTooltipProps) => (
   <TooltipBase
     contents={
       <StyleTooltipText textSize={textSize}>
@@ -56,4 +56,4 @@ export const StyleText = styled.span`
   vertical-align: middle;
 `;
 
-export default HaveIconTooltip;
+export default IconTooltip;
