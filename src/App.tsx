@@ -1,32 +1,77 @@
-import Dropdown from '@components/Dropdowns/Dropdown';
-import DropdownItem from '@components/Dropdowns/DropdownItem';
 import { useState } from 'react';
 
-type Option = {
-  value: number;
-  label: string;
-};
+import OutlineCheckbox from '@components/Checkboxes/OutlineCheckbox';
+import FillCheckbox from '@components/Checkboxes/FillCheckbox';
+import RadioButton from '@components/Checkboxes/RadioButton';
+import NestedCheckbox from '@components/Checkboxes/NestedCheckbox';
+import ImplementedNestedCheckbox, {
+  useNestedCheckboxState,
+} from '@components/Checkboxes/ImplementedNestedCheckbox';
+
+interface CheckOption {
+  id: number;
+  checked: boolean;
+  disabled: boolean;
+}
 
 export default function App() {
-  const [{ value }, setSelected] = useState({ value: 0, label: 'test' });
-  const options: Option[] = [
-    { value: 0, label: 'test0' },
-    { value: 1, label: 'test1' },
-    { value: 2, label: 'test2' },
-    { value: 3, label: 'test3' },
-    { value: 4, label: 'test4' },
-    { value: 5, label: 'test5' },
-    { value: 6, label: 'test6' },
-  ];
+  const nestedCheckboxState = useNestedCheckboxState([
+    { id: 0, checked: false, disabled: false, text: '1' },
+    { id: 1, checked: true, disabled: true, text: '2' },
+    { id: 2, checked: false, disabled: false, text: '3' },
+  ]);
 
-  const renderItem = (option: Option) => (
-    <DropdownItem.Default selected={value === option.value} onClick={() => setSelected(option)}>
-      {option.label}
-    </DropdownItem.Default>
-  );
+  const [checkedList, setCheckedList] = useState<CheckOption[]>([
+    { id: 0, checked: false, disabled: false },
+    { id: 1, checked: true, disabled: true },
+    { id: 2, checked: false, disabled: false },
+  ]);
+
+  const allCheck = checkedList.every(({ checked, disabled }) => disabled || checked);
+
+  const indeterminate =
+    !allCheck && checkedList.some(({ checked, disabled }) => !disabled && checked);
+
+  const onChange = (newChecked: boolean, setId: number) => {
+    setCheckedList((prevList) =>
+      prevList.map((prev) => ({ ...prev, checked: prev.id === setId ? newChecked : prev.checked }))
+    );
+  };
+
+  const onAllChange = () => {
+    setCheckedList((prevList) =>
+      prevList.map((prev) => (prev.disabled ? prev : { ...prev, checked: !allCheck }))
+    );
+  };
+
   return (
-    <div style={{ padding: '20px' }}>
-      <Dropdown type='default' list={options} selected={value} render={renderItem} />
-    </div>
+    <>
+      <OutlineCheckbox text='Jump out the window. if you are the object of passion. Flee it if you feel it. Passion goes, boredom remains' />
+      <OutlineCheckbox text='Please enter your text here.' />
+      <FillCheckbox />
+      <RadioButton />
+      <br />
+      <h1>NestedCheckbox</h1>
+      <NestedCheckbox
+        text='Jump out the window. if you are the object of passion. Flee it if you feel it. Passion goes, boredom remains'
+        checked={allCheck}
+        isIndeterminate={indeterminate}
+        onChange={onAllChange}
+      >
+        {checkedList.map(({ id, checked, disabled }) => (
+          <NestedCheckbox.Item
+            key={id}
+            text={`Test ${id}`}
+            checked={checked}
+            disabled={disabled}
+            onChange={(c) => onChange(c, id)}
+          />
+        ))}
+        <OutlineCheckbox text='Jump out the window. if you are the object of passion. Flee it if you feel it. Passion goes, boredom remains' />
+      </NestedCheckbox>
+      <br />
+      <h1>ImplementedNestedCheckbox</h1>
+      <ImplementedNestedCheckbox text='test' {...nestedCheckboxState} />
+    </>
   );
 }

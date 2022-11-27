@@ -1,12 +1,16 @@
+import type { CheckboxDefaultProps } from '@components/Checkboxes/OutlineCheckbox';
+// types
+
 import { Story } from '@storybook/react';
-import Toggle, { ToggleProps } from '@components/Toggles/Toggle';
+import Toggle from '@components/Toggles/Toggle';
 
 export default {
   title: 'Components/Toggle',
   component: Toggle,
 };
 
-const Template: Story<ToggleProps> = (props) => <Toggle {...props} />;
+const Template: Story<CheckboxDefaultProps> = (props) => <Toggle {...props} />;
 
 export const Primary = Template.bind({});
+
 Primary.args = {};

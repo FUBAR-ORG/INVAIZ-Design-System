@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FillCheckbox Snapshot 1`] = `
+<span
+  className="css-srlyvc"
+>
+  <input
+    checked={true}
+    className="css-10ql71c"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <div
+    className="css-1hzayjd"
+  >
+    <svg
+      className="css-1a3jyl"
+      data-file-name="Check.svg"
+      data-svg-name="Check"
+      data-test-id="Check"
+      height={20}
+      width={20}
+    />
+  </div>
+</span>
+`;
+
+exports[`FillCheckbox Snapshot 2`] = `
+<span
+  className="css-srlyvc"
+>
+  <input
+    className="css-10ql71c"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <div
+    className="css-1hzayjd"
+  >
+    <svg
+      className="css-1a3jyl"
+      data-file-name="Check.svg"
+      data-svg-name="Check"
+      data-test-id="Check"
+      height={20}
+      width={20}
+    />
+  </div>
+</span>
+`;

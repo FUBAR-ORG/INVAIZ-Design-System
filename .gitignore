@@ -13,5 +13,8 @@ storybook-static
 # build log file of storybook
 build-storybook.log
 
+# log files
+yarn-error.log
+
 # error logs
 *error.log

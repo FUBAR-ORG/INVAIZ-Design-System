@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OutlineCheckbox Snapshot 1`] = `
+<label
+  className="css-9ncwx"
+>
+  <span
+    className="css-1u8zmlt"
+  >
+    <input
+      checked={true}
+      className="css-18gtr08"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <div
+      className="css-3xhjcj"
+    >
+      <svg
+        className="css-bw5rgr"
+        data-file-name="Check.svg"
+        data-svg-name="Check"
+        data-test-id="Check"
+        height={20}
+        width={20}
+      />
+    </div>
+  </span>
+  <p
+    className="css-4ccycq"
+  >
+    Outline Checkbox
+  </p>
+</label>
+`;
+
+exports[`OutlineCheckbox Snapshot 2`] = `
+<label
+  className="css-9ncwx"
+>
+  <span
+    className="css-1u8zmlt"
+  >
+    <input
+      className="css-18gtr08"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <div
+      className="css-3xhjcj"
+    >
+      <svg
+        className="css-bw5rgr"
+        data-file-name="Check.svg"
+        data-svg-name="Check"
+        data-test-id="Check"
+        height={20}
+        width={20}
+      />
+    </div>
+  </span>
+  <p
+    className="css-4ccycq"
+  >
+    Outline Checkbox
+  </p>
+</label>
+`;
