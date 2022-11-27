@@ -59,10 +59,7 @@ export const StyleInput = styled.input<InputProps>`
           padding-right: ${isClearable ? 34 : 16}px;
 
           &:focus {
-            ${theme.style.border.selected};
-            padding-left: 14px;
-            padding-right: ${isClearable ? 32 : 14}px;
-            height: 36px;
+            outline: 2px solid ${theme.color.primary.blue500};
           }
 
           & + button,
