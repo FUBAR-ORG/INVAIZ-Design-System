@@ -1,13 +1,12 @@
+import type { TooltipProps } from '@components/Tooltips/interfaces/Tooltip.interface';
+// interfaces
+
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 // styles
 
-interface StyleTooltipTextProps {
-  textSize?: number;
-}
-
 // eslint-disable-next-line import/prefer-default-export
-export const StyleTooltipText = styled.p<StyleTooltipTextProps>`
+export const StyleTooltipText = styled.p<Pick<TooltipProps, 'textSize'>>`
   color: #fff;
   ${({ theme }) => theme.font.kopub.contents5}
 
