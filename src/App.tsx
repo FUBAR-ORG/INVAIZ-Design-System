@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 
 import OutlineCheckbox from '@components/Checkboxes/OutlineCheckbox';
 import FillCheckbox from '@components/Checkboxes/FillCheckbox';
@@ -27,15 +27,10 @@ export default function App() {
     { id: 2, checked: false, disabled: false },
   ]);
 
-  const allCheck = useMemo(
-    () => checkedList.every(({ checked, disabled }) => disabled || checked),
-    [checkedList]
-  );
+  const allCheck = checkedList.every(({ checked, disabled }) => disabled || checked);
 
-  const indeterminate = useMemo(
-    () => !allCheck && checkedList.some(({ checked, disabled }) => !disabled && checked),
-    [checkedList, allCheck]
-  );
+  const indeterminate =
+    !allCheck && checkedList.some(({ checked, disabled }) => !disabled && checked);
 
   const onChange = (newChecked: boolean, setId: number) => {
     setCheckedList((prevList) =>

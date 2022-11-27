@@ -1,7 +1,7 @@
 import type { Story } from '@storybook/react';
 // types
 
-import { type ComponentProps, useState, useMemo } from 'react';
+import { type ComponentProps, useState } from 'react';
 // React modules
 
 import NestedCheckbox from '@components/Checkboxes/NestedCheckbox';
@@ -41,16 +41,13 @@ export const Usage = () => {
     );
   };
 
-  const allCheck = useMemo(() => checkedList.every(({ checked }) => checked), [checkedList]);
+  const allCheck = checkedList.every(({ checked }) => checked);
 
   const onAllChange = () => {
     setCheckedList((prevList) => prevList.map((prev) => ({ ...prev, checked: !allCheck })));
   };
 
-  const indeterminate = useMemo(
-    () => !allCheck && checkedList.some(({ checked }) => checked),
-    [checkedList, allCheck]
-  );
+  const indeterminate = !allCheck && checkedList.some(({ checked }) => checked);
 
   return (
     <NestedCheckbox

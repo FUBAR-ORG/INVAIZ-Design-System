@@ -1,4 +1,4 @@
-import { type ComponentProps, useState, useMemo } from 'react';
+import { type ComponentProps, useState } from 'react';
 import styled from '@emotion/styled';
 // React modules
 
@@ -49,15 +49,10 @@ export const useNestedCheckboxState = (
 ): Omit<ImplementedNestedCheckboxProps, 'text' | 'disabled'> => {
   const [checkList, setCheckList] = useState<CheckList>(initCheckList);
 
-  const allCheck = useMemo(
-    () => checkList.every(({ checked, disabled }) => disabled || checked),
-    [checkList]
-  );
+  const allCheck = checkList.every(({ checked, disabled }) => disabled || checked);
 
-  const isIndeterminate = useMemo(
-    () => !allCheck && checkList.some(({ checked, disabled }) => !disabled && checked),
-    [checkList, allCheck]
-  );
+  const isIndeterminate =
+    !allCheck && checkList.some(({ checked, disabled }) => !disabled && checked);
 
   const onChange = (checked: boolean, id: CheckItemId) =>
     setCheckList((prevList) =>
