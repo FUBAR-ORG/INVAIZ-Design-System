@@ -16,4 +16,5 @@ Primary.args = {
   children: 'message',
   variant: 'default',
   open: true,
+  duration: 3000,
 };

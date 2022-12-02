@@ -1,10 +1,12 @@
-import styled from '@emotion/styled';
 import { HTMLAttributes } from 'react';
+import styled from '@emotion/styled';
 
 export interface SnackbarProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   open?: boolean;
+  duration: number;
   variant?: 'default' | 'success' | 'error' | 'warning';
+  onClose?: () => void;
 }
 export default function Snackbar({
   children,
@@ -13,6 +15,7 @@ export default function Snackbar({
   ...props
 }: SnackbarProps) {
   const isOpen = open ? '--open' : '';
+
   return (
     <StyledSnackbar className={[props.className, variant, isOpen].join(' ')} {...props}>
       {children}
