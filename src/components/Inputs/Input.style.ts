@@ -100,10 +100,13 @@ export const RequiredIcon = styled(SvgIcon)`
   fill: ${({ theme }) => theme.normal.system.caution1};
 `;
 
-export const ErrorMessage = styled.p`
+interface ErrorMessageProps {
+  shape: 'box' | 'bar';
+}
+
+export const ErrorMessage = styled.p<ErrorMessageProps>`
   position: absolute;
-  top: -14px;
-  left: 4px;
+  transform: translate(4px, ${({ shape }) => (shape === 'box' ? -30 : -20)}px);
   ${({ theme }) => theme.font.kopub};
   font-size: 10px;
   color: ${({ theme }) => theme.color.system.caution1};

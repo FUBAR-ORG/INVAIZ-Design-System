@@ -56,7 +56,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             {isRequired && (
               <>
                 <RequiredIcon data-testid='required-icon' icon='Caution' size={16} />
-                {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+                {errorMessage && <ErrorMessage shape={shape}>{errorMessage}</ErrorMessage>}
               </>
             )}
           </>

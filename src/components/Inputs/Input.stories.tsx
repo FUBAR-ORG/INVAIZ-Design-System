@@ -19,24 +19,24 @@ const InputTemplate: Story<InputProps> = ({ ...args }) => {
 };
 
 export const Box = InputTemplate.bind({});
-Box.args = { width: 240, placeholder: 'Hello. Text Field', onClear: undefined };
+Box.args = { width: 240, placeholder: 'Hello, Text Field.', onClear: undefined };
 
 export const Disabled = InputTemplate.bind({});
 Disabled.args = {
   value: 'Disabled',
   width: 240,
-  placeholder: 'Hello. Text Field',
+  placeholder: 'Hello, Text Field.',
   disabled: true,
   onClear: undefined,
 };
 
 export const Clearable = InputTemplate.bind({});
-Clearable.args = { width: 240, placeholder: 'Hello. Text Field' };
+Clearable.args = { width: 240, placeholder: 'Hello, Text Field.' };
 
 export const Required = InputTemplate.bind({});
 Required.args = {
   width: 240,
-  placeholder: 'Hello. Text Field',
+  placeholder: 'Hello, Text Field.',
   onClear: undefined,
   required: true,
 };
@@ -44,7 +44,7 @@ Required.args = {
 export const ErrorMessage = InputTemplate.bind({});
 ErrorMessage.args = {
   width: 240,
-  placeholder: 'Hello. Text Field',
+  placeholder: 'Hello, Text Field.',
   onClear: undefined,
   required: true,
   errorMessage: 'Hello, Error Message',
@@ -53,16 +53,16 @@ ErrorMessage.args = {
 export const BoxClearableRequired = InputTemplate.bind({});
 BoxClearableRequired.args = {
   width: 240,
-  placeholder: 'Hello. Text Field',
+  placeholder: 'Hello, Text Field.',
   required: true,
-  errorMessage: 'Hello. Error Message',
+  errorMessage: 'Hello, Error Message.',
 };
 
 export const BarClearableRequired = InputTemplate.bind({});
 BarClearableRequired.args = {
   shape: 'bar',
   width: 160,
-  placeholder: 'Hello. Text Field',
+  placeholder: 'Hello, Text Field.',
   required: true,
-  errorMessage: 'Hello. Error Message',
+  errorMessage: 'Hello, Error Message.',
 };
