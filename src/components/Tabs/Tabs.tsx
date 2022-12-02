@@ -1,24 +1,41 @@
-import { HTMLAttributes, PropsWithChildren } from 'react';
-import styled from '@emotion/styled';
-import TabList from '@components/Tabs/TabList';
-import { ITab } from '@components/Tabs/Tab';
+import { type ReactNode } from 'react';
 
-export interface TabsProps extends PropsWithChildren<HTMLAttributes<HTMLDivElement>> {
-  tabs: ITab[];
+import { Button, Panel } from '@components/Tabs/Tabs.style';
+
+interface TabPanelProps {
+  index: number;
+  currentIndex: number;
+  children: ReactNode;
 }
 
-export default function Tabs({ tabs, children, ...props }: TabsProps) {
-  return (
-    <Container tabsLength={tabs.length} {...props}>
-      <TabList>{children}</TabList>
-    </Container>
-  );
+export const TabPanel = ({ index, currentIndex, children }: TabPanelProps) =>
+  index === currentIndex ? <Panel>{children}</Panel> : null;
+
+interface TabProps {
+  index: number;
+  changeTab: (index: number) => void;
+  children: ReactNode;
 }
 
-const Container = styled.div<{ tabsLength: number }>`
-  --tab-width: 120;
-  width: calc(var(---tab-width) * ${({ tabsLength }) => tabsLength} * 1px);
-  margin: 20px;
-  border-radius: 5px;
-  overflow: hidden;
-`;
+const Tab = ({ index, changeTab, children }: TabProps) => {
+  const onClick = () => changeTab(index);
+
+  return <Button onClick={onClick}>{children}</Button>;
+};
+
+interface TabsProps {
+  tabs: string[];
+  changeTab: (index: number) => void;
+}
+
+const Tabs = ({ tabs, changeTab }: TabsProps) => (
+  <>
+    {tabs.map((tab, index) => (
+      <Tab key={tab} index={index} changeTab={changeTab}>
+        {tab}
+      </Tab>
+    ))}
+  </>
+);
+
+export default Tabs;
