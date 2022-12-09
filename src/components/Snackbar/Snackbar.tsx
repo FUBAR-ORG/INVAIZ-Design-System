@@ -2,13 +2,13 @@ import { HTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 
 export interface SnackbarProps extends HTMLAttributes<HTMLDivElement> {
-  children?: React.ReactNode;
+  message?: string;
   open?: boolean;
   variant?: 'default' | 'success' | 'error' | 'warning';
 }
 
 export default function Snackbar({
-  children,
+  message,
   open = false,
   variant = 'default',
   ...props
@@ -17,7 +17,7 @@ export default function Snackbar({
 
   return (
     <StyledSnackbar className={[props.className, variant, isOpen].join(' ')} {...props}>
-      {children}
+      {message}
     </StyledSnackbar>
   );
 }
@@ -43,6 +43,10 @@ const StyledSnackbar = styled.div`
 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(2px);
+
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
 
   &.default {
     background-color: ${({ theme }) => theme.color.grayScale.coolGray800};
