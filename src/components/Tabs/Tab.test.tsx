@@ -1,6 +1,7 @@
 import { render, fireEvent } from '@tests/test-utils';
 
-import Tab, { TabPanel } from '@components/Tabs/Tab';
+import TabLine from '@components/Tabs/TabLine';
+import TabPanel from '@components/Tabs/TabPanel';
 
 describe('Tab', () => {
   const tabs = ['tab1', 'tab2', 'tab3'];
@@ -10,9 +11,9 @@ describe('Tab', () => {
 
   it('Tab은 버튼을 렌더링하고 버튼을 클릭하면 changeTab을 호출한다.', () => {
     const { getByRole } = render(
-      <Tab index={0} currentIndex={currentIndex} changeTab={changeTab}>
+      <TabLine index={0} currentIndex={currentIndex} changeTab={changeTab}>
         {tabs[0]}
-      </Tab>
+      </TabLine>
     );
 
     const button = getByRole('button');
@@ -22,9 +23,9 @@ describe('Tab', () => {
 
   it('Tab은 disabled가 true일 때 비활성화 된다.', () => {
     const { getByRole } = render(
-      <Tab index={0} currentIndex={currentIndex} changeTab={changeTab} disabled>
+      <TabLine index={0} currentIndex={currentIndex} changeTab={changeTab} disabled>
         {tabs[0]}
-      </Tab>
+      </TabLine>
     );
 
     const button = getByRole('button');

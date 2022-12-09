@@ -1,6 +1,9 @@
 import { useState } from 'react';
 
-import Tab, { TabPanel } from '@components/Tabs/Tab';
+import TabLine from '@components/Tabs/TabLine';
+import TabContain from '@components/Tabs/TabContain';
+import TabVertical from '@components/Tabs/TabVertical';
+import TabPanel from '@components/Tabs/TabPanel';
 
 const tabs = ['전체보기', '다이얼', '버튼'];
 
@@ -13,23 +16,23 @@ const App = () => {
     <>
       <div style={{ marginBottom: 20 }}>
         {tabs.map((tab, idx) => (
-          <Tab key={tab} index={idx} currentIndex={index} changeTab={changeTab}>
+          <TabLine key={tab} index={idx} currentIndex={index} changeTab={changeTab}>
             {tab}
-          </Tab>
+          </TabLine>
         ))}
       </div>
       <div style={{ marginBottom: 20 }}>
         {tabs.map((tab, idx) => (
-          <Tab key={tab} shape='contain' index={idx} currentIndex={index} changeTab={changeTab}>
+          <TabContain key={tab} index={idx} currentIndex={index} changeTab={changeTab}>
             {tab}
-          </Tab>
+          </TabContain>
         ))}
       </div>
       <div style={{ marginBottom: 20 }}>
         {tabs.map((tab, idx) => (
-          <Tab key={tab} shape='vertical' index={idx} currentIndex={index} changeTab={changeTab}>
+          <TabVertical key={tab} index={idx} currentIndex={index} changeTab={changeTab}>
             {tab}
-          </Tab>
+          </TabVertical>
         ))}
       </div>
 

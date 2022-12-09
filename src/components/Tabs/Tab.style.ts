@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 
 interface ButtonProps {
-  shape?: 'line' | 'contain' | 'vertical';
   selected?: boolean;
   disabled?: boolean;
 }
