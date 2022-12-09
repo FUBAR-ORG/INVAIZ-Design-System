@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Tabs, { TabPanel } from '@components/Tabs/Tabs';
+import Tab, { TabPanel } from '@components/Tabs/Tab';
 
 const tabs = ['전체보기', '다이얼', '버튼'];
 
@@ -11,7 +11,11 @@ const App = () => {
 
   return (
     <>
-      <Tabs tabs={tabs} changeTab={changeTab} />
+      {tabs.map((tab, idx) => (
+        <Tab key={tab} index={idx} changeTab={changeTab}>
+          {tab}
+        </Tab>
+      ))}
 
       <TabPanel index={0} currentIndex={index}>
         0
