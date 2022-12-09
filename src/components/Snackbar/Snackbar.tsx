@@ -4,10 +4,9 @@ import styled from '@emotion/styled';
 export interface SnackbarProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   open?: boolean;
-  duration: number;
   variant?: 'default' | 'success' | 'error' | 'warning';
-  onClose?: () => void;
 }
+
 export default function Snackbar({
   children,
   open = false,
@@ -31,9 +30,9 @@ const StyledSnackbar = styled.div`
   min-width: 235px;
   min-height: 65px;
 
-  transform: translateY(30px);
   transition: all 0.1s ease-in-out;
   opacity: 0;
+  transform: scale(0.8);
 
   padding: ${({ theme }) => theme.whiteSpace.whiteSpace20}px;
 
@@ -59,6 +58,6 @@ const StyledSnackbar = styled.div`
   }
   &.--open {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
   }
 `;

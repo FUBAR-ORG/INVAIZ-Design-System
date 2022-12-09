@@ -6,15 +6,11 @@ export default {
   component: Snackbar,
 };
 
-const Template: Story<SnackbarProps> = ({ children, ...args }) => (
-  <Snackbar {...args}>{children}</Snackbar>
-);
+const Template: Story<SnackbarProps> = ({ ...args }) => <Snackbar {...args} />;
 
 export const Primary = Template.bind({});
 
 Primary.args = {
-  children: 'message',
-  variant: 'default',
-  open: true,
-  duration: 3000,
+  children: 'test',
+  variant: 'error',
 };
