@@ -11,11 +11,27 @@ const App = () => {
 
   return (
     <>
-      {tabs.map((tab, idx) => (
-        <Tab key={tab} index={idx} changeTab={changeTab}>
-          {tab}
-        </Tab>
-      ))}
+      <div style={{ marginBottom: 20 }}>
+        {tabs.map((tab, idx) => (
+          <Tab key={tab} index={idx} currentIndex={index} changeTab={changeTab}>
+            {tab}
+          </Tab>
+        ))}
+      </div>
+      <div style={{ marginBottom: 20 }}>
+        {tabs.map((tab, idx) => (
+          <Tab key={tab} shape='contain' index={idx} currentIndex={index} changeTab={changeTab}>
+            {tab}
+          </Tab>
+        ))}
+      </div>
+      <div style={{ marginBottom: 20 }}>
+        {tabs.map((tab, idx) => (
+          <Tab key={tab} shape='vertical' index={idx} currentIndex={index} changeTab={changeTab}>
+            {tab}
+          </Tab>
+        ))}
+      </div>
 
       <TabPanel index={0} currentIndex={index}>
         0
