@@ -32,6 +32,14 @@ const boxShadow = {
   dropdownOpen: css`
     box-shadow: 0 4px 10px #000000bf;
   `,
+  /**
+   * 알림창
+   * * x0, y4, blur10 / #000000 35%
+   * * box-shadow: 0px 4px 10px #00000059
+   */
+  alert: css`
+    box-shadow: 0 4px 10px #00000059;
+  `,
 } as const;
 
 /** 폰트 타입 정의에 사용되는 CSS */
