@@ -14,7 +14,7 @@ export const Title = styled.h1`
   ${({ theme }) => theme.font.kopub.contents3};
 `;
 
-export const Description = styled.div`
+export const Description = styled.p`
   margin: 0 0 20px;
   ${({ theme }) => theme.font.kopub.contents7}
 `;

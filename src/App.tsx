@@ -1,17 +1,21 @@
-import { useState } from 'react';
+import AlertProvider, { useAlert } from '@components/Alerts/AlertContext';
 
-import Alert from '@components/Alerts/Alert';
+const ExampleContainer = () => {
+  const openAlert = useAlert();
 
-const App = () => {
-  const [open, setOpen] = useState(true);
-
-  const onClose = () => setOpen(false);
+  const onOpenAlert = () => openAlert('Title', 'Description', () => console.log('click confirm'));
 
   return (
-    <Alert open={open} title='title' onConfirm={onClose}>
-      asd
-    </Alert>
+    <button type='button' onClick={onOpenAlert}>
+      Alert
+    </button>
   );
 };
+
+const App = () => (
+  <AlertProvider>
+    <ExampleContainer />
+  </AlertProvider>
+);
 
 export default App;
