@@ -24,7 +24,15 @@ export default function App() {
           <Toggle />
         </span>
       </ImageTooltip>
-      <Slider onChange={console.log} min={10} max={100} step={10} />
+      <Slider
+        icon='Temperature'
+        iconSize={24}
+        onChange={console.log}
+        width={480}
+        min={10}
+        max={100}
+        step={10}
+      />
     </>
   );
 }
